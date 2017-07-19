@@ -2,7 +2,7 @@
 
 module.exports = {
   // configuration
-    entry: './js/main',
+    entry: './project/js/main',
     output: {
         filename: 'bundle.js',
         library: 'app'
