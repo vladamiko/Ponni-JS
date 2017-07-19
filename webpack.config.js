@@ -2,7 +2,7 @@
 
 module.exports = {
   // configuration
-    entry: './js/App',
+    entry: './js/model/App',
     output: {
         filename: 'main.js',
         library: 'app'
