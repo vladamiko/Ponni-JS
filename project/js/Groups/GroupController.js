@@ -1,9 +1,8 @@
 'use strict';
 
-module.export = GroupController;
-
 class GroupController {
     constructor () {
         
     }
 }
+module.export = GroupController;

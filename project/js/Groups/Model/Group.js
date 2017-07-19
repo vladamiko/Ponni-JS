@@ -1,7 +1,5 @@
 'use strict';
 
-module.export = Group;
-
 class Group {
     constructor (name, direction) {
         this.name = name; // string
@@ -20,3 +18,4 @@ class Group {
 
     }
 }
+module.export = Group;

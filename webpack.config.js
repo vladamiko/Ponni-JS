@@ -5,13 +5,14 @@ module.exports = {
     entry: './project/js/main',
     output: {
         filename: 'bundle.js',
+        path: __dirname + '/project',
         library: 'app'
     },
     watch: false,
     watchOptions: {
         aggregateTimeout: 100
     },
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
     
     // Module to install babel write npm i babel-loader
     module: {

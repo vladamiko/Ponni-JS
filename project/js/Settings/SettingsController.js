@@ -1,9 +1,8 @@
 'use strict';
 
-module.export = SettingsController;
-
 class SettingsController {
     constructor () {
         
     }
 }
+module.export = SettingsController;

@@ -1,9 +1,8 @@
 'use strict';
 
-module.export = GroupView;
-
 class GroupView {
     constructor () {
         
     }
 }
+module.export = GroupView;
