@@ -2,10 +2,10 @@
 
 module.exports = {
   // configuration
-    entry: './js/main',
+    entry: './js/App',
     output: {
-        filename: 'bundle.js',
-        library: 'main'
+        filename: 'main.js',
+        library: 'app'
     },
     watch: false,
     watchOptions: {
