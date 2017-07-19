@@ -1,3 +1,7 @@
+'use strict';
+
+module.export = Group;
+
 class Group {
     constructor (name, direction) {
         this.name = name; // string

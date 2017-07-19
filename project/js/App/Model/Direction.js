@@ -1,5 +1,7 @@
 'use strict';
 
+module.export = Direction;
+
 class Direction {
     constructor (directionName) {
         this.directionName = directionName;

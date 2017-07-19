@@ -1,4 +1,6 @@
-'use strict'
+'use strict';
+
+module.export = Settings;
 
 class Settings {
     constructor () {

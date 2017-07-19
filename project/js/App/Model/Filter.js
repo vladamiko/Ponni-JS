@@ -1,3 +1,7 @@
+'use strict';
+
+module.export = Filter;
+
 class Filter {
     constructor (tests, action, condition, grade) {
         this.tests = tests; // array
