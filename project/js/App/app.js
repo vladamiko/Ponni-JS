@@ -1,6 +1,10 @@
 'use strict';
 
-let app = {
-    "groups" = [],
-    "directions" = []
+module.export = App;
+
+class App {
+    constructor () {
+        this.groups = [];
+        this.directions = [];
+    }
 }

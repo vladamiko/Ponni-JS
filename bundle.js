@@ -61,24 +61,36 @@ var app =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
 
-
-var Direction = __webpack_require__(1),
-    Filter = __webpack_require__(2),
-    Group = __webpack_require__(3),
-    Settings = __webpack_require__(4),
-    Test = __webpack_require__(5),
-    Controller = __webpack_require__(6),
-    View = __webpack_require__(7),
-    App = __webpack_require__(8);
 
 /***/ }),
 /* 1 */
@@ -87,102 +99,49 @@ var Direction = __webpack_require__(1),
 "use strict";
 
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Direction = function Direction() {
-    _classCallCheck(this, Direction);
-};
-
-module.exports = Direction;
+var Direction = __webpack_require__(2),
+    Filter = __webpack_require__(3),
+    Test = __webpack_require__(4),
+    AppView = __webpack_require__(5),
+    App = __webpack_require__(6),
+    Groups = __webpack_require__(7),
+    GroupView = __webpack_require__(8),
+    GroupController = __webpack_require__(9),
+    Settings = __webpack_require__(10),
+    SettingsView = __webpack_require__(11),
+    SettingsController = __webpack_require__(12);
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Filter = function Filter() {
-    _classCallCheck(this, Filter);
-
-    this.tests = [];
-    this.action = ''; // value from input
-    this.condition = ''; // value from input
-    this.grade = 0; // value from input
-}
-
-// addTest, changeAction, changeCondition, changeGrade
-;
-
-module.exports = Filter;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Group = function () {
-    function Group() {
-        _classCallCheck(this, Group);
+module.export = Direction;
 
-        this.name = ''; // value from input
-        this.direction = ''; // value from input
-        this.tests = []; // is filled depending on direction
-        this.filters = []; // is filled depending on direction
-    }
+var Direction = function () {
+    function Direction(directionName) {
+        _classCallCheck(this, Direction);
 
-    _createClass(Group, [{
-        key: 'addTestingSession',
-        value: function addTestingSession() {}
-    }, {
-        key: 'addTest',
-        value: function addTest() {}
-    }]);
-
-    return Group;
-}();
-
-module.exports = Group;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Settings = function () {
-    function Settings() {
-        _classCallCheck(this, Settings);
-
-        this.direction = ''; // value from input
+        this.directionName = directionName;
         this.testList = []; // ['Eng1', 'Engl2', …]
         this.filterList = []; // ['filter1', 'filter2', …] 
     }
 
-    _createClass(Settings, [{
+    _createClass(Direction, [{
         key: 'addTest',
-        value: function addTest() {
-            // recognize parameters from inputs
-            // testList.push(new Test(parametrs));
+        value: function addTest(testName) {
+            this.testList.push(new Test(testName));
         }
     }, {
         key: 'addFilter',
-        value: function addFilter() {
-            // recognize parameters from inputs
-            // filterList.push(new Filter(parametrs));
+        value: function addFilter(tests, action, condition, grade) {
+            this.filterList.push(new Filter(tests, action, condition, grade));
         }
     }, {
         key: 'deleteTest',
@@ -192,91 +151,225 @@ var Settings = function () {
         value: function deleteFilter() {}
     }]);
 
-    return Settings;
+    return Direction;
 }();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
 
-module.exports = Settings;
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+module.export = Filter;
+
+var Filter = function Filter(tests, action, condition, grade) {
+    _classCallCheck(this, Filter);
+
+    this.tests = tests; // array
+    this.action = action; // string
+    this.condition = condition; // string
+    this.grade = grade; // number
+}
+
+// addTest, changeAction, changeCondition, changeGrade
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+module.export = Test;
+
+var Test = function Test(name, maxGrade, grade) {
+    _classCallCheck(this, Test);
+
+    this.name = name;
+    // this.maxGrade = maxGrade;
+    // this.grade = grade;
+}
+
+// addResults () {
+
+// }  
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
 
 /***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+/* WEBPACK VAR INJECTION */(function(module) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Test = function () {
-    function Test() {
-        _classCallCheck(this, Test);
+module.export = AppView;
 
-        this.name = '';
-        this.maxGrade = 0;
-        this.grade = 0;
-    }
-
-    _createClass(Test, [{
-        key: 'addResults',
-        value: function addResults() {}
-    }]);
-
-    return Test;
-}();
-
-module.exports = Test;
+var AppView = function AppView() {
+    _classCallCheck(this, AppView);
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
 
 /***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+module.export = App;
+
+var App = function App() {
+    _classCallCheck(this, App);
+
+    this.groups = [];
+    this.directions = [];
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
 
 /***/ }),
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+module.export = Group;
+
+var Group = function () {
+    function Group(name, direction) {
+        _classCallCheck(this, Group);
+
+        this.name = name; // string
+        this.direction = direction; // string
+    }
+
+    _createClass(Group, [{
+        key: 'addTestingSession',
+        value: function addTestingSession() {}
+    }, {
+        key: 'addTest',
+        value: function addTest() {}
+    }, {
+        key: 'addFilter',
+        value: function addFilter() {}
+    }]);
+
+    return Group;
+}();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
 
 /***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+module.export = GroupView;
+
+var GroupView = function GroupView() {
+    _classCallCheck(this, GroupView);
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+module.export = GroupController;
+
+var GroupController = function GroupController() {
+    _classCallCheck(this, GroupController);
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var App = function () {
-    function App() {
-        _classCallCheck(this, App);
+module.export = Settings;
 
-        this.groups = [];
-        this.setting = [];
+var Settings = function () {
+    function Settings() {
+        _classCallCheck(this, Settings);
+
+        this.directionList = []; // string
     }
 
-    _createClass(App, [{
-        key: 'addGroupe',
-        value: function addGroupe() {
-            // groups.push(new Group());
-            console.log('ADED');
-        }
-    }, {
-        key: 'addSetting',
-        value: function addSetting() {
-            // groups.push(new Setting());
+    _createClass(Settings, [{
+        key: 'addDirection',
+        value: function addDirection(directionName) {
+            this.testList.push(new Direction(directionName));
         }
     }]);
 
-    return App;
+    return Settings;
 }();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
 
-module.exports = App;
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+module.export = SettingsView;
+
+var SettingsView = function SettingsView() {
+    _classCallCheck(this, SettingsView);
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+module.export = SettingsController;
+
+var SettingsController = function SettingsController() {
+    _classCallCheck(this, SettingsController);
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
 
 /***/ })
 /******/ ]);
