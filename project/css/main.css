@@ -57,6 +57,7 @@ div.group + button {
     color: #3e362f;
     font-size: 30px;
     background-color: #e7e7e7;
+    padding: 0;
 }
 li {
     list-style: none;
