@@ -8,9 +8,11 @@ class App {
     
     addGroupe () {
         // groups.push(new Group());
+        console.log('ADED');
     }
 
     addSetting () {
         // groups.push(new Setting());
     }
 }
+module.exports = App;

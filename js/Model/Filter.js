@@ -9,5 +9,5 @@ class Filter {
     }
 
 // addTest, changeAction, changeCondition, changeGrade
-
 }
+module.exports = Filter;
