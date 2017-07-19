@@ -12,4 +12,6 @@ let Direction = require('./App/Model/Direction.js'),
     SettingsView = require('./Settings/View/SettingsView.js'),
     SettingsController = require('./Settings/SettingsController.js');
 
-
+    //Entry point
+    let app = new App();
+    app.start();

@@ -5,6 +5,9 @@ module.export = App;
 class App {
     constructor () {
         this.groups = [];
-        this.directions = [];
+        this.settings = [];
+    }
+    start () {
+        
     }
 }
