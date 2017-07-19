@@ -1,3 +1,5 @@
+'use strict';
+
 class Group {
     constructor () {
         this.name = ''; // value from input
