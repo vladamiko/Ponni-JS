@@ -76,7 +76,9 @@ var Direction = __webpack_require__(1),
     Group = __webpack_require__(3),
     Settings = __webpack_require__(4),
     Test = __webpack_require__(5),
-    App = __webpack_require__(6);
+    Controller = __webpack_require__(6),
+    View = __webpack_require__(7),
+    App = __webpack_require__(8);
 
 /***/ }),
 /* 1 */
@@ -227,6 +229,20 @@ module.exports = Test;
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
