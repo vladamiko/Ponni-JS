@@ -8,7 +8,7 @@ module.exports = {
         path: __dirname + '/project',
         library: 'app'
     },
-    watch: true,
+    watch: false,
     watchOptions: {
         aggregateTimeout: 100
     },

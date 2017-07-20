@@ -8,7 +8,6 @@ class GroupController {
     constructor (groups) {
         this.groups = groups;
         this.subscribe();
-        this.showGroupList();
     }
 
     showGroupList () {

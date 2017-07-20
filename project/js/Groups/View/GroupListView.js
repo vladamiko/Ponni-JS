@@ -1,5 +1,7 @@
 'use strict';
 
+let mediator = require('../../Mediator.js');
+
 class GroupListView {
     constructor () {
         // this.displayGroupSection();
