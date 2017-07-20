@@ -12,7 +12,7 @@
                 <section id="group-block">
                     <div class="group-block__head">
                         <h1>Group</h1>
-                        <button class="btn btn-cog">
+                        <button id="add-group-btn" class="btn btn-cog">
                             <i class="fa fa-cog" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -62,5 +62,22 @@
                 </section>
             </div>
         </div>
+
+        <!-- The Modal -->
+        <div id="modal-add-group" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <input type="text" placeholder="Enter group name"></input>
+            <select>
+              <option>UI</option>
+              <option>Go</option>
+              <option>PHP</option>
+            </select>
+            <button id="close-group-btn" class="btn btn-cog">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
     </body>
 </html>

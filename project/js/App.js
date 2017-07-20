@@ -11,7 +11,7 @@ class App {
     start () {
         let groupController = new GroupController(this.groups);
         
-        groupController.showAllGroups();
+        // groupController.showAllGroups();
     }
 
     setGroups (groups) {
