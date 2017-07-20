@@ -5,4 +5,4 @@ class AppView {
 
     }
 }
-module.export = AppView;
+module.exports = AppView;
