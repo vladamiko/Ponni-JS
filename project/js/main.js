@@ -23,10 +23,12 @@ function init () {
             {
                 direction: 'ui',
                 name: 'dp-117-js'
-            }, {
+            },
+            {
                 direction: 'go',
                 name: 'dp-123-go'
-            }, {
+            },
+            {
                 direction: 'php',
                 name: 'dp-127-php'
             }

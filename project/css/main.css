@@ -25,21 +25,41 @@ section {
     margin: 20px;
     background-color: #e7e7e7;
 }
-section#group>div:first-of-type,
-section#group>div:last-of-type {
+section#group > div:first-of-type,
+section#group > div:last-of-type {
     display: flex;
 }
-section#group>div:first-of-type {
+section#group > div:first-of-type {
     justify-content: space-between;
 }
 h1, h2, h3 {
     margin-top: 0;
 }
+h2.group-title {
+    font-size: 18px;
+}
+.group-block__head {
+    position: relative;
+}
+.group-block__head .btn {
+    position: absolute;
+    right: 0px;
+    top:0px;
+}
+.group-block__wrapper {
+    position: relative;
+    padding-right: 150px;
+    box-sizing: border-box;
+}
 .group {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 120px;
     border: 1px solid #3e362f;
     padding: 10px;
     text-align: center;
-    margin-right: 10px;
+    display: inline-block;
+    vertical-align: top;
 }
 div.group + button {
     height: 130px;
@@ -58,6 +78,13 @@ div.group + button {
     font-size: 30px;
     background-color: #e7e7e7;
     padding: 0;
+}
+.add-group-btn {
+    width: 125px;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
 }
 li {
     list-style: none;

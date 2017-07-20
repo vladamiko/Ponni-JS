@@ -2,16 +2,16 @@
 
 class GroupView {
     constructor () {
-        this.groups = [];
+        this.group = '';
     }
     setGroup (group) {
         let groupTitle = group.name;
 
-        this.groups.push(this.generateTpl(groupTitle));
+        this.group = this.generateTpl(groupTitle);
     }
     generateTpl (title) {
         return `<div class="group">
-                    <h2>${title}</h2>
+                    <h2 class="group-title">${title}</h2>
                     <div>
                         <button class="btn">format added</button>
                     </div>
@@ -22,10 +22,9 @@ class GroupView {
         //set attr to template
         //convert tpl to dom
         //addEventListener
-        let groupsBlock = document.querySelector('#group');
-        console.log(groupsBlock);
+        let groupsBlock = document.querySelector('.group_wrapper');
 
-            groupsBlock.insertAdjacentHTML('beforeend', this.groups[0]);
+            groupsBlock.insertAdjacentHTML('beforeend', this.group);
     }
 }
 module.exports = GroupView;
