@@ -5,11 +5,11 @@ class GroupView {
         
     }
 
-    setGroup {
+    setGroup () {
 
     }
 
-    renderGroup {
+    renderGroup () {
         //getTemplate
         //set attr to template
         //convert tpl to dom
