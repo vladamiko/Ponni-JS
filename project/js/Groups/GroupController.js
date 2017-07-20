@@ -26,11 +26,18 @@ class GroupController {
     // }
 
     subscribe () {
-        mediator.sub('Group:added', ()=> {
-            console.log('openPopup');
+        mediator.sub('popup:open', ()=> {
             let modal = document.querySelector('#modal-add-group');
 
             modal.classList.add('visible');
+        });
+
+        // Этот метод должен подписываться на событие при создании view popup(аппа)
+        // а внутри его view должен навешиваться слушатель на closeBtn для закрытия popup(аппа и создания группы)
+        mediator.sub('group:added', ()=> {
+            let modal = document.querySelector('#modal-add-group');
+
+            modal.classList.remove('visible');
         });
     }
 }
