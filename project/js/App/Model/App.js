@@ -1,17 +1,19 @@
 'use strict';
 
+let AppView = require('../View/AppView.js'),
+    AppController = require('../AppController.js');
+
 class App {
     constructor () {
         this.groups = [];
         this.settings = [];
     }
     start () {
-        console.log('started');
         let appView = new AppView(),
             appController = new AppController(this.groups);
-        // Нам нужно определиться какое View  и какой Контроллер будут создаваться
-        // newView
-        // newController
+    }
+    setGroups (groups) {
+        this.groups = groups;
     }
 }
 
