@@ -2,6 +2,7 @@
 
 let GroupView = require('../Groups/View/GroupView.js'),
     GroupListView = require('../Groups/View/GroupListView.js'),
+    GroupModel = require('../Groups/Model/GroupModel.js'),
     mediator = require('../Mediator.js');
 
 class GroupController {
@@ -16,17 +17,17 @@ class GroupController {
         groupListView.render();
     }
 
-    // showAllGroups () {
+    // showGroup () {
     //     this.groups.forEach((group) => {
     //         let groupView = new GroupView();
-
+    //
     //         groupView.setGroup(group);
     //         groupView.renderGroup();
     //     });
     // }
 
     subscribe () {
-        mediator.sub('popup:open', ()=> {
+        mediator.sub('popup:open', () => {
             let modal = document.querySelector('#modal-add-group');
 
             modal.classList.add('visible');
@@ -34,10 +35,15 @@ class GroupController {
 
         // Этот метод должен подписываться на событие при создании view popup(аппа)
         // а внутри его view должен навешиваться слушатель на closeBtn для закрытия popup(аппа и создания группы)
-        mediator.sub('group:added', ()=> {
+        mediator.sub('group:added', () => {
             let modal = document.querySelector('#modal-add-group');
 
             modal.classList.remove('visible');
+
+            // Создаем новый объект группы
+
+            // потом создаем view группы
+            // viewGroup.render();
         });
     }
 }
