@@ -38,6 +38,10 @@ h1, h2, h3 {
 h2.group-title {
     font-size: 18px;
 }
+input[type="text"] {
+    box-sizing: border-box;
+    padding: 10px;
+}
 .group-block__head {
     position: relative;
 }
@@ -49,6 +53,7 @@ h2.group-title {
 .group-block__wrapper {
     position: relative;
     padding-right: 150px;
+    min-height: 120px;
     box-sizing: border-box;
 }
 .group {
@@ -75,7 +80,7 @@ div.group + button {
 .btn-cog {
     color: #3e362f;
     font-size: 30px;
-    background-color: #e7e7e7;
+    background-color: transparent;
     padding: 0;
 }
 .add-group-btn {
@@ -123,6 +128,14 @@ ul {
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+}
+.modal-group_name,
+.modal-group_direction {
+    width: 40%;
+    height: 40px;
+    font-size: 20px;
+    focus: none;
+    outline: none;
 }
 .visible {
     display: block;
