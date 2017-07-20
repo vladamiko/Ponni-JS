@@ -13,6 +13,9 @@ class App {
         // newView
         // newController
     }
+    setGroup (groups) {
+        this.groups = groups;
+    }
 }
 
 module.exports = App;
