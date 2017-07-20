@@ -1,10 +1,12 @@
 'use strict';
 
-let GroupView = require('../Groups/View/GroupView.js');
+let GroupView = require('../Groups/View/GroupView.js'),
+    mediator = require('../Mediator.js');
 
 class GroupController {
     constructor (groups) {
         this.groups = groups;
+        this.subscribe();
     }
 
     showAllGroups () {
@@ -14,6 +16,10 @@ class GroupController {
             groupView.setGroup(group);
             groupView.renderGroup();
         });
+    }
+
+    subscribe () {
+        mediator.sub('Group:added', ()=> console.log('openPopup'));
     }
 }
 

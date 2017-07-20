@@ -10,6 +10,7 @@ class App {
 
     start () {
         let groupController = new GroupController(this.groups);
+        
         groupController.showAllGroups();
     }
 

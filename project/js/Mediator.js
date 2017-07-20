@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 class Mediator {
     constructor () {
@@ -20,4 +20,6 @@ class Mediator {
     }
 }
 
-module.exports = Mediator;
+let mediator = new Mediator();
+
+module.exports = mediator;
