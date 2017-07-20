@@ -54,9 +54,13 @@ class GroupListView {
     }
 
     addListeners () {
-        let addGroupBtn = document.querySelector('.add-group-btn');
+        let addGroupBtn = document.querySelector('.add-group-btn'),
+            closeGroupBtn = document.querySelector('#close-group-btn');
 
-        addGroupBtn.addEventListener('click', ()=> mediator.pub('Group:added'));
+        addGroupBtn.addEventListener('click', ()=> mediator.pub('popup:open'));
+
+        // Этот слушатель должен навешиваться при создании вью попапа
+        closeGroupBtn.addEventListener('click', ()=> mediator.pub('group:added'));
     }
 }
 
