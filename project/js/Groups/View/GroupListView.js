@@ -16,6 +16,22 @@ class GroupListView {
 
     }
 
+    generateDirectionListTpl (directionList) {
+        let options;
+
+        directionList.forEach((item) => {
+            options += `<option>${item}</option>`;
+        });
+
+        return options;
+    }
+
+    addDirectionList (directionList) {
+        let select = document.querySelector('#modal-add-group select');
+
+        select.innerHTML = this.generateDirectionListTpl(directionList);
+    }
+
     addNewGroup () {
         var modal = document.querySelector('#modal-add-group'),
             btnAdd = document.querySelector('#add-group-btn'),

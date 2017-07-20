@@ -2,12 +2,16 @@
 
 class SettingsModel {
     constructor () {
-        this.directionList = []; // string
+        this.directionList = ['UI', 'GO', 'PHP', 'Other']; // string
     }
 
     addDirection (directionName) {
         this.testList.push(new Direction(directionName));
     }
+
+    getDirectionList () {
+        return this.directionList;
+    }
 }
 
-module.export = SettingsModel;
+module.exports = SettingsModel;

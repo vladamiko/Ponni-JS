@@ -2,6 +2,7 @@
 
 let GroupView = require('../Groups/View/GroupView.js'),
     GroupListView = require('../Groups/View/GroupListView.js'),
+    SettingsModel = require('../Settings/Model/SettingsModel.js'),
     mediator = require('../Mediator.js');
 
 class GroupController {
@@ -11,19 +12,12 @@ class GroupController {
     }
 
     showGroupList () {
-        let groupListView = new GroupListView();
+        let groupListView = new GroupListView(),
+            settingsModel = new SettingsModel();
 
         groupListView.render();
+        groupListView.addDirectionList(settingsModel.getDirectionList());
     }
-
-    // showAllGroups () {
-    //     this.groups.forEach((group) => {
-    //         let groupView = new GroupView();
-
-    //         groupView.setGroup(group);
-    //         groupView.renderGroup();
-    //     });
-    // }
 
     subscribe () {
         mediator.sub('Group:added', ()=> {
