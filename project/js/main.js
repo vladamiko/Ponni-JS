@@ -43,10 +43,11 @@ function init () {
 
     let app = new App();
 
-    function launchTestData () {
-        app.setGroups(testData.groups);
-    }
     launchTestData();
 
     app.start();
+
+    function launchTestData () {
+        app.setGroups(testData.groups);
+    }
 }

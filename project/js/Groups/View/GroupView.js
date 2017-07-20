@@ -18,10 +18,6 @@ class GroupView {
                 </div>`;
     }
     renderGroup () {
-        //getTemplate
-        //set attr to template
-        //convert tpl to dom
-        //addEventListener
         let groupsBlock = document.querySelector('.group_wrapper');
 
             groupsBlock.insertAdjacentHTML('beforeend', this.group);

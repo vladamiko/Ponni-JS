@@ -5,4 +5,5 @@ class AppView {
 
     }
 }
+
 module.exports = AppView;
