@@ -1,6 +1,6 @@
 'use strict';
 
-class Filter {
+class FilterModel {
     constructor (tests, action, condition, grade) {
         this.tests = tests; // array
         this.action = action; // string
@@ -10,4 +10,5 @@ class Filter {
 
 // addTest, changeAction, changeCondition, changeGrade
 }
-module.export = Filter;
+
+module.export = FilterModel;

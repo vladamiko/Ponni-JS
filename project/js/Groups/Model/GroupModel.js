@@ -1,6 +1,6 @@
 'use strict';
 
-class Group {
+class GroupModel {
     constructor (name, direction) {
         this.name = name; // string
         this.direction = direction; // string
@@ -18,4 +18,5 @@ class Group {
 
     }
 }
-module.export = Group;
+
+module.export = GroupModel;

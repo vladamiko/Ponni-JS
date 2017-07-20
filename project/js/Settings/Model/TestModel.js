@@ -1,6 +1,6 @@
 'use strict';
 
-class Test {
+class TestModel {
     constructor (name, maxGrade, grade) {
         this.name = name;
         // this.maxGrade = maxGrade;
@@ -11,4 +11,5 @@ class Test {
 
     // }  
 }
-module.export = Test;
+
+module.export = TestModel;

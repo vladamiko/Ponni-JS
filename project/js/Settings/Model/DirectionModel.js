@@ -1,6 +1,6 @@
 'use strict';
 
-class Direction {
+class DirectionModel {
     constructor (directionName) {
         this.directionName = directionName;
         this.testList = []; // ['Eng1', 'Engl2', …]
@@ -23,4 +23,5 @@ class Direction {
 
     }
 }
-module.export = Direction;
+
+module.export = DirectionModel;
