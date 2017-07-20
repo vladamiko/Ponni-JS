@@ -5,7 +5,6 @@ let GroupView = require('../Groups/View/GroupView.js');
 class GroupController {
     constructor (groups) {
         this.groups = groups;
-        this.showAllGroups();
     }
 
     showAllGroups () {
