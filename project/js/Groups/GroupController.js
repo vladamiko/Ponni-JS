@@ -19,14 +19,7 @@ class GroupController {
         groupListView.render();
         groupListView.addDirectionList(settingsModel.getDirectionList());
     }
-    // showGroup () {
-    //     this.groups.forEach((group) => {
-    //         let groupView = new GroupView();
-    //
-    //         groupView.setGroup(group);
-    //         groupView.renderGroup();
-    //     });
-    // }
+
     subscribe () {
         mediator.sub('popup:open', () => {
             let modal = document.querySelector('#modal-add-group');
@@ -34,17 +27,29 @@ class GroupController {
             modal.classList.add('visible');
         });
 
-        // Этот метод должен подписываться на событие при создании view popup(аппа)
-        // а внутри его view должен навешиваться слушатель на closeBtn для закрытия popup(аппа и создания группы)
+        // 1) Этот метод должен подписываться на событие при создании viewPopup(аппа)
+        // 2) Внутри viewPopup должен навешиваться слушатель на closeBtn для закрытия popup(аппа и создания группы)
+        // 3) Функцию описанную ниже можно разделить:
+        // на 2 (1. закрытия модального окна, 2. Собирание данных с input и select);
         mediator.sub('group:added', () => {
-            let modal = document.querySelector('#modal-add-group');
-
+            let modal = document.querySelector('#modal-add-group'),
+                groupNameElement = document.querySelector('.modal-group_name'),
+                groupDirectionElement = document.querySelector('.modal-group_direction'),
+                groupNameText = '',
+                groupDirectionValue = '';
+            // Закрываем модальное окно
             modal.classList.remove('visible');
-
+            // Собираем текст с input
+            groupNameText = groupNameElement.value;
+            // Собираем значение с select
+            groupDirectionValue = groupDirectionElement.options[groupDirectionElement.selectedIndex].text;
             // Создаем новый объект группы
-
+            let group = new GroupModel(groupNameText, groupDirectionValue);
             // потом создаем view группы
-            // viewGroup.render();
+            let groupView = new GroupView();
+            // render
+            groupView.setGroup(group);
+            groupView.renderGroup();
         });
     }
 }

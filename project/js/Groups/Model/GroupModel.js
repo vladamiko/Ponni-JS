@@ -19,4 +19,4 @@ class GroupModel {
     }
 }
 
-module.export = GroupModel;
+module.exports = GroupModel;
