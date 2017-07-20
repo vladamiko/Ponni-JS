@@ -2,3 +2,4 @@ node_modules/
 coverage/
 .idea/
 bundle.js.map
+webpack.config.js
