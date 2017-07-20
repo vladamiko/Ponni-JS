@@ -6,7 +6,7 @@ class AppController {
         this.showAllGroups();
     }
 
-    showAllGroups {
+    showAllGroups () {
         this.groups.forEach((group) => {
             let groupView = new GroupView();
 
