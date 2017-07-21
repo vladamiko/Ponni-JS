@@ -9,7 +9,6 @@ class PopupAddGroupView {
     constructor () {
         this.modal = document.querySelector('#modal-add-group');
         this.renderPopup();
-        this.addListeners();
     }
 
     generateDirectionListTpl (directionList) {
@@ -31,6 +30,7 @@ class PopupAddGroupView {
     renderPopup () {
         this.modal.innerHTML = groupPopupTpl();
         this.open();
+        this.addListeners();
     }
 
     addListeners () {
