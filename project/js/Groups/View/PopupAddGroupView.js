@@ -18,15 +18,12 @@ class PopupAddGroupView {
                 groupDirectionElement = document.querySelector('.modal-group_direction'),
                 groupDirectionValue = groupDirectionElement.options[groupDirectionElement.selectedIndex].text,
                 groupNameText = groupNameElement.value,
-
                 group = new GroupModel(groupNameText, groupDirectionValue),
                 groupView = new GroupView();
 
-            console.log(group);
-
             groupView.setGroup(group);
             groupView.renderGroup();
-            
+
             this.close();
         });
 
