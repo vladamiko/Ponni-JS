@@ -7,9 +7,7 @@ class TestModel {
         // this.grade = grade;
     }
 
-    // addResults () {
 
-    // }  
 }
 
 module.export = TestModel;

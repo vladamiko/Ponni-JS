@@ -2,8 +2,8 @@
 
 class GroupModel {
     constructor (name, direction) {
-        this.name = name; // string
-        this.direction = direction; // string
+        this.name = name;
+        this.direction = direction;
     }
 
     addTestingSession () {

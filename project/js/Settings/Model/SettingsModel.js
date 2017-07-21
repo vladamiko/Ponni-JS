@@ -2,7 +2,7 @@
 
 class SettingsModel {
     constructor () {
-        this.directionList = ['UI', 'GO', 'PHP', 'Other']; // string
+        this.directionList = ['UI', 'GO', 'PHP', 'Other'];
     }
 
     addDirection (directionName) {

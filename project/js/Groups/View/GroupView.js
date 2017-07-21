@@ -1,6 +1,6 @@
 'use strict';
 
-let generateTpl = require('./generateTpl.js'),
+let generateTpl = require('./tpl/generateTpl.js'),
     mediator = require('../../Mediator.js');
 
 class GroupView {

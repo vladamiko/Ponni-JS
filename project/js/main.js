@@ -13,14 +13,13 @@ function init () {
         GroupView = require('./Groups/View/GroupView.js'),
         GroupListView = require('./Groups/View/GroupListView.js'),
         PopupAddGroupView = require('./Groups/View/PopupAddGroupView.js'),
-        PopupAddSettingView = require('./Groups/View/PopupAddSettingView.js'),
-        generateTpl = require('./Groups/View/generateTpl.js'),
+        PopupAddSettingView = require('./Settings/View/PopupAddSettingView.js'),
+        generateTpl = require('./Groups/View/tpl/generateTpl.js'),
         GroupController = require('./Groups/GroupController.js'),
         App = require('./App.js'),
         testData = require('./testData.js'),
         Mediator = require('./Mediator.js');
 
-    //Entry point
     let app = new App();
 
     app.setGroups(testData.groups);
