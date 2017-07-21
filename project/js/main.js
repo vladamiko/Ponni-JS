@@ -12,6 +12,8 @@ function init () {
         GroupModel = require('./Groups/Model/GroupModel.js'),
         GroupView = require('./Groups/View/GroupView.js'),
         GroupListView = require('./Groups/View/GroupListView.js'),
+        PopupAddGroupView = require('./Groups/View/PopupAddGroupView.js'),
+        PopupAddSettingView = require('./Groups/View/PopupAddSettingView.js'),
         generateTpl = require('./Groups/View/generateTpl.js'),
         GroupController = require('./Groups/GroupController.js'),
         App = require('./App.js'),
