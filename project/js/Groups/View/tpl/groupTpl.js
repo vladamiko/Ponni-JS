@@ -1,6 +1,6 @@
 'use strict';
 
-function generateTpl (group) {
+function groupTpl (group) {
     return `<div class="group">
                 <h2 class="group-title">${group.name} ${group.direction}</h2>
                 <div>
@@ -9,4 +9,4 @@ function generateTpl (group) {
             </div>`;
 }
 
-module.exports = generateTpl;
+module.exports = groupTpl;

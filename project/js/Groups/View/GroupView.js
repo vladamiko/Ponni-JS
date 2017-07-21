@@ -1,6 +1,6 @@
 'use strict';
 
-let generateTpl = require('./tpl/generateTpl.js'),
+let groupTpl = require('./tpl/groupTpl.js'),
     mediator = require('../../Mediator.js');
 
 class GroupView {
@@ -10,7 +10,7 @@ class GroupView {
     }
 
     setGroup (group) {
-        this.template = generateTpl(group);
+        this.template = groupTpl(group);
     }
 
     renderGroup () {

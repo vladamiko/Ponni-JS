@@ -13,8 +13,8 @@ class GroupController {
     }
 
     showGroupList () {
-        let groupListView = new GroupListView(),
-            popupAddGroupView = new PopupAddGroupView(),
+        let popupAddGroupView = new PopupAddGroupView(),
+            groupListView = new GroupListView(),
             settingsModel = new SettingsModel();
 
         groupListView.render();
