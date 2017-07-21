@@ -12,7 +12,7 @@ function init () {
         GroupModel = require('./Groups/Model/GroupModel.js'),
         GroupView = require('./Groups/View/GroupView.js'),
         GroupListView = require('./Groups/View/GroupListView.js'),
-        generateTpl = require('./Groups/View/generateTpl.js'),
+        generateTpl = require('./Groups/View/templates/generateGroupTpl.js'),
         GroupController = require('./Groups/GroupController.js'),
         App = require('./App.js'),
         testData = require('./testData.js'),
