@@ -13,19 +13,37 @@ class GroupController {
     }
 
     showGroupList () {
-        let popupAddGroupView = new PopupAddGroupView(),
-            groupListView = new GroupListView(),
-            settingsModel = new SettingsModel();
+        let groupListView = new GroupListView();
 
         groupListView.render();
-        groupListView.addDirectionList(settingsModel.getDirectionList());
     }
 
     subscribe () {
-        mediator.sub('popup-add-group:open', () => {
-            let modal = document.querySelector('#modal-add-group');
+        mediator.sub('groupPopup:open', () => {
+            console.log('open');
+            
+            let popupAddGroupView = new PopupAddGroupView(),
+                settingsModel = new SettingsModel();
+            
+            popupAddGroupView.renderPopup();
+            popupAddGroupView.addDirectionList(settingsModel.getDirectionList());
+        });
 
-            modal.classList.add('visible');
+        mediator.sub('group:added', () => {
+            let groupNameElem = document.querySelector('.modal-group_name'),
+                groupDirectionElem = document.querySelector('.modal-group_direction'),
+                groupDirectionValue = '',
+                groupNameText = '',
+                groupView = {},
+                group = {};
+
+            groupDirectionValue = groupDirectionElem.options[groupDirectionElem.selectedIndex].text;
+            groupNameText = groupNameElem.value;
+
+            group = new GroupModel(groupNameText, groupDirectionValue);
+
+            groupView.setGroup(group);
+            groupView.renderGroup();
         });
     }
 }

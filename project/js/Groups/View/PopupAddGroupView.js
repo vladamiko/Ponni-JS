@@ -12,28 +12,35 @@ class PopupAddGroupView {
         this.addListeners();
     }
 
+    generateDirectionListTpl (directionList) {
+        let options = '';
+
+        directionList.forEach((item) => {
+            options += `<option>${item}</option>`;
+        });
+
+        return options;
+    }
+
+    addDirectionList (directionList) {
+        let select = document.querySelector('#modal-add-group select');
+
+        select.innerHTML = this.generateDirectionListTpl(directionList);
+    }
+
     renderPopup () {
         this.modal.innerHTML = groupPopupTpl();
+        this.open();
     }
 
     addListeners () {
         let closeGroupBtn = document.querySelector('#close-group-btn');
 
-        mediator.sub('group:added', () => {
-            let groupNameElement = document.querySelector('.modal-group_name'),
-                groupDirectionElement = document.querySelector('.modal-group_direction'),
-                groupDirectionValue = groupDirectionElement.options[groupDirectionElement.selectedIndex].text,
-                groupNameText = groupNameElement.value,
-                group = new GroupModel(groupNameText, groupDirectionValue),
-                groupView = new GroupView();
-
-            groupView.setGroup(group);
-            groupView.renderGroup();
-
-            this.close();
-        });
-
         closeGroupBtn.addEventListener('click', () => mediator.pub('group:added'));
+    }
+
+    open () {
+        this.modal.classList.add('visible');
     }
 
     close () {

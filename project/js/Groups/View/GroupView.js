@@ -1,6 +1,6 @@
 'use strict';
 
-let generateGroupTpl = require('./templates/generateGroupTpl.js'),
+let groupTpl = require('./tpl/groupTpl.js'),
     mediator = require('../../Mediator.js');
 
 class GroupView {
@@ -10,7 +10,7 @@ class GroupView {
     }
 
     setGroup (group) {
-        this.template = generateGroupTpl(group);
+        this.template = groupTpl(group);
     }
 
     renderGroup () {
@@ -20,9 +20,6 @@ class GroupView {
     }
 
     addListeners () {
-        let addGroupBtn = document.querySelector('.add-group-btn');
-
-        addGroupBtn.addEventListener('click', ()=> mediator.pub('Group:added'));
     }
 }
 

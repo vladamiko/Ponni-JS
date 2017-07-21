@@ -8,7 +8,7 @@ body {
     width: 100%;
     color: #3e362f;
 }
-.left, .right {
+.left-column, .right-column {
     display: flex;
     flex-direction: column;
     width: 50%;

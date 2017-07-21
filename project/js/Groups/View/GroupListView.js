@@ -1,40 +1,27 @@
 'use strict';
 
-let mediator = require('../../Mediator.js');
+let groupListTpl = require('./tpl/groupListTpl.js'),
+    mediator = require('../../Mediator.js');
 
 class GroupListView {
     constructor () {
-        this.addListeners();
-    }
-
-    displayGroupSection () {
-        
+        this.template = '';
     }
 
     render () {
+        let leftBlock = document.querySelector('.left-column');
 
+        this.template = groupListTpl();
+
+        leftBlock.insertAdjacentHTML('afterbegin', this.template);
+
+        this.addListeners();
     }
-
-    generateDirectionListTpl (directionList) {
-        let options;
-
-        directionList.forEach((item) => {
-            options += `<option>${item}</option>`;
-        });
-
-        return options;
-    }
-
-    addDirectionList (directionList) {
-        let select = document.querySelector('#modal-add-group select');
-
-        select.innerHTML = this.generateDirectionListTpl(directionList);
-    }
-
+    
     addListeners () {
         let addGroupBtn = document.querySelector('.add-group-btn');
 
-        addGroupBtn.addEventListener('click', ()=> mediator.pub('popup-add-group:open'));
+        addGroupBtn.addEventListener('click', () => mediator.pub('groupPopup:open'));
     }
 }
 
