@@ -22,6 +22,8 @@ class PopupAddGroupView {
                 group = new GroupModel(groupNameText, groupDirectionValue),
                 groupView = new GroupView();
 
+            console.log(group);
+
             groupView.setGroup(group);
             groupView.renderGroup();
             

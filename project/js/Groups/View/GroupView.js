@@ -5,20 +5,18 @@ let generateTpl = require('./generateTpl.js'),
 
 class GroupView {
     constructor () {
-        this.group = '';
+        this.template = '';
         this.addListeners();
     }
 
     setGroup (group) {
-        let groupTitle = group.name;
-
-        this.group = generateTpl(groupTitle);
+        this.template = generateTpl(group);
     }
 
     renderGroup () {
         let groupsBlock = document.querySelector('.group_wrapper');
 
-        groupsBlock.insertAdjacentHTML('beforeend', this.group);
+        groupsBlock.insertAdjacentHTML('beforeend', this.template);
     }
 
     addListeners () {

@@ -23,7 +23,7 @@ class GroupController {
     subscribe () {
         mediator.sub('popup-add-group:open', () => {
             let modal = document.querySelector('#modal-add-group');
-
+            
             modal.classList.add('visible');
         });
     }
