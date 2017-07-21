@@ -41,8 +41,12 @@ h2.group-title {
 input[type="text"] {
     box-sizing: border-box;
     padding: 10px;
+    border: 1px solid #7bbfb0;
 }
 .group-block__head {
+    position: relative;
+}
+.group-block__body {
     position: relative;
 }
 .group-block__head .btn {
@@ -52,13 +56,16 @@ input[type="text"] {
 }
 .group-block__wrapper {
     position: relative;
-    padding-right: 150px;
+    margin-right: 125px;
     min-height: 120px;
     box-sizing: border-box;
+    overflow-x: scroll;
+    display: flex;
 }
 .group {
     margin-right: 10px;
-    width: 100px;
+    margin-bottom: 10px;
+    width: 115px;
     border: 1px solid #3e362f;
     padding: 10px;
     text-align: center;
@@ -84,7 +91,7 @@ div.group + button {
     padding: 0;
 }
 .add-group-btn {
-    width: 125px;
+    width: 115px;
     height: 100%;
     position: absolute;
     right: 0px;
@@ -123,11 +130,13 @@ ul {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    background-color: #e7e7e7;
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
 }
 .modal-group_name,
 .modal-group_direction {
@@ -136,6 +145,7 @@ ul {
     font-size: 20px;
     focus: none;
     outline: none;
+    border: 1px solid #7bbfb0;
 }
 .visible {
     display: block;
