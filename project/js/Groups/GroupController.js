@@ -22,7 +22,6 @@ class GroupController {
 
     subscribe () {
         mediator.sub('popup-add-group:open', () => {
-            // тут должен вызываться метод view который создает модальное окно
             let modal = document.querySelector('#modal-add-group');
 
             modal.classList.add('visible');
