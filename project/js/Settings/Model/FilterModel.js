@@ -2,10 +2,10 @@
 
 class FilterModel {
     constructor (tests, action, condition, grade) {
-        this.tests = tests; // array
-        this.action = action; // string
-        this.condition = condition; // string
-        this.grade = grade; // number
+        this.tests = tests;
+        this.action = action;
+        this.condition = condition;
+        this.grade = grade;
     }
 
 // addTest, changeAction, changeCondition, changeGrade
