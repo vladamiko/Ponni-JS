@@ -10,7 +10,6 @@ let GroupListView = require('../Groups/View/GroupListView.js'),
 
 class GroupController {
     constructor (groups) {
-        this.settingsModel = new SettingsModel();
         this.groups = groups;
         this.subscribe();
     }
@@ -25,7 +24,8 @@ class GroupController {
         mediator.sub('groupPopup:open', () => {
             console.log('open');
             
-            let popupAddGroupView = new PopupAddGroupView(this.settingsModel.getDirectionList());
+            let settingsModel = new SettingsModel(),
+                popupAddGroupView = new PopupAddGroupView(settingsModel.getDirectionList());
         });
 
         mediator.sub('group:added', () => {
@@ -46,10 +46,8 @@ class GroupController {
             groupView.setGroup(group);
             groupView.renderGroup();
 
-            //Тут надо подумать!!!
-            let popupAddGroupView = new PopupAddGroupView(this.settingsModel.getDirectionList());
-            
-            popupAddGroupView.close();
+            // Тут надо подумать!!!         
+            PopupAddGroupView.close();
         });
     }
 }

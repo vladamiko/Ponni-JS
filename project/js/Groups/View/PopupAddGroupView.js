@@ -44,8 +44,10 @@ class PopupAddGroupView {
         this.modal.classList.add('visible');
     }
 
-    close () {
-        this.modal.classList.remove('visible');
+    static close () {
+        let modal = document.querySelector('#modal-add-group');
+        
+        modal.classList.remove('visible');
     }
 }
 
