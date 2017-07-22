@@ -11,22 +11,6 @@ class PopupAddGroupView {
         this.modal = document.querySelector('#modal-add-group');
     }
 
-    /*generateDirectionListTpl (directionList) {
-        let options = '';
-
-        directionList.forEach((item) => {
-            options += `<option>${item}</option>`;
-        });
-
-        return options;
-    }
-
-    addDirectionList (directionList) {
-        let select = document.querySelector('#modal-add-group select');
-
-        select.innerHTML = this.generateDirectionListTpl(directionList);
-    }*/
-
     renderPopup () {
         this.modal.innerHTML = groupPopupTpl(this.directionList);
         this.open();
@@ -59,9 +43,7 @@ class PopupAddGroupView {
     }
 
     close () {
-        let modal = document.querySelector('#modal-add-group');
-        
-        modal.classList.remove('visible');
+        this.modal.classList.remove('visible');
     }
 }
 
