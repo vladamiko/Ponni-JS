@@ -16,7 +16,7 @@ class GroupView {
     renderGroup () {
         let groupsBlock = document.querySelector('.group_wrapper');
 
-        groupsBlock.insertAdjacentHTML('beforeend', this.template);
+        groupsBlock.insertAdjacentHTML('afterbegin', this.template);
     }
 
     addListeners () {
