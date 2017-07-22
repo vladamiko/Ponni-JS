@@ -22,32 +22,28 @@ class GroupController {
 
     subscribe () {
         mediator.sub('groupPopup:open', () => {
-            console.log('open');
-            
             let settingsModel = new SettingsModel(),
-                popupAddGroupView = new PopupAddGroupView(settingsModel.getDirectionList());
+                popupAddGroupView = new PopupAddGroupView();
+
+            popupAddGroupView.setDirectionList(settingsModel.getDirectionList());
+            popupAddGroupView.renderPopup();
         });
 
         mediator.sub('group:added', () => {
-            let groupNameElem = document.querySelector('.modal-group_name'),
-                groupDirectionElem = document.querySelector('.modal-group_direction'),
-                groupDirectionValue = '',
-                groupNameText = '',
-                groupView = {},
+            let popupAddGroupView = new PopupAddGroupView(),
+                groupView = new GroupView(),
+                groupData = {},
                 group = {};
 
-            groupDirectionValue = groupDirectionElem.options[groupDirectionElem.selectedIndex].text;
-            groupNameText = groupNameElem.value;
+            groupData = popupAddGroupView.generateData();
 
-            group = new GroupModel(groupNameText, groupDirectionValue);
-
-            groupView = new GroupView();
+            group = new GroupModel(groupData.name, groupData.direction);
 
             groupView.setGroup(group);
-            groupView.renderGroup();
 
-            // Тут надо подумать!!!         
-            PopupAddGroupView.close();
+            popupAddGroupView.close();
+
+            groupView.renderGroup();
         });
     }
 }

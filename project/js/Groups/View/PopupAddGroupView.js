@@ -6,10 +6,9 @@ let mediator = require('../../Mediator.js'),
     groupPopupTpl = require('../../Groups/View/tpl/groupPopupTpl.js');
 
 class PopupAddGroupView {
-    constructor (directionList) {
-        this.directionList = directionList;
+    constructor () {
+        this.directionList = [];
         this.modal = document.querySelector('#modal-add-group');
-        this.renderPopup();
     }
 
     /*generateDirectionListTpl (directionList) {
@@ -34,6 +33,10 @@ class PopupAddGroupView {
         this.addListeners();
     }
 
+    setDirectionList (directionList) {
+        this.directionList = directionList;
+    }
+
     addListeners () {
         let closeGroupBtn = document.querySelector('#close-group-btn');
 
@@ -44,7 +47,18 @@ class PopupAddGroupView {
         this.modal.classList.add('visible');
     }
 
-    static close () {
+    generateData () {
+        let groupNameElem = document.querySelector('.modal-group_name'),
+            groupDirectionElem = document.querySelector('.modal-group_direction'),
+            data = {};
+
+        data.direction = groupDirectionElem.options[groupDirectionElem.selectedIndex].text;
+        data.name = groupNameElem.value;
+
+        return data;
+    }
+
+    close () {
         let modal = document.querySelector('#modal-add-group');
         
         modal.classList.remove('visible');
