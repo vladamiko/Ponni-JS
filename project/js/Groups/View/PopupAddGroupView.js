@@ -6,12 +6,13 @@ let mediator = require('../../Mediator.js'),
     groupPopupTpl = require('../../Groups/View/tpl/groupPopupTpl.js');
 
 class PopupAddGroupView {
-    constructor () {
+    constructor (directionList) {
+        this.directionList = directionList;
         this.modal = document.querySelector('#modal-add-group');
         this.renderPopup();
     }
 
-    generateDirectionListTpl (directionList) {
+    /*generateDirectionListTpl (directionList) {
         let options = '';
 
         directionList.forEach((item) => {
@@ -25,10 +26,10 @@ class PopupAddGroupView {
         let select = document.querySelector('#modal-add-group select');
 
         select.innerHTML = this.generateDirectionListTpl(directionList);
-    }
+    }*/
 
     renderPopup () {
-        this.modal.innerHTML = groupPopupTpl();
+        this.modal.innerHTML = groupPopupTpl(this.directionList);
         this.open();
         this.addListeners();
     }
