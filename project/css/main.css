@@ -171,7 +171,8 @@ input[type="text"] {
     border-radius: 50%;
 }
 .btn-ft:active,
-.btn-ft:focus {
+.btn-ft:focus,
+.btn-ft:hover {
     background-color: #3e362f;
     color: #7bbfb0;
 }

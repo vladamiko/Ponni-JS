@@ -7,20 +7,20 @@ class DirectionModel {
         this.filterList = [];
     }
 
-    getDirectionTest (test) {
+    getDirectionTest (direction) {
         let obj = {
             UI: () => {
-                this.testList = ['Eng1', 'Eng2', 'Eng3', 'Eng4', 'Core', 'Essay'];
+                this.testList = ['English 1', 'English 2', 'English 3', 'English 4', 'JS Core', 'Essay'];
             },
             GO: () => {
-                this.testList = ['Eng1', 'Eng2', 'Eng3', 'Eng4', 'Core', 'Essay'];
+                this.testList = ['English 1', 'English 2', 'English 3', 'English 4', 'GO Core', 'Essay'];
             },
             PHP: () => {
-                this.testList = ['Eng1', 'Eng2', 'Eng3', 'Eng4', 'Core', 'Essay'];
+                this.testList = ['English 1', 'English 2', 'English 3', 'English 4', 'PHP Core', 'Essay'];
             }
         }
 
-        return obj[test]();
+        return obj[direction]();
     }
 
     getDirectionFilter (direction) {
@@ -47,7 +47,7 @@ class DirectionModel {
                     condition: condition,
                     grade: 60
                 }, {
-                    name: 'Core',
+                    name: 'JS Core',
                     action: action,
                     condition: condition,
                     grade: 60
@@ -59,10 +59,70 @@ class DirectionModel {
                 }];
             },
             GO: () => {
-                this.filterList = [];
+                this.filterList = [{
+                    name: 'English 1',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }, {
+                    name: 'English 2',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }, {
+                    name: 'English 3',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }, {
+                    name: 'English 4',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }, {
+                    name: 'GO Core',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }, {
+                    name: 'Essay',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }];
             },
             PHP: () => {
-                this.filterList = [];
+                this.filterList = [{
+                    name: 'English 1',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }, {
+                    name: 'English 2',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }, {
+                    name: 'English 3',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }, {
+                    name: 'English 4',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }, {
+                    name: 'PHP Core',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }, {
+                    name: 'Essay',
+                    action: action,
+                    condition: condition,
+                    grade: 60
+                }];
             }
         }
 
