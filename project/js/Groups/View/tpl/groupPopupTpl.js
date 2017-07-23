@@ -13,7 +13,7 @@ function groupPopupTpl (directionList) {
                 <button id="close-group-btn" class="btn btn-cog">
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </button>
-          </div>`;
+            </div>`;
 }
 
 module.exports = groupPopupTpl;
