@@ -1,6 +1,6 @@
 'use strict';
 
-function filterTpl (filterList) {
+function filterListTpl (filterList) {
     let filters = '';
 
     filterList.forEach((filter) => {
@@ -14,4 +14,4 @@ function filterTpl (filterList) {
             </div>`;
 }
 
-module.exports = filterTpl;
+module.exports = filterListTpl;
