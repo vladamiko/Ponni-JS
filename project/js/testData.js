@@ -17,9 +17,24 @@ let testData = {
     ],
     settings: [
         {
-            direction: 'ui',
+            direction: 'UI',
             tests: ['Eng1', 'Eng2', 'JS Core', 'Essay'],
-            filters: []
+            filters: ['UI 1']
+        },
+        {
+            direction: 'PHP',
+            tests: ['Eng1', 'Eng2'],
+            filters: ['PHP 1']
+        },
+        {
+            direction: 'GO',
+            tests: ['Eng1', 'Eng2', 'Essay'],
+            filters: ['GO 1']
+        },
+        {
+            direction: 'Other',
+            tests: ['Eng1', 'Eng2', 'Essay', 'Essay'],
+            filters: ['Other 1']
         }
     ]
 };

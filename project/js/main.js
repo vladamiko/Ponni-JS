@@ -20,7 +20,6 @@ function init () {
         settingsPopupTpl = require('./Settings/View/tpl/settingsPopupTpl.js'),
         GroupController = require('./Groups/GroupController.js'),
         App = require('./App.js'),
-        testData = require('./testData.js'),
         Mediator = require('./Mediator.js');
 
     let app = new App();

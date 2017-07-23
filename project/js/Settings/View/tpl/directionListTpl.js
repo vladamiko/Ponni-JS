@@ -1,10 +1,10 @@
 'use strict';
 
-function directionListTpl (directionList) {
+function directionListTpl (directionList, selectedDirection) {
     let options = '';
 
     directionList.forEach((item) => {
-        options += `<option>${item}</option>`;
+        options += `<option value='${item}' ${selectedDirection === item ? 'selected' : ''}>${item}</option>`;
     });
 
     return `<div class="direction-list-wrapper">

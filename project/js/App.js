@@ -1,12 +1,14 @@
 'use strict';
 
 let GroupController = require('./Groups/GroupController.js'),
-    SettingsController = require('./Settings/SettingsController.js');
+    SettingsController = require('./Settings/SettingsController.js'),
+    testData = require('./testData.js');
 
 class App {
     constructor () {
         this.groups = [];
-        this.settings = [];
+        this.settings = testData.settings;
+        console.log(this.settings)
     }
 
     start () {
