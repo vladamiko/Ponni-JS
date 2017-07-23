@@ -28,34 +28,34 @@ class DirectionModel {
             UI: () => {
                 this.filterList = [{
                     name: 'English 1',
-                    action: action;
-                    condition: condition;
-                    grade: 60%;
+                    action: action,
+                    condition: condition,
+                    grade: 60
                 }, {
                     name: 'English 2',
-                    action: action;
-                    condition: condition;
-                    grade: 60%;
+                    action: action,
+                    condition: condition,
+                    grade: 60
                 }, {
                     name: 'English 3',
-                    action: action;
-                    condition: condition;
-                    grade: 60%;
+                    action: action,
+                    condition: condition,
+                    grade: 60
                 }, {
                     name: 'English 4',
-                    action: action;
-                    condition: condition;
-                    grade: 60%;
+                    action: action,
+                    condition: condition,
+                    grade: 60
                 }, {
                     name: 'Core',
-                    action: action;
-                    condition: condition;
-                    grade: 60%;
+                    action: action,
+                    condition: condition,
+                    grade: 60
                 }, {
                     name: 'Essay',
-                    action: action;
-                    condition: condition;
-                    grade: 60%;
+                    action: action,
+                    condition: condition,
+                    grade: 60
                 }];
             },
             GO: () => {

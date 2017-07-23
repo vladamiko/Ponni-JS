@@ -132,10 +132,59 @@ input[type="text"] {
     justify-content: space-between;
 }
 .modal-group-name,
-.modal-group-direction {
+.modal-group-direction,
+.modal-settings-direction {
     width: 45%;
     height: 40px;
     font-size: 20px;
     outline: none;
     border: 1px solid #7bbfb0;
+}
+
+/* Modal Settings */
+#settings-popup.modal-content .left-column-settings {
+    width: 30%;
+    padding: 20px;
+}
+#settings-popup.modal-content .right-column-settings {
+    width: 70%;
+    padding: 20px;
+}
+.direction-list-wrapper {
+    display: flex;   
+    flex-direction: column;
+}
+.right-column-settings {
+    display: flex;   
+    flex-direction: row;
+    justify-content: space-between;
+}
+.column-settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.btn-ft {
+    margin: 10px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.btn-ft:active,
+.btn-ft:focus {
+    background-color: #3e362f;
+    color: #7bbfb0;
+}
+.add-direction-btn,
+.modal-settings-direction {
+    display: flex;
+    align-self: center;
+}
+.direction-list-wrapper,
+.filter-list-wrapper,
+.test-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
 }

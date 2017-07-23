@@ -1,9 +1,13 @@
 'use strict';
 
-function settingsPopupTpl () {
-    let directionList = directionListTpl(),
-        filterList = filtersListTpl(),
-        testList = testListTpl();
+let directionListTpl = require('./directionListTpl.js'),
+    filterListTpl = require('./filterListTpl.js'),
+    testListTpl = require('./testListTpl.js');
+
+function settingsPopupTpl (directions, filters, tests) {
+    let directionList = directionListTpl(directions),
+        filterList = filterListTpl(filters),
+        testList = testListTpl(tests);
 
     return `<div id="settings-popup" class="modal-content">
                 <div class="left-column-settings">${directionList}</div>
@@ -25,4 +29,4 @@ function settingsPopupTpl () {
             </div>`;
 }
 
-module.exports = directionListTpl;
+module.exports = settingsPopupTpl;
