@@ -1,6 +1,7 @@
 'use strict';
 
-let GroupController = require('./Groups/GroupController.js');
+let GroupController = require('./Groups/GroupController.js'),
+    SettingsController = require('./Settings/SettingsController.js');
 
 class App {
     constructor () {
@@ -9,7 +10,8 @@ class App {
     }
 
     start () {
-        let groupController = new GroupController(this.groups);
+        let groupController = new GroupController(this.groups),
+            settingsController = new SettingsController(this.settings);
         
         groupController.showGroupList();
     }

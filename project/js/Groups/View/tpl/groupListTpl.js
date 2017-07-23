@@ -4,7 +4,7 @@ function groupListTpl () {
     return `<section id="group-block">
                 <div class="group-block-head">
                     <h1>Group</h1>
-                        <button id="add-group-btn" class="btn btn-cog">
+                        <button id="settings-btn" class="btn btn-cog">
                             <i class="fa fa-cog" aria-hidden="true"></i>
                         </button>
                 </div>
