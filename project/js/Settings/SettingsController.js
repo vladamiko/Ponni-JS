@@ -27,6 +27,7 @@ class SettingsController {
 
             popupSettingsView.close();
         });
+    }
 }
 
 module.exports = SettingsController;

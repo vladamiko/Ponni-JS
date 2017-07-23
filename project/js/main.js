@@ -17,6 +17,7 @@ function init () {
         PopupSettingsView = require('./Settings/View/PopupSettingsView.js'),
         groupPopupTpl = require('./Groups/View/tpl/groupPopupTpl.js'),
         groupTpl = require('./Groups/View/tpl/groupTpl.js'),
+        settingsPopupTpl = require('./Settings/View/tpl/settingsPopupTpl.js'),
         GroupController = require('./Groups/GroupController.js'),
         App = require('./App.js'),
         testData = require('./testData.js'),
