@@ -18,6 +18,10 @@ class Mediator {
 
         this.channels[channel].push(fn);
     }
+
+    unsub (channel) {
+        delete this.channels[channel];
+    }
 }
 
 let mediator = new Mediator();

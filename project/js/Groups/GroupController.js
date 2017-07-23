@@ -11,7 +11,7 @@ let GroupListView = require('../Groups/View/GroupListView.js'),
 class GroupController {
     constructor (groups) {
         this.groups = groups;
-        this.subscribe();
+        this.subscribeOpen();
     }
 
     showGroupList () {
@@ -20,15 +20,18 @@ class GroupController {
         groupListView.render();
     }
 
-    subscribe () {
+    subscribeOpen () {
         mediator.sub('groupPopup:open', () => {
             let settingsModel = new SettingsModel(),
                 popupAddGroupView = new PopupAddGroupView();
 
             popupAddGroupView.setDirectionList(settingsModel.getDirectionList());
             popupAddGroupView.renderPopup();
+            this.subscribeAddGroup();
         });
+    }
 
+    subscribeAddGroup () {
         mediator.sub('group:added', () => {
             let popupAddGroupView = new PopupAddGroupView(),
                 groupView = new GroupView(),

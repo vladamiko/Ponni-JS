@@ -24,7 +24,10 @@ class PopupAddGroupView {
     addListeners () {
         let closeGroupBtn = document.querySelector('#close-group-btn');
 
-        closeGroupBtn.addEventListener('click', () => mediator.pub('group:added'));
+        closeGroupBtn.addEventListener('click', () => {
+            mediator.pub('group:added');
+            mediator.unsub('group:added');
+        });
     }
 
     open () {
