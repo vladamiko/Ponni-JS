@@ -4,7 +4,6 @@ let GroupListView = require('../Groups/View/GroupListView.js'),
     GroupView = require('../Groups/View/GroupView.js'),
     GroupModel = require('../Groups/Model/GroupModel.js'),
     PopupAddGroupView = require('../Groups/View/PopupAddGroupView.js'),
-    PopupAddSettingView = require('../Settings/View/PopupAddSettingView.js'),
     SettingsModel = require('../Settings/Model/SettingsModel.js'),
     mediator = require('../Mediator.js');
 

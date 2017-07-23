@@ -19,9 +19,11 @@ class GroupListView {
     }
     
     addListeners () {
-        let addGroupBtn = document.querySelector('.add-group-btn');
+        let addGroupBtn = document.querySelector('.add-group-btn'),
+            settingsBtn = document.querySelector('#settings-btn');
 
         addGroupBtn.addEventListener('click', () => mediator.pub('groupPopup:open'));
+        settingsBtn.addEventListener('click', () => mediator.pub('settingsPopup:open'));
     }
 }
 
