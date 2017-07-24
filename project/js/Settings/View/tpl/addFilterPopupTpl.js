@@ -1,18 +1,15 @@
 'use strict';
 
 function addFilterPopupTpl (testList, actionList, conditionList) {
-    let tests = '',
-        actions = '',
-        conditions = '';
-
-    tests = generateList(testList);
-    actions = generateList(actionList);
-    conditions = generateList(conditionList);
+    let tests = generateList(testList),
+        actions = generateList(actionList),
+        conditions = generateList(conditionList);
 
     function generateList (list) {
         list.forEach((item) => {
             list += `<option>${item}</option>`;
         });
+
         return list;
     }
 
