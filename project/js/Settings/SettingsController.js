@@ -14,13 +14,13 @@ class SettingsController {
     }
 
     subscribe () {
-        this.subscribeOpenPopup();
+        this.subscribeOpenPopups();
         this.subscribeSelectDirection();
         this.subscribeSelectFilter();
         this.subscribeSelectTest();
     }
 
-    subscribeOpenPopup () {
+    subscribeOpenPopups () {
         mediator.sub('settingsPopup:open', () => {
             let directions = this.settingsModel.getDirectionNames();
 
@@ -47,9 +47,9 @@ class SettingsController {
     }
 
     subscribeSelectDirection () {
-    	mediator.sub('directionSelect:change', (value) => {
+    	mediator.sub('directionSelect:change', (directionName) => {
             let directions = this.settingsModel.getDirectionNames();
-            this.selectedDirection = this.settingsModel.directions.find((item) => item.name === value);
+            this.selectedDirection = this.settingsModel.directions.find((item) => item.name === directionName);
             this.mode = 'T';
 
             this.popupSettingsView.reRenderPopup(directions, this.mode, this.selectedDirection);
