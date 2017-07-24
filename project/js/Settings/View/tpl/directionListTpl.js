@@ -9,7 +9,7 @@ function directionListTpl (directionList, selectedDirection) {
 
     return `<div class="direction-list-wrapper">
                 <select id="modal-settings-direction" class="modal-settings-direction">${options}</select>
-                <button class="add-direction-btn btn-cog">add direction</button>
+                <button class="btn add-direction-btn">add direction</button>
             </div>`;
 }
 

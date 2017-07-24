@@ -3,8 +3,8 @@
 class FilterModel {
     constructor (tests, action, condition, grade) {
         this.tests = tests;
-        this.action = action;
-        this.condition = condition;
+        this.actionList = ['average', 'max', 'min', 'equal'];
+        this.conditionList = ['>', '>=', '=', '<=', '<'];
         this.grade = grade;
     }
 

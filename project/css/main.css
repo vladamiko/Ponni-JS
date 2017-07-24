@@ -127,15 +127,79 @@ input[type="text"] {
     background-color: #e7e7e7;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
     display: flex;
     justify-content: space-between;
 }
 .modal-group-name,
-.modal-group-direction {
+.modal-group-direction,
+.modal-settings-direction {
     width: 45%;
     height: 40px;
     font-size: 20px;
     outline: none;
     border: 1px solid #7bbfb0;
+}
+.modal-settings-direction {
+    width: 60%;
+}
+
+/* Modal Settings */
+#settings-popup.modal-content .left-column-settings {
+    width: 30%;
+    padding: 20px;
+    border-right: 1px solid #3e362f;
+}
+#settings-popup.modal-content .right-column-settings {
+    width: 70%;
+    padding: 20px;
+}
+.direction-list-wrapper {
+    display: flex;   
+    flex-direction: column;
+}
+.right-column-settings {
+    display: flex;   
+    flex-direction: row;
+    justify-content: space-between;
+}
+.column-settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: inherit;
+    flex-grow: 5;
+}
+.right-column-settings>div:last-of-type,
+.right-column-settings>div:first-of-type {
+    flex-grow: 1;
+}
+.right-column-settings>div:first-of-type {
+    justify-content: center;
+}
+.btn-ft {
+    margin: 10px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.btn-ft:active,
+.btn-ft:focus,
+.btn-ft:hover {
+    background-color: #3e362f;
+    color: #7bbfb0;
+}
+.add-test-btn,
+.add-filter-btn,
+.add-direction-btn,
+.modal-settings-direction {
+    display: flex;
+    align-self: center;
+}
+.direction-list-wrapper,
+.filter-list-wrapper,
+.test-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
 }

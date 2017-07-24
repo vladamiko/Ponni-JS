@@ -35,8 +35,8 @@ class PopupAddGroupView {
     }
 
     generateData () {
-        let groupNameElem = document.querySelector('#modalGroupName'),
-            groupDirectionElem = document.querySelector('#modalGroupDirection'),
+        let groupNameElem = document.querySelector('#modal-group-name'),
+            groupDirectionElem = document.querySelector('#modal-group-direction'),
             data = {};
 
         data.direction = groupDirectionElem.options[groupDirectionElem.selectedIndex].text;
