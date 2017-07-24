@@ -5,19 +5,23 @@ let PopupSettingsView = require('../Settings/View/PopupSettingsView.js'),
     mediator = require('../Mediator.js');
 
 class SettingsController {
-    constructor (settingList) {
-        this.settingList = settingList;
-        this.setting = this.settingList[0];
+    constructor (settings) {
+        this.settings = settings;
+        this.setting = this.settings[0];
         this.mode = 'T';
 
+        this.settingsModel = new SettingsModel(this.settings);
+        this.popupSettingsView = new PopupSettingsView();
+        this.popupSettingsView.setDirectionNames(this.settingsModel.directionNames);
+
+        this.subscribe();
+    }
+
+    subscribe () {
         this.subscribeOpenPopup();
         this.subscribeSelectDirection();
         this.subscribeSelectFilter();
         this.subscribeSelectTest();
-
-        this.settingsModel = new SettingsModel();
-        this.popupSettingsView = new PopupSettingsView();
-        this.popupSettingsView.setDirectionList(this.settingsModel.getDirectionList());
     }
 
     subscribeOpenPopup () {
@@ -36,7 +40,7 @@ class SettingsController {
 
     subscribeSelectDirection () {
     	mediator.sub('directionSelect:change', (value) => {
-            this.setting = this.settingList.find((item) => item.direction === value);
+            this.setting = this.settings.find((item) => item.direction === value);
             this.mode = 'T';
 
             this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting.direction);
