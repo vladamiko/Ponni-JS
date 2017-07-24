@@ -4,10 +4,7 @@ let mediator = require('../../Mediator.js'),
     settingsPopupTpl = require('../../Settings/View/tpl/settingsPopupTpl.js');
 
 class PopupSettingsView {
-    constructor (currentDirection) {
-        this.directionList = [];
-        this.filterList = [];
-        this.testList = [];
+    constructor () {
         this.modal = document.querySelector('#modal-settings');
     }
 

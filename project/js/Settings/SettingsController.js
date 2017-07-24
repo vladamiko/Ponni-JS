@@ -15,14 +15,14 @@ class SettingsController {
         this.subscribeSelectFilter();
         this.subscribeSelectTest();
 
-        this.popupSettingsView = new PopupSettingsView();
         this.settingsModel = new SettingsModel();
+        this.popupSettingsView = new PopupSettingsView();
+        this.popupSettingsView.setDirectionList(this.settingsModel.getDirectionList());
     }
 
     subscribeOpenPopup () {
         mediator.sub('settingsPopup:open', () => {
-            this.popupSettingsView.setDirectionList(this.settingsModel.getDirectionList());
-            this.popupSettingsView.renderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting);
+            this.popupSettingsView.renderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting.direction);
             
             this.subscribeClosePopup();
         });
@@ -39,22 +39,23 @@ class SettingsController {
             this.setting = this.settingList.find((item) => item.direction === value);
             this.mode = 'T';
 
-            this.popupSettingsView.setDirectionList(this.settingsModel.getDirectionList());
-            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, value);
+            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting.direction);
         });
     }
 
     subscribeSelectTest () {
         mediator.sub('test:select', () => {
             this.mode = 'T';
-            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting);
+
+            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting.direction);
         });
     }
 
     subscribeSelectFilter () {
         mediator.sub('filter:select', () => {
             this.mode = 'F';
-            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting);
+            
+            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting.direction);
         });
     }
 }
