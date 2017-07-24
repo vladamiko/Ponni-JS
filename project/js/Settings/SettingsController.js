@@ -12,7 +12,6 @@ class SettingsController {
 
         this.settingsModel = new SettingsModel(this.settings);
         this.popupSettingsView = new PopupSettingsView();
-        this.popupSettingsView.setDirectionNames(this.settingsModel.directionNames);
 
         this.subscribe();
     }
