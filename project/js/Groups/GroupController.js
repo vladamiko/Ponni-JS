@@ -41,6 +41,8 @@ class GroupController {
 
             group = new GroupModel(groupData.name, groupData.direction);
 
+            mediator.pub('group:created', group);
+
             groupView.setGroup(group);
 
             popupAddGroupView.close();

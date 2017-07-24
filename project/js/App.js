@@ -2,12 +2,14 @@
 
 let GroupController = require('./Groups/GroupController.js'),
     SettingsController = require('./Settings/SettingsController.js'),
-    testData = require('./testData.js');
+    testData = require('./testData.js'),
+    mediator = require('./Mediator.js');
 
 class App {
     constructor () {
         this.groups = [];
         this.settings = testData.settings;
+        this.subscribe();
     }
 
     start () {
@@ -17,8 +19,14 @@ class App {
         groupController.showGroupList();
     }
 
-    setGroups (groups) {
-        this.groups = groups;
+    addGroup (group) {
+        this.groups.push(group);
+    }
+
+    subscribe () {
+        mediator.sub('group:created', (group) => {
+            this.groups.push(group);
+        });
     }
 }
 

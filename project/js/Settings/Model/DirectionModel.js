@@ -18,7 +18,7 @@ class DirectionModel {
             PHP: () => {
                 this.testList = ['English 1', 'English 2', 'English 3', 'English 4', 'PHP Core', 'Essay'];
             }
-        }
+        };
 
         return obj[direction]();
     }
