@@ -23,6 +23,6 @@ function init () {
         Mediator = require('./Mediator.js');
 
     let app = new App();
-
+    
     app.start();
 }
