@@ -4,7 +4,7 @@ let directionListTpl = require('./directionListTpl.js'),
     filterListTpl = require('./filterListTpl.js'),
     testListTpl = require('./testListTpl.js');
 
-function settingsPopupTpl (directions, tests, filters, selectedDirection) {
+function settingsPopupTpl (directions, tests, filters, option, selectedDirection) {
     let directionList = directionListTpl(directions, selectedDirection),
         filterList = filterListTpl(filters),
         testList = testListTpl(tests);
@@ -17,8 +17,7 @@ function settingsPopupTpl (directions, tests, filters, selectedDirection) {
                         <button id="filter-settings-btn" class="btn btn-ft">F</button>
                     </div>
                     <div class="column-settings">
-                        ${testList}
-                        ${filterList}
+                        ${option === 'T'? testList: filterList}
                     </div>
                     <div class="column-settings">
                         <button id="close-settings-btn" class="btn btn-cog">

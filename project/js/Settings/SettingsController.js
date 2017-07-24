@@ -5,10 +5,16 @@ let PopupSettingsView = require('../Settings/View/PopupSettingsView.js'),
     mediator = require('../Mediator.js');
 
 class SettingsController {
-    constructor (settings) {
-        this.settings = settings;
+    constructor (settingList) {
+        this.settingList = settingList;
+        this.setting = this.settingList[0];
+        this.mode = 'T';
+
         this.subscribeOpenPopup();
         this.subscribeSelectDirection();
+        this.subscribeSelectFilter();
+        this.subscribeSelectTest();
+
         this.popupSettingsView = new PopupSettingsView();
         this.settingsModel = new SettingsModel();
     }
@@ -16,7 +22,8 @@ class SettingsController {
     subscribeOpenPopup () {
         mediator.sub('settingsPopup:open', () => {
             this.popupSettingsView.setDirectionList(this.settingsModel.getDirectionList());
-            this.popupSettingsView.renderPopup();
+            this.popupSettingsView.renderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting);
+            
             this.subscribeClosePopup();
         });
     }
@@ -29,10 +36,25 @@ class SettingsController {
 
     subscribeSelectDirection () {
     	mediator.sub('directionSelect:change', (value) => {
-            let currentSetting = this.settings.find((item) => item.direction === value);
+            this.setting = this.settingList.find((item) => item.direction === value);
+            this.mode = 'T';
 
             this.popupSettingsView.setDirectionList(this.settingsModel.getDirectionList());
-            this.popupSettingsView.reRenderPopup(currentSetting.tests, currentSetting.filters, value);
+            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, value);
+        });
+    }
+
+    subscribeSelectTest () {
+        mediator.sub('test:select', () => {
+            this.mode = 'T';
+            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting);
+        });
+    }
+
+    subscribeSelectFilter () {
+        mediator.sub('filter:select', () => {
+            this.mode = 'F';
+            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting);
         });
     }
 }

@@ -4,21 +4,21 @@ let mediator = require('../../Mediator.js'),
     settingsPopupTpl = require('../../Settings/View/tpl/settingsPopupTpl.js');
 
 class PopupSettingsView {
-    constructor () {
+    constructor (currentDirection) {
         this.directionList = [];
         this.filterList = [];
         this.testList = [];
         this.modal = document.querySelector('#modal-settings');
     }
 
-    renderPopup () {
-        this.modal.innerHTML = settingsPopupTpl(this.directionList, this.filterList, this.testList);
+    renderPopup (testList, filterList, mode, selectedDirection) {
+        this.modal.innerHTML = settingsPopupTpl(this.directionList, testList, filterList, mode, selectedDirection);
         this.open();
         this.addListeners();
     }
 
-    reRenderPopup (filterList, testList, selectedDirection) {
-        this.modal.innerHTML = settingsPopupTpl(this.directionList, filterList, testList, selectedDirection);
+    reRenderPopup (testList, filterList, mode, selectedDirection) {
+        this.modal.innerHTML = settingsPopupTpl(this.directionList, testList, filterList, mode, selectedDirection);
         this.addListeners();
     }
 
@@ -32,7 +32,9 @@ class PopupSettingsView {
 
     addListeners () {
         let closeGroupBtn = document.querySelector('#close-settings-btn'),
-            directionSelect = document.querySelector('#modal-settings-direction');
+            directionSelect = document.querySelector('#modal-settings-direction'),
+            selectTestBtn = document.querySelector('#test-settings-btn'),
+            selectFilterBtn = document.querySelector('#filter-settings-btn');
 
         closeGroupBtn.addEventListener('click', () => {
             mediator.pub('settingsPopup:close');
@@ -41,6 +43,14 @@ class PopupSettingsView {
 
         directionSelect.addEventListener('change', (e) => {
             mediator.pub('directionSelect:change', e.target.value);
+        });
+
+        selectTestBtn.addEventListener('click', () => {
+            mediator.pub('test:select');
+        });
+
+        selectFilterBtn.addEventListener('click', () => {
+            mediator.pub('filter:select');
         });
     }
 

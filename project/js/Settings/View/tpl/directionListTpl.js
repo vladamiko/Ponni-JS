@@ -4,7 +4,7 @@ function directionListTpl (directionList, selectedDirection) {
     let options = '';
 
     directionList.forEach((item) => {
-        options += `<option value='${item}' ${selectedDirection === item ? 'selected' : ''}>${item}</option>`;
+        options += `<option value='${item}' ${selectedDirection === item? 'selected': ''}>${item}</option>`;
     });
 
     return `<div class="direction-list-wrapper">
