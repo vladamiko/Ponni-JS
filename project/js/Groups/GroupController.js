@@ -21,11 +21,6 @@ class GroupController {
 
     subscribeOpen () {
         mediator.sub('groupPopup:open', () => {
-            let settingsModel = new SettingsModel(),
-                popupAddGroupView = new PopupAddGroupView();
-
-            popupAddGroupView.setDirectionList(settingsModel.getDirectionList());
-            popupAddGroupView.renderPopup();
             this.subscribeAddGroup();
         });
     }

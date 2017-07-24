@@ -1,18 +1,18 @@
 'use strict';
 
 class SettingsModel {
-    constructor (settings) {
-        this.directions = settings;
+    constructor (directions) {
+        this.directions = directions;
     }
 
     getDirectionNames () {
     	let directionNames = [];
 
     	this.directions.forEach((item) => {
-        	this.directionNames.push(item.direction);
+        	directionNames.push(item.name);
     	});
 
-        return this.directionNames;
+        return directionNames;
     }
 
     addDirection (name) {

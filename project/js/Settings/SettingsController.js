@@ -1,18 +1,15 @@
 'use strict';
 
 let PopupSettingsView = require('../Settings/View/PopupSettingsView.js'),
+    PopupAddGroupView = require('../Groups/View/PopupAddGroupView.js'),
     SettingsModel = require('../Settings/Model/SettingsModel.js'),
     mediator = require('../Mediator.js');
 
 class SettingsController {
     constructor (settings) {
-        this.settings = settings;
-        this.setting = this.settings[0];
-        this.mode = 'T';
-
-        this.settingsModel = new SettingsModel(this.settings);
+        this.settingsModel = new SettingsModel(settings);
         this.popupSettingsView = new PopupSettingsView();
-
+        
         this.subscribe();
     }
 
@@ -25,9 +22,21 @@ class SettingsController {
 
     subscribeOpenPopup () {
         mediator.sub('settingsPopup:open', () => {
-            this.popupSettingsView.renderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting.direction);
-            
+            let directions = this.settingsModel.getDirectionNames();
+
+            this.selectedDirection = this.settingsModel.directions[0];
+            this.mode = 'T';
+
+            this.popupSettingsView.renderPopup(directions, this.mode, this.selectedDirection);
             this.subscribeClosePopup();
+        });
+
+        mediator.sub('groupPopup:open', () => {
+            let popupAddGroupView = new PopupAddGroupView(),
+                directions = this.settingsModel.getDirectionNames();
+
+                popupAddGroupView.setDirectionList(directions);
+                popupAddGroupView.renderPopup();
         });
     }
 
@@ -39,26 +48,29 @@ class SettingsController {
 
     subscribeSelectDirection () {
     	mediator.sub('directionSelect:change', (value) => {
-            this.setting = this.settings.find((item) => item.direction === value);
+            let directions = this.settingsModel.getDirectionNames();
+            this.selectedDirection = this.settingsModel.directions.find((item) => item.name === value);
             this.mode = 'T';
 
-            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting.direction);
+            this.popupSettingsView.reRenderPopup(directions, this.mode, this.selectedDirection);
         });
     }
 
     subscribeSelectTest () {
         mediator.sub('test:select', () => {
+            let directions = this.settingsModel.getDirectionNames();
             this.mode = 'T';
 
-            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting.direction);
+            this.popupSettingsView.reRenderPopup(directions, this.mode, this.selectedDirection);
         });
     }
 
     subscribeSelectFilter () {
         mediator.sub('filter:select', () => {
+            let directions = this.settingsModel.getDirectionNames();
             this.mode = 'F';
             
-            this.popupSettingsView.reRenderPopup(this.setting.tests, this.setting.filters, this.mode, this.setting.direction);
+            this.popupSettingsView.reRenderPopup(directions, this.mode, this.selectedDirection);
         });
     }
 }
