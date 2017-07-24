@@ -8,7 +8,6 @@ class App {
     constructor () {
         this.groups = [];
         this.settings = testData.settings;
-        console.log(this.settings)
     }
 
     start () {

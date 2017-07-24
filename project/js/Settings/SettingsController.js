@@ -9,36 +9,30 @@ class SettingsController {
         this.settings = settings;
         this.subscribeOpenPopup();
         this.subscribeSelectDirection();
+        this.popupSettingsView = new PopupSettingsView();
+        this.settingsModel = new SettingsModel();
     }
 
     subscribeOpenPopup () {
         mediator.sub('settingsPopup:open', () => {
-            let settingsModel = new SettingsModel(),
-                popupSettingsView = new PopupSettingsView();
-
-            popupSettingsView.setDirectionList(settingsModel.getDirectionList());
-            popupSettingsView.renderPopup();
+            this.popupSettingsView.setDirectionList(this.settingsModel.getDirectionList());
+            this.popupSettingsView.renderPopup();
             this.subscribeClosePopup();
         });
     }
 
     subscribeClosePopup () {
         mediator.sub('settingsPopup:close', () => {
-            let popupSettingsView = new PopupSettingsView();
-
-            popupSettingsView.close();
+            this.popupSettingsView.close();
         });
     }
 
     subscribeSelectDirection () {
     	mediator.sub('directionSelect:change', (value) => {
-            let popupSettingsView = new PopupSettingsView(),
-            	settingsModel = new SettingsModel(),
-                currentSetting = this.settings.find((item) => item.direction === value);
-                console.log(currentSetting);
+            let currentSetting = this.settings.find((item) => item.direction === value);
 
-            popupSettingsView.setDirectionList(settingsModel.getDirectionList());
-            popupSettingsView.reRenderPopup(currentSetting.tests, currentSetting.filters, value);
+            this.popupSettingsView.setDirectionList(this.settingsModel.getDirectionList());
+            this.popupSettingsView.reRenderPopup(currentSetting.tests, currentSetting.filters, value);
         });
     }
 }
