@@ -15,26 +15,22 @@ let testData = {
             name: 'dp-127-php'
         }
     ],
-    settings: [
+
+    directions: [
         {
-            direction: 'UI',
+            name: 'UI',
             tests: ['Eng1', 'Eng2', 'JS Core', 'Essay UI'],
             filters: ['UI 1']
         },
         {
-            direction: 'PHP',
+            name: 'PHP',
             tests: ['Eng1', 'Eng2', 'Essay PHP'],
             filters: ['PHP 1']
         },
         {
-            direction: 'GO',
+            name: 'GO',
             tests: ['Eng1', 'Eng2', 'Essay GO'],
             filters: ['GO 1']
-        },
-        {
-            direction: 'Other',
-            tests: ['Eng1', 'Eng2', 'Other', 'Other'],
-            filters: ['Other 1']
         }
     ]
 };

@@ -8,13 +8,14 @@ let GroupController = require('./Groups/GroupController.js'),
 class App {
     constructor () {
         this.groups = [];
-        this.settings = testData.settings;
+        this.directions = testData.directions;
+
         this.subscribe();
     }
 
     start () {
         let groupController = new GroupController(this.groups),
-            settingsController = new SettingsController(this.settings);
+            settingsController = new SettingsController(this.directions);
         
         groupController.showGroupList();
     }

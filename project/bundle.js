@@ -154,21 +154,27 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var SettingsModel = function () {
-    function SettingsModel() {
+    function SettingsModel(directions) {
         _classCallCheck(this, SettingsModel);
 
-        this.directionList = ['UI', 'GO', 'PHP', 'Other'];
+        this.directions = directions;
     }
 
     _createClass(SettingsModel, [{
-        key: 'addDirection',
-        value: function addDirection(directionName) {
-            this.testList.push(new Direction(directionName));
+        key: 'getDirectionNames',
+        value: function getDirectionNames() {
+            var directionNames = [];
+
+            this.directions.forEach(function (item) {
+                directionNames.push(item.name);
+            });
+
+            return directionNames;
         }
     }, {
-        key: 'getDirectionList',
-        value: function getDirectionList() {
-            return this.directionList;
+        key: 'addDirection',
+        value: function addDirection(name) {
+            this.directions.push(new Direction(name));
         }
     }]);
 
@@ -268,36 +274,49 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var PopupSettingsView = __webpack_require__(6),
+    PopupAddGroupView = __webpack_require__(11),
     SettingsModel = __webpack_require__(2),
     mediator = __webpack_require__(0);
 
 var SettingsController = function () {
-    function SettingsController(settingList) {
+    function SettingsController(settings) {
         _classCallCheck(this, SettingsController);
 
-        this.settingList = settingList;
-        this.setting = this.settingList[0];
-        this.mode = 'T';
-
-        this.subscribeOpenPopup();
-        this.subscribeSelectDirection();
-        this.subscribeSelectFilter();
-        this.subscribeSelectTest();
-
-        this.settingsModel = new SettingsModel();
+        this.settingsModel = new SettingsModel(settings);
         this.popupSettingsView = new PopupSettingsView();
-        this.popupSettingsView.setDirectionList(this.settingsModel.getDirectionList());
+
+        this.subscribe();
     }
 
     _createClass(SettingsController, [{
+        key: 'subscribe',
+        value: function subscribe() {
+            this.subscribeOpenPopup();
+            this.subscribeSelectDirection();
+            this.subscribeSelectFilter();
+            this.subscribeSelectTest();
+        }
+    }, {
         key: 'subscribeOpenPopup',
         value: function subscribeOpenPopup() {
             var _this = this;
 
             mediator.sub('settingsPopup:open', function () {
-                _this.popupSettingsView.renderPopup(_this.setting.tests, _this.setting.filters, _this.mode, _this.setting.direction);
+                var directions = _this.settingsModel.getDirectionNames();
 
+                _this.selectedDirection = _this.settingsModel.directions[0];
+                _this.mode = 'T';
+
+                _this.popupSettingsView.renderPopup(directions, _this.mode, _this.selectedDirection);
                 _this.subscribeClosePopup();
+            });
+
+            mediator.sub('groupPopup:open', function () {
+                var popupAddGroupView = new PopupAddGroupView(),
+                    directions = _this.settingsModel.getDirectionNames();
+
+                popupAddGroupView.setDirectionList(directions);
+                popupAddGroupView.renderPopup();
             });
         }
     }, {
@@ -315,12 +334,13 @@ var SettingsController = function () {
             var _this3 = this;
 
             mediator.sub('directionSelect:change', function (value) {
-                _this3.setting = _this3.settingList.find(function (item) {
-                    return item.direction === value;
+                var directions = _this3.settingsModel.getDirectionNames();
+                _this3.selectedDirection = _this3.settingsModel.directions.find(function (item) {
+                    return item.name === value;
                 });
                 _this3.mode = 'T';
 
-                _this3.popupSettingsView.reRenderPopup(_this3.setting.tests, _this3.setting.filters, _this3.mode, _this3.setting.direction);
+                _this3.popupSettingsView.reRenderPopup(directions, _this3.mode, _this3.selectedDirection);
             });
         }
     }, {
@@ -329,9 +349,10 @@ var SettingsController = function () {
             var _this4 = this;
 
             mediator.sub('test:select', function () {
+                var directions = _this4.settingsModel.getDirectionNames();
                 _this4.mode = 'T';
 
-                _this4.popupSettingsView.reRenderPopup(_this4.setting.tests, _this4.setting.filters, _this4.mode, _this4.setting.direction);
+                _this4.popupSettingsView.reRenderPopup(directions, _this4.mode, _this4.selectedDirection);
             });
         }
     }, {
@@ -340,9 +361,10 @@ var SettingsController = function () {
             var _this5 = this;
 
             mediator.sub('filter:select', function () {
+                var directions = _this5.settingsModel.getDirectionNames();
                 _this5.mode = 'F';
 
-                _this5.popupSettingsView.reRenderPopup(_this5.setting.tests, _this5.setting.filters, _this5.mode, _this5.setting.direction);
+                _this5.popupSettingsView.reRenderPopup(directions, _this5.mode, _this5.selectedDirection);
             });
         }
     }]);
@@ -375,21 +397,21 @@ var PopupSettingsView = function () {
 
     _createClass(PopupSettingsView, [{
         key: 'renderPopup',
-        value: function renderPopup(testList, filterList, mode, selectedDirection) {
-            this.modal.innerHTML = settingsPopupTpl(this.directionList, testList, filterList, mode, selectedDirection);
+        value: function renderPopup(directions, mode, selectedDirection) {
+            this.modal.innerHTML = settingsPopupTpl(directions, mode, selectedDirection);
             this.open();
             this.addListeners();
         }
     }, {
         key: 'reRenderPopup',
-        value: function reRenderPopup(testList, filterList, mode, selectedDirection) {
-            this.modal.innerHTML = settingsPopupTpl(this.directionList, testList, filterList, mode, selectedDirection);
+        value: function reRenderPopup(directions, mode, selectedDirection) {
+            this.modal.innerHTML = settingsPopupTpl(directions, mode, selectedDirection);
             this.addListeners();
         }
     }, {
-        key: 'setDirectionList',
-        value: function setDirectionList(directionList) {
-            this.directionList = directionList;
+        key: 'setDirectionNames',
+        value: function setDirectionNames(directions) {
+            this.directions = directions;
         }
     }, {
         key: 'open',
@@ -456,12 +478,12 @@ var directionListTpl = __webpack_require__(19),
     filterListTpl = __webpack_require__(20),
     testListTpl = __webpack_require__(21);
 
-function settingsPopupTpl(directions, tests, filters, option, selectedDirection) {
-    var directionList = directionListTpl(directions, selectedDirection),
-        filterList = filterListTpl(filters),
-        testList = testListTpl(tests);
+function settingsPopupTpl(directions, mode, selectedDirection) {
+    var directionList = directionListTpl(directions, selectedDirection.name),
+        filterList = filterListTpl(selectedDirection.filters),
+        testList = testListTpl(selectedDirection.tests);
 
-    return '<div id="settings-popup" class="modal-content">\n                <div class="left-column-settings">' + directionList + '</div>\n                <div class="right-column-settings">\n                    <div class="column-settings">\n                        <button id="test-settings-btn" class="btn btn-ft">T</button>\n                        <button id="filter-settings-btn" class="btn btn-ft">F</button>\n                    </div>\n                    <div class="column-settings">\n                        ' + (option === 'T' ? testList : filterList) + '\n                    </div>\n                    <div class="column-settings">\n                        <button id="close-settings-btn" class="btn btn-cog">\n                            <i class="fa fa-check" aria-hidden="true"></i>\n                        </button>\n                    </div>\n                </div>\n            </div>';
+    return '<div id="settings-popup" class="modal-content">\n                <div class="left-column-settings">' + directionList + '</div>\n                <div class="right-column-settings">\n                    <div class="column-settings">\n                        <button id="test-settings-btn" class="btn btn-ft">T</button>\n                        <button id="filter-settings-btn" class="btn btn-ft">F</button>\n                    </div>\n                    <div class="column-settings">\n                        ' + (mode === 'T' ? testList : filterList) + '\n                    </div>\n                    <div class="column-settings">\n                        <button id="close-settings-btn" class="btn btn-cog">\n                            <i class="fa fa-check" aria-hidden="true"></i>\n                        </button>\n                    </div>\n                </div>\n            </div>';
 }
 
 module.exports = settingsPopupTpl;
@@ -677,11 +699,6 @@ var GroupController = function () {
             var _this = this;
 
             mediator.sub('groupPopup:open', function () {
-                var settingsModel = new SettingsModel(),
-                    popupAddGroupView = new PopupAddGroupView();
-
-                popupAddGroupView.setDirectionList(settingsModel.getDirectionList());
-                popupAddGroupView.renderPopup();
                 _this.subscribeAddGroup();
             });
         }
@@ -1058,7 +1075,8 @@ var App = function () {
         _classCallCheck(this, App);
 
         this.groups = [];
-        this.settings = testData.settings;
+        this.directions = testData.directions;
+      
         this.subscribe();
     }
 
@@ -1066,7 +1084,7 @@ var App = function () {
         key: 'start',
         value: function start() {
             var groupController = new GroupController(this.groups),
-                settingsController = new SettingsController(this.settings);
+                settingsController = new SettingsController(this.directions);
 
             groupController.showGroupList();
         }
@@ -1109,22 +1127,19 @@ var testData = {
         direction: 'php',
         name: 'dp-127-php'
     }],
-    settings: [{
-        direction: 'UI',
+
+    directions: [{
+        name: 'UI',
         tests: ['Eng1', 'Eng2', 'JS Core', 'Essay UI'],
         filters: ['UI 1']
     }, {
-        direction: 'PHP',
+        name: 'PHP',
         tests: ['Eng1', 'Eng2', 'Essay PHP'],
         filters: ['PHP 1']
     }, {
-        direction: 'GO',
+        name: 'GO',
         tests: ['Eng1', 'Eng2', 'Essay GO'],
         filters: ['GO 1']
-    }, {
-        direction: 'Other',
-        tests: ['Eng1', 'Eng2', 'Other', 'Other'],
-        filters: ['Other 1']
     }]
 };
 

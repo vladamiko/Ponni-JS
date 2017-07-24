@@ -1,17 +1,24 @@
 'use strict';
 
 class SettingsModel {
-    constructor () {
-        this.directionList = ['UI', 'GO', 'PHP', 'Other'];
+    constructor (directions) {
+        this.directions = directions;
     }
 
-    addDirection (directionName) {
-        this.testList.push(new Direction(directionName));
+    getDirectionNames () {
+    	let directionNames = [];
+
+    	this.directions.forEach((item) => {
+        	directionNames.push(item.name);
+    	});
+
+        return directionNames;
     }
 
-    getDirectionList () {
-        return this.directionList;
+    addDirection (name) {
+        this.directions.push(new Direction(name));
     }
+
 }
 
 module.exports = SettingsModel;

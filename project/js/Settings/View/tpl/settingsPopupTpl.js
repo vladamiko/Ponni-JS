@@ -4,10 +4,10 @@ let directionListTpl = require('./directionListTpl.js'),
     filterListTpl = require('./filterListTpl.js'),
     testListTpl = require('./testListTpl.js');
 
-function settingsPopupTpl (directions, tests, filters, option, selectedDirection) {
-    let directionList = directionListTpl(directions, selectedDirection),
-        filterList = filterListTpl(filters),
-        testList = testListTpl(tests);
+function settingsPopupTpl (directions, mode, selectedDirection) {
+    let directionList = directionListTpl(directions, selectedDirection.name),
+        filterList = filterListTpl(selectedDirection.filters),
+        testList = testListTpl(selectedDirection.tests);
 
     return `<div id="settings-popup" class="modal-content">
                 <div class="left-column-settings">${directionList}</div>
@@ -17,7 +17,7 @@ function settingsPopupTpl (directions, tests, filters, option, selectedDirection
                         <button id="filter-settings-btn" class="btn btn-ft">F</button>
                     </div>
                     <div class="column-settings">
-                        ${option === 'T'? testList: filterList}
+                        ${mode === 'T'? testList: filterList}
                     </div>
                     <div class="column-settings">
                         <button id="close-settings-btn" class="btn btn-cog">

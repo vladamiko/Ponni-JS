@@ -8,19 +8,19 @@ class PopupSettingsView {
         this.modal = document.querySelector('#modal-settings');
     }
 
-    renderPopup (testList, filterList, mode, selectedDirection) {
-        this.modal.innerHTML = settingsPopupTpl(this.directionList, testList, filterList, mode, selectedDirection);
+    renderPopup (directions, mode, selectedDirection) {
+        this.modal.innerHTML = settingsPopupTpl(directions, mode, selectedDirection);
         this.open();
         this.addListeners();
     }
 
-    reRenderPopup (testList, filterList, mode, selectedDirection) {
-        this.modal.innerHTML = settingsPopupTpl(this.directionList, testList, filterList, mode, selectedDirection);
+    reRenderPopup (directions, mode, selectedDirection) {
+        this.modal.innerHTML = settingsPopupTpl(directions, mode, selectedDirection);
         this.addListeners();
     }
 
-    setDirectionList (directionList) {
-        this.directionList = directionList;
+    setDirectionNames (directions) {
+        this.directions = directions;
     }
 
     open () {
