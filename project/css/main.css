@@ -96,6 +96,11 @@ input[type="text"] {
     padding-left: 0;
     margin: 0;
 }
+.test-list-wrapper .test-list,
+.filter-list-wrapper .filter-list {
+    flex-direction: column;
+    padding-bottom: 20px;
+}
 .test-list li {
     list-style: none;
     background-color: #3e362f;
@@ -202,4 +207,10 @@ input[type="text"] {
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
+}
+.test,
+.filter {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid;
 }
