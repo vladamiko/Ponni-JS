@@ -4,8 +4,8 @@ let directionListTpl = require('./directionListTpl.js'),
     filterListTpl = require('./filterListTpl.js'),
     testListTpl = require('./testListTpl.js');
 
-function settingsPopupTpl (directions, filters, tests) {
-    let directionList = directionListTpl(directions),
+function settingsPopupTpl (directions, filters, tests, selectedDirection) {
+    let directionList = directionListTpl(directions, selectedDirection),
         filterList = filterListTpl(filters),
         testList = testListTpl(tests);
 

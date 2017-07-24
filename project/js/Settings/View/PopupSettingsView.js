@@ -17,6 +17,11 @@ class PopupSettingsView {
         this.addListeners();
     }
 
+    reRenderPopup (filterList, testList, selectedDirection) {
+        this.modal.innerHTML = settingsPopupTpl(this.directionList, filterList, testList, selectedDirection);
+        this.addListeners();
+    }
+
     setDirectionList (directionList) {
         this.directionList = directionList;
     }
@@ -26,11 +31,16 @@ class PopupSettingsView {
     }
 
     addListeners () {
-        let closeGroupBtn = document.querySelector('#close-settings-btn');
+        let closeGroupBtn = document.querySelector('#close-settings-btn'),
+            directionSelect = document.querySelector('#modal-settings-direction');
 
         closeGroupBtn.addEventListener('click', () => {
             mediator.pub('settingsPopup:close');
             mediator.unsub('settingsPopup:close');
+        });
+
+        directionSelect.addEventListener('change', (e) => {
+            mediator.pub('directionSelect:change', e.target.value);
         });
     }
 

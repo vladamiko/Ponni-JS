@@ -8,6 +8,7 @@ class SettingsController {
     constructor (settings) {
         this.settings = settings;
         this.subscribeOpenPopup();
+        this.subscribeSelectDirection();
     }
 
     subscribeOpenPopup () {
@@ -26,6 +27,18 @@ class SettingsController {
             let popupSettingsView = new PopupSettingsView();
 
             popupSettingsView.close();
+        });
+    }
+
+    subscribeSelectDirection () {
+    	mediator.sub('directionSelect:change', (value) => {
+            let popupSettingsView = new PopupSettingsView(),
+            	settingsModel = new SettingsModel(),
+                currentSetting = this.settings.find((item) => item.direction === value);
+                console.log(currentSetting);
+
+            popupSettingsView.setDirectionList(settingsModel.getDirectionList());
+            popupSettingsView.reRenderPopup(currentSetting.tests, currentSetting.filters, value);
         });
     }
 }
