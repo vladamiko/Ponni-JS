@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', init);
 
 function init () {
     let DirectionModel = require('./Settings/Model/DirectionModel.js'),
-        FilterModel = require('./Settings/Model/FilterModel.js'),
-        TestModel = require('./Settings/Model/TestModel.js'),
+        Filter = require('./Filters/Model/Filter.js'),
+        Test = require('./Tests/Model/Test.js'),
         SettingsModel = require('./Settings/Model/SettingsModel.js'),
         SettingsController = require('./Settings/SettingsController.js'),
         GroupModel = require('./Groups/Model/GroupModel.js'),
@@ -14,9 +14,9 @@ function init () {
         groupListTpl = require('./Groups/View/tpl/groupListTpl.js'),
         PopupAddGroupView = require('./Groups/View/PopupAddGroupView.js'),
         PopupSettingsView = require('./Settings/View/PopupSettingsView.js'),
-        PopupAddFilterView = require('./Settings/View/PopupAddFilterView.js'),
+        PopupAddFilterView = require('./Filters/View/PopupAddFilterView.js'),
         PopupAddDirectionView = require('./Settings/View/PopupAddDirectionView.js'),
-        PopupAddTestView = require('./Settings/View/PopupAddTestView.js'),
+        PopupAddTestView = require('./Tests/View/PopupAddTestView.js'),
         groupPopupTpl = require('./Groups/View/tpl/groupPopupTpl.js'),
         groupTpl = require('./Groups/View/tpl/groupTpl.js'),
         settingsPopupTpl = require('./Settings/View/tpl/settingsPopupTpl.js'),

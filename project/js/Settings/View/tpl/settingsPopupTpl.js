@@ -1,8 +1,8 @@
 'use strict';
 
 let directionListTpl = require('./directionListTpl.js'),
-    filterListTpl = require('./filterListTpl.js'),
-    testListTpl = require('./testListTpl.js');
+    filterListTpl = require('../../../Filters/View/tpl/filterListTpl.js'),
+    testListTpl = require('../../../Tests/View/tpl/testListTpl.js');
 
 function settingsPopupTpl (directions, mode, selectedDirection) {
     let directionList = directionListTpl(directions, selectedDirection.name),

@@ -1,6 +1,6 @@
 'use strict';
 
-class FilterModel {
+class Filter {
     constructor (tests, action, condition, grade) {
         this.tests = tests;
         this.actionList = ['average', 'max', 'min', 'equal'];

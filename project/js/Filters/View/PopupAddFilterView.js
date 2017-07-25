@@ -1,7 +1,7 @@
 'use strict';
 
 let mediator = require('../../Mediator.js'),
-    addFilterPopupTpl = require('../../Settings/View/tpl/addFilterPopupTpl.js');
+    addFilterPopupTpl = require('./tpl/addFilterPopupTpl.js');
 
 class PopupAddFilterView {
     constructor () {
