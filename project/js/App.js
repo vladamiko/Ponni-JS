@@ -2,18 +2,20 @@
 
 let GroupController = require('./Groups/GroupController.js'),
     SettingsController = require('./Settings/SettingsController.js'),
+    SettingsModel = require('./Settings/Model/SettingsModel.js'),
     mediator = require('./Mediator.js');
 
 class App {
     constructor (groupList) {
         this.groupList = groupList;
-        // this.directions = groupList.directions;
+        this.settingsModel = new SettingsModel();
+
         this.subscribe();
     }
 
     start () {
         let groupController = new GroupController(this.groupList);
-            // settingsController = new SettingsController(this.directions);
+            settingsController = new SettingsController(this.settingsModel.directions);
         
         groupController.showGroupList();
     }
