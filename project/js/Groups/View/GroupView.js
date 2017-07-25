@@ -20,6 +20,7 @@ class GroupView {
     }
 
     addListeners () {
+        
     }
 }
 
