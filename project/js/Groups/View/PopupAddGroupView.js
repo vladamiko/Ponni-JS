@@ -22,11 +22,14 @@ class PopupAddGroupView {
     }
 
     addListeners () {
-        let closeGroupBtn = document.querySelector('#close-group-btn');
+        let closeGroupBtn = this.modal.querySelector('#close-group-btn');
 
         closeGroupBtn.addEventListener('click', () => {
-            mediator.pub('group:added');
-            mediator.unsub('group:added');
+            let data = this.generateData(),
+                // data.direction - мы получаем из наших сеттингс
+                group = new GroupModel(data.name, data.direction);
+
+            mediator.pub('group:created', group);
         });
     }
 
@@ -35,8 +38,8 @@ class PopupAddGroupView {
     }
 
     generateData () {
-        let groupNameElem = document.querySelector('#modal-group-name'),
-            groupDirectionElem = document.querySelector('#modal-group-direction'),
+        let groupNameElem = this.modal.querySelector('#modal-group-name'),
+            groupDirectionElem = this.modal.querySelector('#modal-group-direction'),
             data = {};
 
         data.direction = groupDirectionElem.options[groupDirectionElem.selectedIndex].text;
@@ -44,8 +47,8 @@ class PopupAddGroupView {
 
         return data;
     }
-
-    close () {
+    // Исправить
+    static close () {
         this.modal.classList.remove('visible');
     }
 }

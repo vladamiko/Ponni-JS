@@ -8,9 +8,9 @@ let GroupListView = require('../Groups/View/GroupListView.js'),
     mediator = require('../Mediator.js');
 
 class GroupController {
-    constructor (groups) {
-        this.groups = groups;
-        this.subscribeOpen();
+    constructor (groupList) {
+        this.groupList = groupList;
+        this.subscribe();
     }
 
     showGroupList () {
@@ -19,29 +19,27 @@ class GroupController {
         groupListView.render();
     }
 
-    subscribeOpen () {
+    subscribe () {
         mediator.sub('groupPopup:open', () => {
-            this.subscribeAddGroup();
+            // let popupAddGroupView = new PopupAddGroupView();
         });
-    }
 
-    subscribeAddGroup () {
-        mediator.sub('group:added', () => {
-            let popupAddGroupView = new PopupAddGroupView(),
-                groupView = new GroupView(),
+        mediator.sub('group:created', () => {
+            //popupAddGroupView - Должна генерироваться при создании addGroup
+            // Создаем объект группы в groupPopup: open
+            // и потом передаем в groupPopup сreated
+            // GroupList View должен иметь в себе метод создания GroupView
+            // И она должна уметь рендерить группу
+            // group:created
+            // Это должно быть все в одном контроллере
+            // groupList.appendView;
+            let groupView = new GroupView(),
                 groupData = {},
                 group = {};
 
-            groupData = popupAddGroupView.generateData();
-
-            group = new GroupModel(groupData.name, groupData.direction);
-
-            mediator.pub('group:created', group);
-
             groupView.setGroup(group);
-
-            popupAddGroupView.close();
-
+             // PopUp - сам себя закроет
+            // PopupAddGroupView.close();
             groupView.renderGroup();
         });
     }
