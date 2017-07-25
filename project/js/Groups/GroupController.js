@@ -14,7 +14,7 @@ class GroupController {
     }
 
     showGroupList () {
-        let groupListView = new GroupListView();
+        let groupListView = new GroupListView(this.groupList);
 
         groupListView.render();
     }

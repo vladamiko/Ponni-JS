@@ -5,8 +5,9 @@ let groupListTpl = require('./tpl/groupListTpl.js'),
     mediator = require('../../Mediator.js');
 
 class GroupListView {
-    constructor () {
+    constructor (groupList) {
         this.template = '';
+        this.groupList = groupList;
     }
 
     render () {
@@ -16,14 +17,26 @@ class GroupListView {
 
         leftBlock.insertAdjacentHTML('afterbegin', this.template);
 
+        this.renderGroups();
+
         this.addListeners();
     }
 
+    renderGroups () {
+        this.groupList.forEach((group) => {
+            let groupView = new GroupView();
+
+            groupView.setGroup(group);
+
+            return groupView.renderGroup();
+        });
+    }
+
     appendGroup (group) {
-        this.group = group;
-        this.groupView = new GroupView();
-        this.groupView.setGroup(this.group);
-        this.groupView.renderGroup();
+        let groupView = new GroupView();
+
+        groupView.setGroup(group);
+        groupView.renderGroup();
     }
 
     addListeners () {
