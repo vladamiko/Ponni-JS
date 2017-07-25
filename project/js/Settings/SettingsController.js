@@ -2,13 +2,16 @@
 
 let PopupSettingsView = require('../Settings/View/PopupSettingsView.js'),
     PopupAddGroupView = require('../Groups/View/PopupAddGroupView.js'),
+    PopupAddDirectionView = require('../Settings/View/PopupAddDirectionView.js'),
     SettingsModel = require('../Settings/Model/SettingsModel.js'),
+    DirectionModel = require('../Settings/Model/DirectionModel.js'),
     mediator = require('../Mediator.js');
 
 class SettingsController {
-    constructor (settings) {
-        this.settingsModel = new SettingsModel(settings);
+    constructor (defaultDirections) {
+        this.settingsModel = new SettingsModel(defaultDirections);
         this.popupSettingsView = new PopupSettingsView();
+        this.popupAddDirectionView = new PopupAddDirectionView();
         
         this.subscribe();
     }
@@ -38,11 +41,29 @@ class SettingsController {
                 popupAddGroupView.setDirectionList(directions);
                 popupAddGroupView.renderPopup();
         });
+
+        mediator.sub('addDirectionPopup:open', () => {
+            let popupAddDirectionView = new PopupAddDirectionView();
+            
+            popupAddDirectionView.renderPopup();
+            this.popupSettingsView.close();
+            this.subscribeClosePopup();
+        });
     }
 
     subscribeClosePopup () {
         mediator.sub('settingsPopup:close', () => {
             this.popupSettingsView.close();
+        });
+
+        mediator.sub('addDirectionPopup:close', () => {
+            this.popupAddDirectionView.close();
+            this.popupSettingsView.open();
+
+            let directions = this.settingsModel.getDirectionNames();
+            this.mode = 'T';
+
+            this.popupSettingsView.reRenderPopup(directions, this.mode, this.selectedDirection);
         });
     }
 
@@ -69,6 +90,15 @@ class SettingsController {
         mediator.sub('filter:select', () => {
             let directions = this.settingsModel.getDirectionNames();
             this.mode = 'F';
+            
+            this.popupSettingsView.reRenderPopup(directions, this.mode, this.selectedDirection);
+        });
+    }
+
+    subscribeAddDirection () {
+        mediator.sub('direction:add', () => {
+            let directions = this.settingsModel.getDirectionNames();
+            this.mode = 'T';
             
             this.popupSettingsView.reRenderPopup(directions, this.mode, this.selectedDirection);
         });

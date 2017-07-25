@@ -31,7 +31,10 @@ class PopupSettingsView {
         let closeGroupBtn = document.querySelector('#close-settings-btn'),
             directionSelect = document.querySelector('#modal-settings-direction'),
             selectTestBtn = document.querySelector('#test-settings-btn'),
-            selectFilterBtn = document.querySelector('#filter-settings-btn');
+            selectFilterBtn = document.querySelector('#filter-settings-btn'),
+            addDirectionPopup = document.querySelector('.add-direction-btn'),
+            addTestPopup = document.querySelector('.add-test-btn'),
+            addFilterPopup = document.querySelector('.add-filter-btn');
 
         closeGroupBtn.addEventListener('click', () => {
             mediator.pub('settingsPopup:close');
@@ -49,6 +52,18 @@ class PopupSettingsView {
         selectFilterBtn.addEventListener('click', () => {
             mediator.pub('filter:select');
         });
+
+        addDirectionPopup.addEventListener('click', () => {
+            mediator.pub('addDirectionPopup:open');
+        });
+
+        // addTestPopup.addEventListener('click', () => {
+        //     mediator.pub('addFilterPopup:open');
+        // });
+
+        // addFilterPopup.addEventListener('click', () => {
+        //     mediator.pub('addTestPopup:open');
+        // });
     }
 
     generateData () {
