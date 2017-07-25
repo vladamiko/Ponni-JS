@@ -1060,7 +1060,7 @@ module.exports = PopupAddFilterView;
 
 
 function addFilterPopupTpl(testList, actionList, conditionList) {
-    var tests = generateList(testList),
+    var tests = generateTestList(testList),
         actions = generateList(actionList),
         conditions = generateList(conditionList);
 
@@ -1072,7 +1072,15 @@ function addFilterPopupTpl(testList, actionList, conditionList) {
         return list;
     }
 
-    return '<div class="modal-content add-filter-popup">\n                <div class="left-column-filter">' + tests + '</div>\n                <div class="right-column-filter">\n                    <div>\n                        <input type="text" class="add-test-name" placeholder="Enter test name">\n                    </div>\n                    <div>\n                        <select class="modal-filter-action">' + actions + '</select>\n                        <select class="modal-filter-condition">' + conditions + '</select>\n                        <input type="text" class="add-test-grade" placeholder="Enter grade">\n                    </div>\n                </div>\n                <button class="btn btn-cog">\n                    <i class="fa fa-check" aria-hidden="true"></i>\n                </button>\n            </div>';
+    function generateTestList(list) {
+        list.forEach(function (item) {
+            list += '<li>' + item + '</li>';
+        });
+
+        return list;
+    }
+
+    return '<div class="modal-content add-filter-popup">\n                <div class="left-column-filter">\n                <ul>' + tests + '</ul>\n                </div>\n                <div class="right-column-filter">\n                    <div>\n                        <input type="text" class="add-test-name" placeholder="Enter test name">\n                    </div>\n                    <div>\n                        <select class="modal-filter-action">' + actions + '</select>\n                        <select class="modal-filter-condition">' + conditions + '</select>\n                        <input type="text" class="add-test-grade" placeholder="Enter grade">\n                    </div>\n                </div>\n                <button class="btn btn-cog close-filter-btn">\n                    <i class="fa fa-check" aria-hidden="true"></i>\n                </button>\n            </div>';
 }
 
 module.exports = addFilterPopupTpl;
@@ -1218,7 +1226,7 @@ module.exports = PopupAddTestView;
 
 
 function addTestPopupTpl() {
-    return '<div class="modal-content add-test-popup">\n                <input type="text" class="add-test-name" placeholder="Enter test name">\n                <button class="btn btn-cog">\n                    <i class="fa fa-check" aria-hidden="true"></i>\n                </button>\n            </div>';
+    return '<div class="modal-content add-test-popup">\n                <input type="text" class="add-test-name" placeholder="Enter test name">\n                <button class="btn btn-cog close-test-btn">\n                    <i class="fa fa-check" aria-hidden="true"></i>\n                </button>\n            </div>';
 }
 
 module.exports = addTestPopupTpl;
