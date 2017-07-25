@@ -20,14 +20,14 @@ class App {
         groupController.showGroupList();
     }
 
-    addGroup (group) {
-        this.groups.push(group);
-    }
-
     subscribe () {
         mediator.sub('group:created', (group) => {
-            this.groups.push(group);
+            this.addGroup(group);
         });
+    }
+
+    addGroup (group) {
+        this.groups.push(group);
     }
 }
 
