@@ -7,27 +7,26 @@ let GroupController = require('./Groups/GroupController.js'),
 
 class App {
     constructor () {
-        this.groups = [];
+        this.groupList = [];
         this.directions = testData.directions;
-
         this.subscribe();
     }
 
     start () {
-        let groupController = new GroupController(this.groups),
+        let groupController = new GroupController(this.groupList),
             settingsController = new SettingsController(this.directions);
         
         groupController.showGroupList();
     }
 
-    addGroup (group) {
-        this.groups.push(group);
+    subscribe () {
+        // mediator.sub('group:created', (group) => {
+        //     this.addGroup(group);
+        // });
     }
 
-    subscribe () {
-        mediator.sub('group:created', (group) => {
-            this.groups.push(group);
-        });
+    addGroup (group) {
+        this.groups.push(group);
     }
 }
 
