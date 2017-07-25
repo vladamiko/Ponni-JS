@@ -1,6 +1,7 @@
 'use strict';
 
 let groupListTpl = require('./tpl/groupListTpl.js'),
+    GroupView = require('./GroupView.js'),
     mediator = require('../../Mediator.js');
 
 class GroupListView {
@@ -17,7 +18,14 @@ class GroupListView {
 
         this.addListeners();
     }
-    
+
+    appendGroup (group) {
+        this.group = group;
+        this.groupView = new GroupView();
+        this.groupView.setGroup(this.group);
+        this.groupView.renderGroup();
+    }
+
     addListeners () {
         let addGroupBtn = document.querySelector('.add-group-btn'),
             settingsBtn = document.querySelector('#settings-btn');

@@ -75,6 +75,7 @@ input[type="text"] {
     border: none;
     padding: 20px;
     cursor: pointer;
+    outline: none;
 }
 .btn-cog {
     color: #3e362f;

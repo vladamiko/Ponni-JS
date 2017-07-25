@@ -7,7 +7,8 @@ let mediator = require('../../Mediator.js'),
 
 class PopupAddGroupView {
     constructor () {
-        this.directionList = [];
+        // directionList мы должны брать откуда то
+        this.directionList = ['ui', 'php', 'js', 'java'];
         this.modal = document.querySelector('#modal-add-group');
     }
 
@@ -15,10 +16,6 @@ class PopupAddGroupView {
         this.modal.innerHTML = groupPopupTpl(this.directionList);
         this.open();
         this.addListeners();
-    }
-
-    setDirectionList (directionList) {
-        this.directionList = directionList;
     }
 
     addListeners () {
@@ -30,11 +27,13 @@ class PopupAddGroupView {
                 group = new GroupModel(data.name, data.direction);
 
             mediator.pub('group:created', group);
+
+            this.close();
         });
     }
 
-    open () {
-        this.modal.classList.add('visible');
+    setDirectionList (directionList) {
+        this.directionList = directionList;
     }
 
     generateData () {
@@ -47,8 +46,12 @@ class PopupAddGroupView {
 
         return data;
     }
-    // Исправить
-    static close () {
+
+    open () {
+        this.modal.classList.add('visible');
+    }
+
+    close () {
         this.modal.classList.remove('visible');
     }
 }
