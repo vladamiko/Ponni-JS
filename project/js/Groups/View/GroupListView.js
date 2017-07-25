@@ -7,8 +7,6 @@ let groupListTpl = require('./tpl/groupListTpl.js'),
 class GroupListView {
     constructor () {
         this.template = '';
-        this.group = {};
-        this.groupView = {};
     }
 
     render () {
@@ -27,7 +25,7 @@ class GroupListView {
         this.groupView.setGroup(this.group);
         this.groupView.renderGroup();
     }
-    
+
     addListeners () {
         let addGroupBtn = document.querySelector('.add-group-btn'),
             settingsBtn = document.querySelector('#settings-btn');

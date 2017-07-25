@@ -28,7 +28,7 @@ class GroupController {
 
         mediator.sub('group:created', (group) => {
             let groupListView = new GroupListView();
-            
+
             groupListView.appendGroup(group);
         });
     }

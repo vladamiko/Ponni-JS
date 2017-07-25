@@ -18,10 +18,6 @@ class PopupAddGroupView {
         this.addListeners();
     }
 
-    open () {
-        this.modal.classList.add('visible');
-    }
-
     addListeners () {
         let closeGroupBtn = this.modal.querySelector('#close-group-btn');
 
@@ -31,6 +27,8 @@ class PopupAddGroupView {
                 group = new GroupModel(data.name, data.direction);
 
             mediator.pub('group:created', group);
+
+            this.close();
         });
     }
 
@@ -48,7 +46,11 @@ class PopupAddGroupView {
 
         return data;
     }
-    // Исправить
+
+    open () {
+        this.modal.classList.add('visible');
+    }
+
     close () {
         this.modal.classList.remove('visible');
     }
