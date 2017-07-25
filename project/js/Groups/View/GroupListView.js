@@ -1,6 +1,7 @@
 'use strict';
 
 let groupListTpl = require('./tpl/groupListTpl.js'),
+    GroupView = require('./GroupView.js'),
     mediator = require('../../Mediator.js');
 
 class GroupListView {
@@ -16,6 +17,10 @@ class GroupListView {
         leftBlock.insertAdjacentHTML('afterbegin', this.template);
 
         this.addListeners();
+    }
+    
+    createGroupView () {
+        
     }
     
     addListeners () {

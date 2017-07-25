@@ -17,8 +17,8 @@ class PopupAddGroupView {
         this.addListeners();
     }
 
-    setDirectionList (directionList) {
-        this.directionList = directionList;
+    open () {
+        this.modal.classList.add('visible');
     }
 
     addListeners () {
@@ -28,13 +28,13 @@ class PopupAddGroupView {
             let data = this.generateData(),
                 // data.direction - мы получаем из наших сеттингс
                 group = new GroupModel(data.name, data.direction);
-
+            
             mediator.pub('group:created', group);
         });
     }
 
-    open () {
-        this.modal.classList.add('visible');
+    setDirectionList (directionList) {
+        this.directionList = directionList;
     }
 
     generateData () {
@@ -48,7 +48,7 @@ class PopupAddGroupView {
         return data;
     }
     // Исправить
-    static close () {
+    close () {
         this.modal.classList.remove('visible');
     }
 }
