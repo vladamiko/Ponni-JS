@@ -1,7 +1,7 @@
 'use strict';
 
 function addFilterPopupTpl (testList, actionList, conditionList) {
-    let tests = generateList(testList),
+    let tests = generateTestList(testList),
         actions = generateList(actionList),
         conditions = generateList(conditionList);
 
@@ -13,8 +13,18 @@ function addFilterPopupTpl (testList, actionList, conditionList) {
         return list;
     }
 
+    function generateTestList (list) {
+        list.forEach((item) => {
+            list += `<li>${item}</li>`;
+        });
+
+        return list;
+    }
+
     return `<div class="modal-content add-filter-popup">
-                <div class="left-column-filter">${tests}</div>
+                <div class="left-column-filter">
+                <ul>${tests}</ul>
+                </div>
                 <div class="right-column-filter">
                     <div>
                         <input type="text" class="add-test-name" placeholder="Enter test name">
@@ -25,7 +35,7 @@ function addFilterPopupTpl (testList, actionList, conditionList) {
                         <input type="text" class="add-test-grade" placeholder="Enter grade">
                     </div>
                 </div>
-                <button class="btn btn-cog">
+                <button class="btn btn-cog close-filter-btn">
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </button>
             </div>`;

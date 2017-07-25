@@ -3,8 +3,8 @@
 function addDirectionPopupTpl () {
     return `<div class="modal-content add-direction-popup">
                 <input type="text" class="add-direction-name" placeholder="Enter direction name">
-                <button class="btn btn-cog close-dir-btn">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                <button class="btn btn-cog">
+                    <i class="fa fa-check close-direction-btn" aria-hidden="true"></i>
                 </button>
             </div>`;
 }

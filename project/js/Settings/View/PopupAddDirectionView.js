@@ -19,21 +19,18 @@ class PopupAddDirectionView {
     }
 
     addListeners () {
-        let closeDirectionBtn = document.querySelector('.close-dir-btn');
+        let closeDirectionBtn = document.querySelector('.close-direction-btn'),
+            directionName = document.querySelector('.add-direction-name');
+
 
         closeDirectionBtn.addEventListener('click', () => {
-            mediator.pub('direction:added');
-            mediator.unsub('direction:added');
+            mediator.pub('directionPopup:close');
+            mediator.unsub('directionPopup:close');
         });
-    }
 
-    generateData () {
-        let addDirectionName = document.querySelector('.add-direction-name'),
-            data = {};
-
-        data.name = addDirectionName.value;
-
-        return data;
+        directionName.addEventListener('input', () => {
+            //
+        });
     }
 
     close () {

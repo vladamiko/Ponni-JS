@@ -19,7 +19,18 @@ class PopupAddTestView {
     }
 
     addListeners () {
+        let closeTestBtn = document.querySelector('.close-test-btn'),
+            testName = document.querySelector('.add-test-name');
 
+
+        closeTestBtn.addEventListener('click', () => {
+            mediator.pub('testPopup:close');
+            mediator.unsub('testPopup:close');
+        });
+
+        testName.addEventListener('input', () => {
+            //
+        });
     }
 
     close () {
