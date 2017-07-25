@@ -19,7 +19,18 @@ class PopupAddDirectionView {
     }
 
     addListeners () {
+        let closeDirectionBtn = document.querySelector('.close-direction-btn'),
+            directionName = document.querySelector('.add-direction-name');
 
+
+        closeDirectionBtn.addEventListener('click', () => {
+            mediator.pub('directionPopup:close');
+            mediator.unsub('directionPopup:close');
+        });
+
+        directionName.addEventListener('input', () => {
+            //
+        });
     }
 
     close () {
