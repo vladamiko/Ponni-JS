@@ -24,8 +24,8 @@ class PopupAddDirectionView {
 
 
         closeDirectionBtn.addEventListener('click', () => {
-            mediator.pub('directionPopup:close');
-            mediator.unsub('directionPopup:close');
+            mediator.pub('addDirectionPopup:close');
+            mediator.unsub('addDirectionPopup:close');
         });
 
         directionName.addEventListener('input', () => {
@@ -37,4 +37,5 @@ class PopupAddDirectionView {
         this.modal.classList.remove('visible');
     }
 }
+
 module.exports = PopupAddDirectionView;

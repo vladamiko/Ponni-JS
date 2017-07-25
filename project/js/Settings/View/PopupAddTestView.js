@@ -24,8 +24,8 @@ class PopupAddTestView {
 
 
         closeTestBtn.addEventListener('click', () => {
-            mediator.pub('testPopup:close');
-            mediator.unsub('testPopup:close');
+            mediator.pub('addTestPopup:close');
+            mediator.unsub('addTestPopup:close');
         });
 
         testName.addEventListener('input', () => {
@@ -37,4 +37,5 @@ class PopupAddTestView {
         this.modal.classList.remove('visible');
     }
 }
+
 module.exports = PopupAddTestView;
