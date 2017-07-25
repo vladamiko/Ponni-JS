@@ -2,6 +2,7 @@
 
 let GroupListView = require('../Groups/View/GroupListView.js'),
     GroupView = require('../Groups/View/GroupView.js'),
+    PopupFormatView = require('./View/PopupFormatView.js'),
     GroupModel = require('../Groups/Model/GroupModel.js'),
     PopupAddGroupView = require('../Groups/View/PopupAddGroupView.js'),
     SettingsModel = require('../Settings/Model/SettingsModel.js'),
@@ -30,6 +31,11 @@ class GroupController {
             let groupListView = new GroupListView();
 
             groupListView.appendGroup(group);
+        });
+
+        mediator.sub('group:formatted', () => {
+            console.log('formated');
+            let popupFormatView = new PopupFormatView();
         });
     }
 }

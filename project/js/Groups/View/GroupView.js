@@ -6,7 +6,7 @@ let groupTpl = require('./tpl/groupTpl.js'),
 class GroupView {
     constructor () {
         this.template = '';
-        this.addListeners();
+        this.groupsBlock = document.querySelector('.group-wrapper');
     }
 
     setGroup (group) {
@@ -14,13 +14,14 @@ class GroupView {
     }
 
     renderGroup () {
-        let groupsBlock = document.querySelector('.group-wrapper');
-
-        groupsBlock.insertAdjacentHTML('afterbegin', this.template);
+        this.groupsBlock.insertAdjacentHTML('afterbegin', this.template);
+        this.addListeners();
     }
 
     addListeners () {
-        
+        let formatGroupBtn = this.groupsBlock.querySelector('.format-added-btn');
+
+        formatGroupBtn.addEventListener('click', () => mediator.pub('group:formatted'));
     }
 }
 
