@@ -4,8 +4,11 @@ let mediator = require('../../Mediator.js'),
     settingsPopupTpl = require('../../Settings/View/tpl/settingsPopupTpl.js');
 
 class PopupSettingsView {
-    constructor () {
+    constructor (directions) {
         this.modal = document.querySelector('#modal-settings');
+
+        this.renderPopup();
+        this.setDirectionNames();
     }
 
     renderPopup (directions, mode, selectedDirection) {
@@ -19,7 +22,7 @@ class PopupSettingsView {
         this.addListeners();
     }
 
-    setDirectionNames (directions) {
+    setDirectionNames () {
         this.directions = directions;
     }
 
