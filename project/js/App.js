@@ -15,7 +15,7 @@ class App {
 
     start () {
         let groupController = new GroupController(this.groupList),
-            settingsController = new SettingsController(this.settingsModel.directions);
+            settingsController = new SettingsController(this.settingsModel.directions, this.settingsModel.getDirectionNames());
         
         groupController.showGroupList();
     }

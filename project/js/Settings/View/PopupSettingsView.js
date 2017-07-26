@@ -4,18 +4,24 @@ let mediator = require('../../Mediator.js'),
     settingsPopupTpl = require('../../Settings/View/tpl/settingsPopupTpl.js');
 
 class PopupSettingsView {
-    constructor (directions) {
-        this.modal = document.querySelector('#modal-settings');
+    constructor (directions, directionNames) {
+        this.directions = directions;
+        this.directionNames = directionNames;
+        this.selectedDirection = directions[0];
+        this.mode = 'T';
 
-        this.renderPopup();
+
         this.setDirectionNames();
+        this.modal = document.querySelector('#modal-settings');
     }
 
-    renderPopup (directions, mode, selectedDirection) {
-        this.modal.innerHTML = settingsPopupTpl(directions, mode, selectedDirection);
+    renderPopup () {
+        this.modal.innerHTML = settingsPopupTpl(this.directionNames, this.mode, this.selectedDirection);
         this.open();
         this.addListeners();
     }
+
+
 
     reRenderPopup (directions, mode, selectedDirection) {
         this.modal.innerHTML = settingsPopupTpl(directions, mode, selectedDirection);
@@ -23,7 +29,26 @@ class PopupSettingsView {
     }
 
     setDirectionNames () {
-        this.directions = directions;
+        // let directionSelect = document.querySelector('.direction-select'),
+        //     optionList = '',
+        //     tpl = '';
+
+        // this.settings.directionList.forEach((direction, i) => {
+        //     optionList += `
+        //         <option ${(i = 0) ? 'selected' : ''} value="${direction.name}">
+        //             ${direction.name}
+        //         </option>
+        //     `;
+        // });
+        
+
+        let directionNames = [];
+
+        this.directions.forEach((item) => {
+            directionNames.push(item.name);
+        });
+console.log(this.directions);
+        return directionNames;
     }
 
     open () {
