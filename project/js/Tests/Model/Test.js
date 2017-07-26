@@ -7,4 +7,4 @@ class Test {
     }
 }
 
-module.export = Test;
+module.exports = Test;

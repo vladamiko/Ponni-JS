@@ -4,7 +4,7 @@ function testListTpl (testsList) {
     let tests = '';
 
     testsList.forEach((test) => {
-        tests += `<div class="test">${test}</div>`;
+        tests += `<div class="test">${test.name}</div>`;
     });
 
     return `<div class="test-list-wrapper">

@@ -7,8 +7,6 @@ class Filter {
         this.conditionList = ['>', '>=', '=', '<=', '<'];
         this.grade = grade;
     }
-
-// addTest, changeAction, changeCondition, changeGrade
 }
 
-module.export = FilterModel;
+module.exports = Filter;

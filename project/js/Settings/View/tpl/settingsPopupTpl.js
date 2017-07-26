@@ -6,8 +6,8 @@ let directionListTpl = require('./directionListTpl.js'),
 
 function settingsPopupTpl (directions, mode, selectedDirection) {
     let directionList = directionListTpl(directions, selectedDirection.name),
-        filterList = filterListTpl(selectedDirection.filters),
-        testList = testListTpl(selectedDirection.tests);
+        filterList = filterListTpl(selectedDirection.filterList),
+        testList = testListTpl(selectedDirection.testList);
 
     return `<div id="settings-popup" class="modal-content">
                 <div class="left-column-settings">${directionList}</div>

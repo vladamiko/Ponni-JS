@@ -3,15 +3,8 @@
 let DirectionModel = require('../../Settings/Model/DirectionModel.js');
 
 class SettingsModel {
-    constructor (defaultDirections) {
+    constructor () {
         this.directions = [];
-        this.render(defaultDirections);
-    }
-
-    render (defaultDirections) {
-        defaultDirections.forEach((item) => {
-            this.directions.push(new DirectionModel(item));
-        });
     }
 
     getDirectionNames () {
@@ -22,22 +15,6 @@ class SettingsModel {
     	});
 
         return directionNames;
-    }
-
-    addDirection (name) {
-        this.directions.push(new DirectionModel(name));
-
-        defaultDirections.forEach((item) => {
-            this.directions.push(new DirectionModel(item));
-        });
-    }
-
-    addTests (testName) {
-        this.tests.push(new Test(testName));
-    }
-
-    addFilters (tests, action, condition, grade) {
-        this.filters.push(new Filter(tests, action, condition, grade));
     }
 }
 
