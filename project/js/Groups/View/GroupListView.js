@@ -5,9 +5,10 @@ let groupListTpl = require('./tpl/groupListTpl.js'),
     mediator = require('../../Mediator.js');
 
 class GroupListView {
-    constructor (groupList) {
+    constructor (groupList, groupDirection) {
         this.template = '';
         this.groupList = groupList;
+        this.groupDirection = groupDirection;
     }
 
     render () {

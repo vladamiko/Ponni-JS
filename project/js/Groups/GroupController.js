@@ -9,13 +9,15 @@ let GroupListView = require('../Groups/View/GroupListView.js'),
     mediator = require('../Mediator.js');
 
 class GroupController {
-    constructor (groupList) {
+    constructor (groupList, groupDirection) {
         this.groupList = groupList;
+        this.groupDirection = groupDirection;
+        console.log(this.groupDirection);
         this.subscribe();
     }
 
     showGroupList () {
-        let groupListView = new GroupListView(this.groupList);
+        let groupListView = new GroupListView(this.groupList, this.groupDirection);
 
         groupListView.render();
     }
