@@ -1,6 +1,6 @@
 'use strict';
 
-let testListTpl = require('./tpl/testListTpl.js'),
+let testsListTpl = require('./tpl/testsListTpl.js'),
     TestView = require('./TestView.js'),
     mediator = require('../../Mediator.js');
 
@@ -12,7 +12,7 @@ class TestListView {
     render () {
         let leftBlock = document.querySelector('.left-column');
 
-        this.template = testListTpl();
+        this.template = testsListTpl();
         leftBlock.insertAdjacentHTML('afterbegin', this.template);
     }
 

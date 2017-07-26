@@ -1,13 +1,10 @@
 'use strict';
 
 class Test {
-    constructor (name, maxGrade, grade) {
+    constructor (name, grade) {
         this.name = name;
-        // this.maxGrade = maxGrade;
-        // this.grade = grade;
+        this.grade = grade;
     }
-
-
 }
 
-module.export = Test;
+module.exports = Test;
