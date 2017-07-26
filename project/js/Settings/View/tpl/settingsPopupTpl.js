@@ -1,13 +1,13 @@
 'use strict';
 
 let directionListTpl = require('./directionListTpl.js'),
-    filterListTpl = require('../../../Filters/View/tpl/filterListTpl.js'),
-    testListTpl = require('../../../Tests/View/tpl/testListTpl.js');
+    filterListSettingsTpl = require('./filterListSettingsTpl.js'),
+    testListSettingsTpl = require('./testListSettingsTpl.js');
 
 function settingsPopupTpl (directions, mode, selectedDirection) {
     let directionList = directionListTpl(directions, selectedDirection.name),
-        filterList = filterListTpl(selectedDirection.filterList),
-        testList = testListTpl(selectedDirection.testList);
+        filterList = filterListSettingsTpl(selectedDirection.filterList),
+        testList = testListSettingsTpl(selectedDirection.testList);
 
     return `<div id="settings-popup" class="modal-content">
                 <div class="left-column-settings">${directionList}</div>
