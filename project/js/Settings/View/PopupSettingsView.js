@@ -1,6 +1,9 @@
 'use strict';
 
 let mediator = require('../../Mediator.js'),
+    PopupAddDirectionView = require('../../Settings/View/PopupAddDirectionView.js'),
+    PopupAddTestView = require('../../Tests/View/PopupAddTestView.js'),
+    PopupAddFilterView = require('../../Filters/View/PopupAddFilterView.js'),
     settingsPopupTpl = require('../../Settings/View/tpl/settingsPopupTpl.js');
 
 class PopupSettingsView {
@@ -10,8 +13,6 @@ class PopupSettingsView {
         this.selectedDirection = directions[0];
         this.mode = 'T';
 
-
-        this.setDirectionNames();
         this.modal = document.querySelector('#modal-settings');
     }
 
@@ -19,36 +20,7 @@ class PopupSettingsView {
         this.modal.innerHTML = settingsPopupTpl(this.directionNames, this.mode, this.selectedDirection);
         this.open();
         this.addListeners();
-    }
-
-
-
-    reRenderPopup (directions, mode, selectedDirection) {
-        this.modal.innerHTML = settingsPopupTpl(directions, mode, selectedDirection);
-        this.addListeners();
-    }
-
-    setDirectionNames () {
-        // let directionSelect = document.querySelector('.direction-select'),
-        //     optionList = '',
-        //     tpl = '';
-
-        // this.settings.directionList.forEach((direction, i) => {
-        //     optionList += `
-        //         <option ${(i = 0) ? 'selected' : ''} value="${direction.name}">
-        //             ${direction.name}
-        //         </option>
-        //     `;
-        // });
-        
-
-        let directionNames = [];
-
-        this.directions.forEach((item) => {
-            directionNames.push(item.name);
-        });
-console.log(this.directions);
-        return directionNames;
+        this.subscribe();
     }
 
     open () {
@@ -56,42 +28,46 @@ console.log(this.directions);
     }
 
     addListeners () {
-        let closeGroupBtn = document.querySelector('#close-settings-btn'),
-            directionSelect = document.querySelector('#modal-settings-direction'),
+        let directionSelect = document.querySelector('#modal-settings-direction'),
+            closeSettingsBtn = document.querySelector('#close-settings-btn'),
             selectTestBtn = document.querySelector('#test-settings-btn'),
             selectFilterBtn = document.querySelector('#filter-settings-btn'),
             addDirectionPopup = document.querySelector('.add-direction-btn'),
-            addTestPopup = document.querySelector('.add-test-btn'),
-            addFilterPopup = document.querySelector('.add-filter-btn');
-
-        closeGroupBtn.addEventListener('click', () => {
-            mediator.pub('settingsPopup:close');
-            mediator.unsub('settingsPopup:close');
-        });
+            addFilterTestPopup = document.querySelector('.add-test-filter-btn');
 
         directionSelect.addEventListener('change', (e) => {
-            mediator.pub('directionSelect:change', e.target.value);
+            this.selectedDirection = this.directions.find((item) => item.name === e.target.value);
+            this.mode = 'T';
+            this.renderPopup();
         });
 
         selectTestBtn.addEventListener('click', () => {
-            mediator.pub('test:select');
+            this.mode = 'T';
+            this.renderPopup();
         });
 
         selectFilterBtn.addEventListener('click', () => {
-            mediator.pub('filter:select');
+            this.mode = 'F';
+            this.renderPopup();
         });
 
         addDirectionPopup.addEventListener('click', () => {
-            mediator.pub('addDirectionPopup:open');
+            let popupAddDirectionView = new PopupAddDirectionView();
+            
+            popupAddDirectionView.renderPopup();
+            this.close();
         });
 
-        // addTestPopup.addEventListener('click', () => {
-        //     mediator.pub('addFilterPopup:open');
-        // });
+        addFilterTestPopup.addEventListener('click', () => {
+            let popup = this.mode === 'T'? new PopupAddTestView(): new PopupAddFilterView(this.directions.testList, this.directions.actionList, this.directions.conditionList);
 
-        // addFilterPopup.addEventListener('click', () => {
-        //     mediator.pub('addTestPopup:open');
-        // });
+            popup.renderPopup();
+            this.close();
+        });
+
+        closeSettingsBtn.addEventListener('click', () => {
+            this.close();
+        });
     }
 
     generateData () {
@@ -107,6 +83,16 @@ console.log(this.directions);
 
     close () {
         this.modal.classList.remove('visible');
+    }
+
+    subscribe () {
+        mediator.sub('addPopup:close', () => {
+            this.open();
+        });
+
+        // mediator.sub('groupPopup:open', () => {
+        //     return this.directionNames;
+        // });
     }
 }
 

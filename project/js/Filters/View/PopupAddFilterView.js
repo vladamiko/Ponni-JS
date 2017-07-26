@@ -28,8 +28,8 @@ class PopupAddFilterView {
 
 
         closeFilterBtn.addEventListener('click', () => {
-            mediator.pub('addFilterPopup:close');
-            mediator.unsub('addFilterPopup:close');
+            this.close();
+            mediator.pub('addPopup:close');
         });
 
         tests.addEventListener('click', () => {

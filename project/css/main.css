@@ -43,7 +43,8 @@ input[type="text"] {
 }
 /*-- group --*/
 .group-block-head,
-.group-block-body {
+.group-block-body,
+.days-block {
     position: relative;
 }
 .group-block-head .btn {
@@ -51,7 +52,8 @@ input[type="text"] {
     right: 0px;
     top: 0px;
 }
-.group-block-wrapper {
+.group-block-wrapper,
+.day-wrapper {
     margin-right: 125px;
     min-height: 120px;
     position: relative;
@@ -59,7 +61,8 @@ input[type="text"] {
     box-sizing: border-box;
     overflow-x: scroll;
 }
-.group {
+.group,
+.day {
     margin-right: 10px;
     padding: 10px;
     width: 115px;
@@ -83,7 +86,8 @@ input[type="text"] {
     background-color: transparent;
     padding: 0;
 }
-.add-group-btn {
+.add-group-btn,
+.add-day-btn {
     width: 115px;
     height: 100%;
     position: absolute;
@@ -147,9 +151,6 @@ input[type="text"] {
     width: 60%;
     display: flex;
     justify-content: space-between;
-}
-.modal-content.format {
-    width: 30%;
 }
 .modal-group-name,
 .modal-group-direction,
