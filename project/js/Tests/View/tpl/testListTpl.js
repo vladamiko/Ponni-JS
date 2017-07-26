@@ -1,10 +1,10 @@
 'use strict';
 
 function testListTpl (testsList) {
-    let tests = '';
+    let testList = '';
 
     testsList.forEach((test) => {
-        tests += `<div class="test">${test.name}</div>`;
+        testList += `<div class="test">${test.name}</div>`;
     });
 
     return `<div class="test-list-wrapper">

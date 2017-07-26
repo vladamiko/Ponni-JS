@@ -1,6 +1,6 @@
 'use strict';
 
-let testTpl = require('./tpl/testTpl.js'),
+let testViewTpl = require('./tpl/testViewTpl.js'),
     mediator = require('../../Mediator.js');
 
 class TestView {
@@ -10,7 +10,7 @@ class TestView {
     }
 
     setTest (test) {
-        this.template = testTpl(test);
+        this.template = testViewTpl(test);
     }
 
     renderTest () {
