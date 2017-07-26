@@ -1,19 +1,22 @@
 'use strict';
 
+let Test = require('../../Tests/Model/Test.js'),
+    Filter = require('../../Filters/Model/Filter.js');
+
 class DirectionModel {
     constructor (name) {
         this.name = name;
-        this.tests = [];
-        this.filters = [];
+        this.testList = [];
+        this.filterList = [];
     }
 
-    // addTest (testName) {
-    //     this.tests.push(new Test(testName));
-    // }
+    addTest (testName) {
+        this.testList.push(new Test(testName));
+    }
 
-    // addFilter (tests, action, condition, grade) {
-    //     this.filters.push(new Filter(tests, action, condition, grade));
-    // }
+    addFilter (testList, action, condition, grade) {
+        this.filterList.push(new Filter(testList, action, condition, grade));
+    }
 }
 
 module.exports = DirectionModel;
