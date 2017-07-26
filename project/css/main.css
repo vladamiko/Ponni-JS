@@ -111,11 +111,15 @@ input[type="text"] {
     padding-bottom: 20px;
 }
 .test-block-wrapper .test,
-.filter-block-wrapper .filter {
+.filter-block-wrapper .filter
+ {
     background-color: #3e362f;
     padding: 40px 10px;
     margin-right: 10px;
     color: #fff;
+}
+.filter-block-wrapper .filter {
+    flex-grow: 1;
 }
 .format-test-list {
     max-width: 300px;
@@ -234,4 +238,26 @@ input[type="text"] {
     padding: 10px;
     margin: 10px 0;
     border: 1px solid;
+}
+.filter {
+    display: flex;
+    flex-direction: row;
+}
+.filter>div {
+    margin-right: 20px;
+}
+.filter-item {
+    display: flex;
+    flex-direction: row;
+}
+.filter-checkbox {
+    display: flex;
+    align-self: center;
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+}
+.filter-btn {
+
+    margin: 10px;
 }
