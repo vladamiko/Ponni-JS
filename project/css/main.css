@@ -109,12 +109,15 @@ input[type="text"] {
     color: #fff;
 }
 .format-test-list {
-    max-width: 300px;
+    width: 200px;
     border: 1px solid #3e362f;
 }
 .format-test-list .test-name {
     padding: 10px;
     border-bottom: 1px solid #3e362f;
+}
+.format-test-list .btn {
+    width: 100%;
 }
 /*-- modal --*/
 .modal {

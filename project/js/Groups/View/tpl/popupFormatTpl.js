@@ -1,7 +1,6 @@
 'use strict';
 
 function popupFormatTpl (testList) {
-    debugger;
     console.log(testList);
     let tests = '';
 
