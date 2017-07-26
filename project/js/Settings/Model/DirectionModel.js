@@ -10,8 +10,8 @@ class DirectionModel {
         this.filterList = [];
     }
 
-    addTest (testName) {
-        this.testList.push(new Test(testName));
+    addTest (testName, grade) {
+        this.testList.push(new Test(testName, grade));
     }
 
     addFilter (testList, action, condition, grade) {
