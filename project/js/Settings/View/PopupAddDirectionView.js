@@ -24,8 +24,8 @@ class PopupAddDirectionView {
 
 
         closeDirectionBtn.addEventListener('click', () => {
-            mediator.pub('addDirectionPopup:close');
-            mediator.unsub('addDirectionPopup:close');
+            this.close();
+            mediator.pub('addPopup:close');
         });
 
         directionName.addEventListener('input', () => {

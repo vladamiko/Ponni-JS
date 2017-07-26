@@ -10,7 +10,7 @@ function filterListSettingsTpl (filterList) {
     return `<div class="filter-list-wrapper">
                 <h3>Filters</h3>
                 <div class="filter-list">${filters}</div>
-                <button class="add-filter-btn btn">add filter</button>
+                <button class="add-test-filter-btn btn">add filter</button>
             </div>`;
 }
 
