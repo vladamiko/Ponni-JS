@@ -2,8 +2,8 @@
 
 let mediator = require('../../Mediator.js'),
     PopupAddDirectionView = require('../../Settings/View/PopupAddDirectionView.js'),
-    PopupAddTestView = require('../../Tests/View/PopupAddTestView.js'),
-    PopupAddFilterView = require('../../Filters/View/PopupAddFilterView.js'),
+    PopupAddTestView = require('./PopupAddTestView.js'),
+    PopupAddFilterView = require('./PopupAddFilterView.js'),
     settingsPopupTpl = require('../../Settings/View/tpl/settingsPopupTpl.js');
 
 class PopupSettingsView {
