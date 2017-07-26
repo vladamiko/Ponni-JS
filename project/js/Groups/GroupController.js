@@ -12,7 +12,6 @@ class GroupController {
     constructor (groupList, groupDirection) {
         this.groupList = groupList;
         this.groupDirection = groupDirection;
-        console.log(this.groupDirection);
         this.subscribe();
     }
 

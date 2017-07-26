@@ -126,7 +126,8 @@ input[type="text"] {
     flex-grow: 1;
 }
 .format-test-list {
-    max-width: 300px;
+    width: 300px;
+}
 .format-test-list {
     width: 200px;
     border: 1px solid #3e362f;
@@ -249,7 +250,7 @@ input[type="text"] {
     display: flex;
     flex-direction: row;
 }
-.filter>div {
+.filter > div {
     margin-right: 20px;
 }
 .filter-item {
