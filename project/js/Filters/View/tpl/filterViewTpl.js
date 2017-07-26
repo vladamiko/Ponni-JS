@@ -13,7 +13,7 @@ function filterViewTpl (filter) {
                     <div>${filter.condition} </div>
                     <div>${filter.grade}</div>
                 </div>
-            <button class="btn filter-btn">123</button>
+            <button class="btn filter-btn">X</button>
         </div>`);
 
     return filterListName;
