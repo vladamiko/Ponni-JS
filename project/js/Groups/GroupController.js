@@ -33,9 +33,10 @@ class GroupController {
             groupListView.appendGroup(group);
         });
 
-        mediator.sub('group:formatted', () => {
-            console.log('formated');
-            let popupFormatView = new PopupFormatView();
+        mediator.sub('group:formatted', (group) => {
+            let popupFormatView = new PopupFormatView(group);
+
+            popupFormatView.render();
         });
     }
 }

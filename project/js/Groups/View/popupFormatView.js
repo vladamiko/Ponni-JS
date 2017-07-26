@@ -4,18 +4,20 @@ let popupFormatTpl = require('./tpl/popupFormatTpl.js'),
     mediator = require('../../Mediator.js');
 
 class PopupFormatView {
-   constructor () {
+   constructor (group) {
       this.template = '';
       this.modal = document.querySelector('.modal-format-added');
-      this.renderGroup();
+      this.group = group;
    }
 
-   setGroup (group) {
-      this.template = popupFormatTpl(group);
+   setGroup () {
+      this.template = popupFormatTpl(this.group.testList);
    }
    
-   renderGroup () {
+   render () {
+      this.setGroup();
       this.modal.insertAdjacentHTML('afterbegin', this.template);
+      this.open();
       this.addListeners();
    }
 

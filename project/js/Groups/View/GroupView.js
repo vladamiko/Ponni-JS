@@ -10,6 +10,11 @@ class GroupView {
     }
 
     setGroup (group) {
+        this.group = group;
+        this.setTemplate(this.group);
+    }
+
+    setTemplate (group) {
         this.template = groupTpl(group);
     }
 
@@ -21,7 +26,7 @@ class GroupView {
     addListeners () {
         let formatGroupBtn = this.groupsBlock.querySelector('.format-added-btn');
 
-        formatGroupBtn.addEventListener('click', () => mediator.pub('group:formatted'));
+        formatGroupBtn.addEventListener('click', () => mediator.pub('group:formatted', this.group));
     }
 }
 
