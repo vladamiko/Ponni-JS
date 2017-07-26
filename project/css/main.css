@@ -108,6 +108,14 @@ input[type="text"] {
     padding: 40px 10px;
     color: #fff;
 }
+.format-test-list {
+    max-width: 300px;
+    border: 1px solid #3e362f;
+}
+.format-test-list .test-name {
+    padding: 10px;
+    border-bottom: 1px solid #3e362f;
+}
 /*-- modal --*/
 .modal {
     position: fixed;
@@ -136,6 +144,9 @@ input[type="text"] {
     width: 60%;
     display: flex;
     justify-content: space-between;
+}
+.modal-content.format {
+    width: 30%;
 }
 .modal-group-name,
 .modal-group-direction,
