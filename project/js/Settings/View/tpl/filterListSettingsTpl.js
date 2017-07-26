@@ -4,7 +4,7 @@ function filterListSettingsTpl (filterList) {
     let filters = '';
 
     filterList.forEach((filter) => {
-        filters += `<div class="filter">${filter}</div>`;
+        filters += `<div class="filter">${filter.name}</div>`;
     });
 
     return `<div class="filter-list-wrapper">

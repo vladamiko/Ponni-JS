@@ -8,8 +8,9 @@ class PopupAddFilterView {
         this.modal = document.querySelector('.modal-add-filter');
     }
 
-    renderPopup (testList, actionList, conditionList) {
-        this.modal.innerHTML = addFilterPopupTpl(testList, actionList, conditionList);
+    renderPopup (selectedDirection) {
+        this.selectedDirection = selectedDirection;
+        this.modal.innerHTML = addFilterPopupTpl(this.selectedDirection.testList);
         this.open();
         this.addListeners();
     }
@@ -33,10 +34,6 @@ class PopupAddFilterView {
         });
 
         tests.addEventListener('click', () => {
-            //
-        });
-
-        testName.addEventListener('input', () => {
             //
         });
 
