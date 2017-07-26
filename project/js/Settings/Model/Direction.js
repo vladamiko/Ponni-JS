@@ -3,20 +3,21 @@
 let Test = require('../../Tests/Model/Test.js'),
     Filter = require('../../Filters/Model/Filter.js');
 
-class DirectionModel {
+class Direction {
     constructor (name) {
         this.name = name;
         this.testList = [];
         this.filterList = [];
     }
 
-    addTest (testName, grade) {
+    addTest (testName) {
+        let grade = 0;
         this.testList.push(new Test(testName, grade));
     }
 
-    addFilter (testList, action, condition, grade) {
-        this.filterList.push(new Filter(testList, action, condition, grade));
+    addFilter (name, testList, action, condition, grade) {
+        this.filterList.push(new Filter(name, testList, action, condition, grade));
     }
 }
 
-module.exports = DirectionModel;
+module.exports = Direction;

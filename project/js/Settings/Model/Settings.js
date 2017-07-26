@@ -1,8 +1,8 @@
 'use strict';
 
-let DirectionModel = require('../../Settings/Model/DirectionModel.js');
+let Direction = require('../../Settings/Model/Direction.js');
 
-class SettingsModel {
+class Settings {
     constructor () {
         this.directions = [];
     }
@@ -18,4 +18,4 @@ class SettingsModel {
     }
 }
 
-module.exports = SettingsModel;
+module.exports = Settings;

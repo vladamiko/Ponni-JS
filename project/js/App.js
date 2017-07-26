@@ -2,7 +2,7 @@
 
 let GroupController = require('./Groups/GroupController.js'),
     DaysController = require('./Days/DaysController.js'),
-    SettingsModel = require('./Settings/Model/SettingsModel.js'),
+    Settings = require('./Settings/Model/Settings.js'),
     SettingsController = require('./Settings/SettingsController.js'),
     TestController = require('./Tests/TestController.js'),
     FilterController = require('./Filters/FilterController.js'),
@@ -11,15 +11,14 @@ let GroupController = require('./Groups/GroupController.js'),
 class App {
     constructor (groupList) {
         this.groupList = groupList;
-        this.settingsModel = new SettingsModel();
+        this.settings = new Settings();
 
         this.subscribe();
     }
 
     start () {
-        // settings - мы передаем в GroupController
-        let groupController = new GroupController(this.groupList, this.settingsModel),
-            settingsController = new SettingsController(this.settingsModel.directions, this.settingsModel.getDirectionNames()),
+        let groupController = new GroupController(this.groupList),
+            settingsController = new SettingsController(this.settings.directions, this.settings.getDirectionNames()),
             testController = new TestController(this.groupList),
             filterController = new FilterController(this.groupList),
             daysController = new DaysController();

@@ -5,7 +5,7 @@ let GroupListView = require('../Groups/View/GroupListView.js'),
     PopupFormatView = require('./View/PopupFormatView.js'),
     GroupModel = require('../Groups/Model/GroupModel.js'),
     PopupAddGroupView = require('../Groups/View/PopupAddGroupView.js'),
-    SettingsModel = require('../Settings/Model/SettingsModel.js'),
+    Settings = require('../Settings/Model/Settings.js'),
     mediator = require('../Mediator.js');
 
 class GroupController {
