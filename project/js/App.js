@@ -1,6 +1,7 @@
 'use strict';
 
 let GroupController = require('./Groups/GroupController.js'),
+    DaysController = require('./Days/DaysController.js'),
     SettingsModel = require('./Settings/Model/SettingsModel.js'),
     SettingsController = require('./Settings/SettingsController.js'),
     mediator = require('./Mediator.js');
@@ -15,7 +16,8 @@ class App {
 
     start () {
         let groupController = new GroupController(this.groupList),
-            settingsController = new SettingsController(this.settingsModel.directions, this.settingsModel.getDirectionNames());
+            settingsController = new SettingsController(this.settingsModel.directions, this.settingsModel.getDirectionNames()),
+            daysController = new DaysController();
         
         groupController.showGroupList();
     }
