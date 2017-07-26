@@ -90,22 +90,31 @@ input[type="text"] {
     right: 0px;
     top: 0px;
 }
-.test-list {
+.test-block-wrapper,
+.filter-block-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-left: 0;
     margin: 0;
 }
+.filter-block-wrapper {
+    flex-direction: column;
+}
+.test-wrapper,
+.filter-wrapper {
+    justify-content: flex-start;
+}
 .test-list-wrapper .test-list,
 .filter-list-wrapper .filter-list {
     flex-direction: column;
     padding-bottom: 20px;
 }
-.test-list li {
-    list-style: none;
+.test-block-wrapper .test,
+.filter-block-wrapper .filter {
     background-color: #3e362f;
     padding: 40px 10px;
+    margin-right: 10px;
     color: #fff;
 }
 .format-test-list {

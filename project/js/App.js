@@ -3,6 +3,8 @@
 let GroupController = require('./Groups/GroupController.js'),
     SettingsModel = require('./Settings/Model/SettingsModel.js'),
     SettingsController = require('./Settings/SettingsController.js'),
+    TestController = require('./Tests/TestController.js'),
+    FilterController = require('./Filters/FilterController.js'),
     mediator = require('./Mediator.js');
 
 class App {
@@ -15,9 +17,13 @@ class App {
 
     start () {
         let groupController = new GroupController(this.groupList),
-            settingsController = new SettingsController(this.settingsModel.directions, this.settingsModel.getDirectionNames());
+            settingsController = new SettingsController(this.settingsModel.directions, this.settingsModel.getDirectionNames()),
+            testController = new TestController(this.groupList),
+            filterController = new FilterController(this.groupList);
         
         groupController.showGroupList();
+        testController.showTestList();
+        filterController.showFilterList();
     }
 
     subscribe () {
