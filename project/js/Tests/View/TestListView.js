@@ -1,30 +1,39 @@
 'use strict';
 
-let testsListTpl = require('./tpl/testsListTpl.js'),
+let testListViewTpl = require('./tpl/testListViewTpl.js'),
     TestView = require('./TestView.js'),
     mediator = require('../../Mediator.js');
 
 class TestListView {
-    constructor () {
+    constructor (groupList) {
         this.template = '';
+        this.groupList = groupList;
     }
 
     render () {
         let leftBlock = document.querySelector('.left-column');
 
-        this.template = testsListTpl();
-        leftBlock.insertAdjacentHTML('afterbegin', this.template);
+        this.template = testListViewTpl();
+        leftBlock.insertAdjacentHTML('beforeend', this.template);
+        this.renderTest();
     }
 
-    appendTest (test) {
-        this.test = test;
-        this.testView = new TestView();
-        this.testView.setTest(this.test);
-        this.testView.renderTest();
+    renderTest () {
+        this.groupList.forEach((item) => {
+            let testView = new TestView();
+
+            testView.setTest(item);
+
+            return testView.renderTest();
+        });
     }
 
-    addListeners () {
+    appendTest (groupList) {
+        let testView = new TestView();
+
+        testView.setTest(groupList.testList);
+        testView.renderTest();
     }
 }
 
-module.exports = GroupListView;
+module.exports = TestListView;
