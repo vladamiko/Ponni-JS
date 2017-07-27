@@ -20,6 +20,7 @@ class TestController {
         mediator.sub('group:active', (group) => {
             let testListView = new TestListView(group.testList);
 
+            testListView.renderTest();
             testListView.appendTest();
         });
     }

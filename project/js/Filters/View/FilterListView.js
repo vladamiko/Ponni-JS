@@ -5,9 +5,9 @@ let filterListViewTpl = require('./tpl/filterListViewTpl.js'),
     mediator = require('../../Mediator.js');
 
 class FilterListView {
-    constructor (groupList) {
+    constructor (filterList) {
         this.template = '';
-        this.groupList = groupList;
+        this.filterList = filterList;
     }
 
     render () {
@@ -15,15 +15,15 @@ class FilterListView {
 
         this.template = filterListViewTpl();
         leftBlock.insertAdjacentHTML('beforeend', this.template);
-        this.renderFilters();
-        this.addListeners();
+        // this.renderFilters();
+        // this.addListeners();
     }
 
     renderFilters () {
-        this.groupList.forEach((filter) => {
+        this.filterList.forEach((filter) => {
             let filterView = new FilterView();
 
-            filterView.setFilter(filter.filterList);
+            filterView.setFilter(filter);
 
             return filterView.renderFilter();
         });

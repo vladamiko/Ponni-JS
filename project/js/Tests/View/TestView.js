@@ -15,7 +15,7 @@ class TestView {
     renderTest () {
         let testsBlock = document.querySelector('.test-wrapper');
 
-        testsBlock.insertAdjacentHTML('afterbegin', this.template);
+        testsBlock.innerHTML = this.template;
         this.addListeners();
     }
 

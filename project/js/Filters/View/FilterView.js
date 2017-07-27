@@ -9,16 +9,12 @@ class FilterView {
     }
 
     setFilter (filter) {
-        this.filter = filter;
-        this.setTemplate(this.filter);
-    }
-
-    setTemplate (filter) {
         this.template = filterViewTpl(filter);
     }
 
     renderFilter () {
         let filtersBlock = document.querySelector('.filter-wrapper');
+        
         filtersBlock.insertAdjacentHTML('afterbegin', this.template);
     }
 }
