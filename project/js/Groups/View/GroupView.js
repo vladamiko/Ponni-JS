@@ -24,9 +24,14 @@ class GroupView {
     }
 
     addListeners () {
-        let formatGroupBtn = this.groupsBlock.querySelector('.format-added-btn');
+        let formatGroupBtn = this.groupsBlock.querySelector('.format-added-btn'),
+            groupElement = this.groupsBlock.querySelector('.group');
 
-        formatGroupBtn.addEventListener('click', () => mediator.pub('group:formatted', this.group));
+        formatGroupBtn.addEventListener('click', () => mediator.pub('formatAdded:open', this.group));
+        groupElement.addEventListener('click', () => {
+            groupElement.classList.add('active');
+            mediator.pub('group:active', this.group);
+        });
     }
 }
 

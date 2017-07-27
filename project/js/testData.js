@@ -98,7 +98,8 @@ let groupList = [
                 }
             }
         ]
-    }, {
+    },
+    {
         name: 'Dp-121',
         testList: [
             {
