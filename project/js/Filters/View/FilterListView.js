@@ -11,7 +11,6 @@ class FilterListView {
     }
 
     render () {
-        console.log('render');
         let leftBlock = document.querySelector('.left-column');
 
         this.template = filterListViewTpl();
@@ -21,10 +20,11 @@ class FilterListView {
     }
 
     renderFilters () {
+        debugger;
         this.groupList.forEach((filter) => {
             let filterView = new FilterView();
 
-            filterView.setFilter(filter);
+            filterView.setFilter(filter.filterList);
 
             return filterView.renderFilter();
         });

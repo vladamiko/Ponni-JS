@@ -23,7 +23,7 @@ class TestListView {
         this.groupList.forEach((item) => {
             let testView = new TestView();
 
-            testView.setTest(item);
+            testView.setTest(item.testList);
 
             return testView.renderTest();
         });
