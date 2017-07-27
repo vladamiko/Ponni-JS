@@ -15,7 +15,6 @@ class FilterListView {
 
         this.template = filterListViewTpl();
         leftBlock.insertAdjacentHTML('beforeend', this.template);
-        this.renderFilters();
         this.addListeners();
     }
 

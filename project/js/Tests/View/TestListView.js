@@ -15,8 +15,6 @@ class TestListView {
 
         this.template = testListViewTpl();
         leftBlock.insertAdjacentHTML('beforeend', this.template);
-        this.renderTest();
-        this.addListeners();
     }
 
     renderTest () {
@@ -34,10 +32,6 @@ class TestListView {
 
         testView.setTest(this.groupList);
         testView.renderTest();
-    }
-
-    addListeners () {
-        
     }
 }
 
