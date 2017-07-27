@@ -21,7 +21,7 @@ function popupAddFilterTpl (testList) {
                 </div>
                 <div class="right-column-filter">
                     <div>
-                        <input type="text" class="add-test-name" placeholder="Enter test name">
+                        <input type="text" class="add-filter-name" placeholder="Enter filter name">
                     </div>
                     <div>
                         <select class="modal-filter-action">${actions}</select>
