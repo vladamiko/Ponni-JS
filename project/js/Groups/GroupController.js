@@ -43,6 +43,7 @@ class GroupController {
         });
 
         mediator.sub('group:active', (group) => {
+            debugger;
             this.groupList.forEach((groupElement) => {
                 groupElement.deactivate();
             });

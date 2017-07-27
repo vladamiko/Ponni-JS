@@ -20,7 +20,6 @@ class FilterListView {
     }
 
     renderFilters () {
-        debugger;
         this.groupList.forEach((filter) => {
             let filterView = new FilterView();
 

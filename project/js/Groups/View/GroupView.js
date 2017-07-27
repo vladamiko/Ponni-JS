@@ -33,7 +33,6 @@ class GroupView {
            let buttonElement = e.target.classList.contains('format-added-btn');
 
             if (!buttonElement) {
-                groupElement.classList.add('active');
                 mediator.pub('group:active', this.group);
             }
         });
