@@ -10,8 +10,8 @@ let GroupController = require('./Groups/GroupController.js'),
     mediator = require('./Mediator.js');
 
 class App {
-    constructor () {
-        this.groupList = [];
+    constructor (groupList) {
+        this.groupList = groupList;
         this.settings = new Settings();
 
         this.subscribe();
