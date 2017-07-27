@@ -5,9 +5,9 @@ let testListViewTpl = require('./tpl/testListViewTpl.js'),
     mediator = require('../../Mediator.js');
 
 class TestListView {
-    constructor (testList) {
+    constructor (groupList) {
         this.template = '';
-        this.testList = testList;
+        this.groupList = groupList;  
     }
 
     render () {
@@ -18,10 +18,10 @@ class TestListView {
     }
 
     renderTest () {
-        this.testList.forEach((test) => {
+        this.groupList.forEach((group) => {
             let testView = new TestView();
 
-            testView.setTest(test);
+            testView.setTest(group.testList);
 
             return testView.renderTest();
         });
@@ -29,6 +29,7 @@ class TestListView {
 
     appendTest () {
         let testView = new TestView();
+        console.log(this.groupList);
 
         testView.setTest(this.groupList);
         testView.renderTest();

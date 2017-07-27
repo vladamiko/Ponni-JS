@@ -8,6 +8,7 @@ class TestController {
     constructor (groupList) {
         this.groupList = groupList;
         this.subscribe();
+        
     }
 
     subscribe () {
@@ -18,7 +19,7 @@ class TestController {
         });
 
         mediator.sub('group:active', (group) => {
-            let testListView = new TestListView(group.testList);
+            let testListView = new TestListView(this.groupList);
 
             testListView.renderTest();
             testListView.appendTest();

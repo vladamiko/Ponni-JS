@@ -8,8 +8,8 @@ class TestView {
         this.template = '';
     }
 
-    setTest (test) {
-        this.template = testViewTpl(test);
+    setTest (testList) {
+        this.template = testViewTpl(testList);
     }
 
     renderTest () {
