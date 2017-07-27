@@ -23,10 +23,10 @@ class FilterController {
             filterListView.appendFilter(filter);
         });
 
-        mediator.sub('group:active', () => {
-            let filterListView = new FilterListView(this.groupList);
+        mediator.sub('group:active', (group) => {
+            let filterListView = new FilterListView(group.filterList);
 
-            filterListView.appendFilter(groupList);
+            filterListView.appendFilter();
         });
     }
 

@@ -11,6 +11,7 @@ class FilterListView {
     }
 
     render () {
+        console.log('render');
         let leftBlock = document.querySelector('.left-column');
 
         this.template = filterListViewTpl();
@@ -29,10 +30,10 @@ class FilterListView {
         });
     }
 
-    appendFilter (filter) {
+    appendFilter () {
         let filterView = new FilterView();
 
-        filterView.setFilter(filter);
+        filterView.setFilter(this.groupList);
         filterView.renderFilter();
     }
 

@@ -1,16 +1,17 @@
 'use strict';
 
 let mediator = require('../../Mediator.js'),
-    addFilterPopupTpl = require('./tpl/addFilterPopupTpl.js');
+    popupAddFilterTpl = require('./tpl/popupAddFilterTpl.js');
 
 class PopupAddFilterView {
-    constructor () {
+    constructor (selectedDirection) {
+        this.selectedDirection = selectedDirection;
         this.modal = document.querySelector('.modal-add-filter');
+        this.modal.innerHTML = popupAddFilterTpl(this.selectedDirection.testList);
+        this.render();
     }
 
-    renderPopup (selectedDirection) {
-        this.selectedDirection = selectedDirection;
-        this.modal.innerHTML = addFilterPopupTpl(this.selectedDirection.testList);
+    render () {
         this.open();
         this.addListeners();
     }
@@ -27,26 +28,9 @@ class PopupAddFilterView {
             conditionSelect = document.querySelector('.modal-filter-condition'),
             testGrade = document.querySelector('.add-test-grade');
 
-
         closeFilterBtn.addEventListener('click', () => {
             this.close();
-            mediator.pub('addPopup:close');
-        });
-
-        tests.addEventListener('click', () => {
-            //
-        });
-
-        actionSelect.addEventListener('change', (e) => {
-            mediator.pub('actionSelect:change', e.target.value);
-        });
-
-        conditionSelect.addEventListener('change', (e) => {
-            mediator.pub('conditionSelect:change', e.target.value);
-        });
-
-        testGrade.addEventListener('input', () => {
-            //
+            mediator.pub('addFilterPopup:close');
         });
     }
 

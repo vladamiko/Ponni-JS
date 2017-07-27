@@ -5,28 +5,35 @@ let PopupSettingsView = require('../Settings/View/PopupSettingsView.js'),
     mediator = require('../Mediator.js');
 
 class SettingsController {
-    constructor (directions, directionNames) {
-        this.directions = directions;
-        this.directionNames = directionNames;
+    constructor (settings) {
+        this.settings = settings;
+        this.directions = this.settings.directions;
+        this.directionNames = this.settings.getDirectionNames();
+        this.view = new PopupSettingsView(this.directions, this.directionNames);
         this.subscribe();
-
     }
 
     subscribe () {
         mediator.sub('settingsPopup:open', () => {
-            let view = new PopupSettingsView(this.directions, this.directionNames);
-            view.renderPopup();
+            this.view.render();
         });
 
-        mediator.sub('addPopup:close', (directionName) => {
+        mediator.sub('addDirectionPopup:close', (directionName) => {
             let newDirection = new Direction(directionName);
 
             this.directions.push(newDirection);
             this.directionNames.push(newDirection.name);
-            
-            let view = new PopupSettingsView(this.directions, this.directionNames, newDirection);
-            view.renderPopup();
+            this.view.render(newDirection);
         });
+
+        mediator.sub('addTestPopup:close', (selectedDirection) => {
+            this.view.render(selectedDirection);
+        });
+
+        mediator.sub('addFilterPopup:close', (selectedDirection) => {
+            console.log(selectedDirection);
+            this.view.render(selectedDirection);
+        });        
     }
 }
 

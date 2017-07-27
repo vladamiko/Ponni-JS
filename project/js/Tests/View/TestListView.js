@@ -29,17 +29,15 @@ class TestListView {
         });
     }
 
-    appendTest (groupList) {
+    appendTest () {
         let testView = new TestView();
 
-        testView.setTest(groupList.testList);
+        testView.setTest(this.groupList);
         testView.renderTest();
     }
 
     addListeners () {
-        let addTestBtn = document.querySelector('.btn-test');
-
-        addTestBtn.addEventListener('click', () => mediator.pub('testPopup:open'));
+        
     }
 }
 

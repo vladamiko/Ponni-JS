@@ -1,6 +1,6 @@
 'use strict';
 
-function addTestPopupTpl () {
+function popupAddTestTpl () {
     return `<div class="modal-content add-test-popup">
                 <input type="text" class="add-test-name" placeholder="Enter test name">
                 <button class="btn btn-cog close-test-btn">
@@ -9,4 +9,4 @@ function addTestPopupTpl () {
             </div>`;
 }
 
-module.exports = addTestPopupTpl;
+module.exports = popupAddTestTpl;

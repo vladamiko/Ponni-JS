@@ -28,10 +28,10 @@ class ResultListView {
         });
     }
 
-    appendResult (groupList) {
+    appendResult () {
         let resultView = new ResultView();
 
-        resultView.setResult(groupList.testList);
+        resultView.setResult(this.groupList);
         resultView.renderResult();
     }
 }

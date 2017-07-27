@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', init);
 
 function init () {
     let App = require('./App.js'),
-        groupList = require('./testData'),
+        groupList = require('./defaultGroups'),
         defaultDirections = require('./defaultDirections');
 
 

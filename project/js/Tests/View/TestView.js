@@ -6,7 +6,6 @@ let testViewTpl = require('./tpl/testViewTpl.js'),
 class TestView {
     constructor () {
         this.template = '';
-        this.addListeners();
     }
 
     setTest (test) {
@@ -17,9 +16,13 @@ class TestView {
         let testsBlock = document.querySelector('.test-wrapper');
 
         testsBlock.insertAdjacentHTML('afterbegin', this.template);
+        this.addListeners();
     }
 
     addListeners () {
+        let addTestBtn = document.querySelector('.btn-test');
+
+        addTestBtn.addEventListener('click', () => mediator.pub('testPopup:open'));
     }
 }
 
