@@ -14,13 +14,11 @@ class PopupSettingsView {
         this.modal = document.querySelector('#modal-settings');
     }
 
-    render (selectedDirection = this.directions[0]) {
-        
+    render (selectedDirection = this.directions[0]) {   
         this.selectedDirection = selectedDirection;
         this.modal.innerHTML = popupSettingsTpl(this.directionNames, this.mode, this.selectedDirection);
         this.open();
         this.addListeners();
-        this.subscribe();
     }
 
     open () {
@@ -74,29 +72,8 @@ class PopupSettingsView {
         });
     }
 
-    generateData () {
-        let groupNameElem = document.querySelector('#modalGroupName'),
-            groupDirectionElem = document.querySelector('#modalGroupDirection'),
-            data = {};
-
-        data.direction = groupDirectionElem.options[groupDirectionElem.selectedIndex].text;
-        data.name = groupNameElem.value;
-
-        return data;
-    }
-
     close () {
         this.modal.classList.remove('visible');
-    }
-
-    subscribe () {
-        mediator.sub('addPopup:close', () => {
-            this.open();
-        });
-
-        // mediator.sub('groupPopup:open', () => {
-        //     return this.directionNames;
-        // });
     }
 }
 
