@@ -4,7 +4,7 @@ let directionListTpl = require('./directionListTpl.js'),
     filterListSettingsTpl = require('./filterListSettingsTpl.js'),
     testListSettingsTpl = require('./testListSettingsTpl.js');
 
-function settingsPopupTpl (directions, mode, selectedDirection) {
+function popupSettingsTpl (directions, mode, selectedDirection) {
     let directionList = directionListTpl(directions, selectedDirection.name),
         filterList = filterListSettingsTpl(selectedDirection.filterList),
         testList = testListSettingsTpl(selectedDirection.testList);
@@ -28,4 +28,4 @@ function settingsPopupTpl (directions, mode, selectedDirection) {
             </div>`;
 }
 
-module.exports = settingsPopupTpl;
+module.exports = popupSettingsTpl;

@@ -19,7 +19,7 @@ class App {
 
     start () {
         let groupController = new GroupController(this.groupList),
-            settingsController = new SettingsController(this.settings.directions, this.settings.getDirectionNames()),
+            settingsController = new SettingsController(this.settings),
             testController = new TestController(this.groupList),
             filterController = new FilterController(this.groupList),
             daysController = new DaysController(this.groupList),

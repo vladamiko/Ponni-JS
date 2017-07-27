@@ -1,15 +1,17 @@
 'use strict';
 
 let mediator = require('../../Mediator.js'),
-    addTestPopupTpl = require('./tpl/addTestPopupTpl.js');
+    popupAddTestTpl = require('./tpl/popupAddTestTpl.js');
 
 class PopupAddTestView {
-    constructor () {
+    constructor (selectedDirection) {
         this.modal = document.querySelector('.modal-add-test');
+        this.selectedDirection = selectedDirection;
+        this.render();
     }
 
-    renderPopup () {
-        this.modal.innerHTML = addTestPopupTpl();
+    render () {
+        this.modal.innerHTML = popupAddTestTpl();
         this.open();
         this.addListeners();
     }
@@ -20,16 +22,12 @@ class PopupAddTestView {
 
     addListeners () {
         let closeTestBtn = document.querySelector('.close-test-btn'),
-            testName = document.querySelector('.add-test-name');
+            testNameInput = document.querySelector('.add-test-name');
 
         closeTestBtn.addEventListener('click', () => {
+            this.selectedDirection.addTest(testNameInput.value);
             this.close();
-            mediator.pub('addPopup:close');
-            // mediator.unsub('addTestPopup:close');
-        });
-
-        testName.addEventListener('input', () => {
-            //
+            mediator.pub('addTestPopup:close', this.selectedDirection);
         });
     }
 

@@ -2,7 +2,7 @@
 
 let Filter = require('../../../Filters/Model/Filter.js');
 
-function addFilterPopupTpl (testList) {
+function popupAddFilterTpl (testList) {
     let tests = generateTestList(testList),
         actions = generateList(Filter.ACTION_LIST),
         conditions = generateList(Filter.CONDITION_LIST);
@@ -35,4 +35,4 @@ function addFilterPopupTpl (testList) {
             </div>`;
 }
 
-module.exports = addFilterPopupTpl;
+module.exports = popupAddFilterTpl;
