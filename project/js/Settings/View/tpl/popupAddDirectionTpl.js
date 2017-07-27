@@ -1,6 +1,6 @@
 'use strict';
 
-function addDirectionPopupTpl () {
+function popupAddDirectionTpl () {
     return `<div class="modal-content add-direction-popup">
                 <input type="text" class="add-direction-name" placeholder="Enter direction name">
                 <button class="btn btn-cog">
@@ -9,4 +9,4 @@ function addDirectionPopupTpl () {
             </div>`;
 }
 
-module.exports = addDirectionPopupTpl;
+module.exports = popupAddDirectionTpl;

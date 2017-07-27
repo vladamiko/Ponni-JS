@@ -1,15 +1,16 @@
 'use strict';
 
 let mediator = require('../../Mediator.js'),
-    addDirectionPopupTpl = require('../../Settings/View/tpl/addDirectionPopupTpl.js');
+    popupAddDirectionTpl = require('../../Settings/View/tpl/popupAddDirectionTpl.js');
 
 class PopupAddDirectionView {
     constructor () {
         this.modal = document.querySelector('.modal-add-direction');
+        this.render();
     }
 
-    renderPopup () {
-        this.modal.innerHTML = addDirectionPopupTpl();
+    render () {
+        this.modal.innerHTML = popupAddDirectionTpl();
         this.open();
         this.addListeners();
     }
@@ -24,7 +25,7 @@ class PopupAddDirectionView {
 
 
         closeDirectionBtn.addEventListener('click', () => {
-            mediator.pub('addPopup:close', directionNameInput.value);
+            mediator.pub('addDirectionPopup:close', directionNameInput.value);
             this.close();
         });
     }
