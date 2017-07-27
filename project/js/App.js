@@ -6,6 +6,7 @@ let GroupController = require('./Groups/GroupController.js'),
     SettingsController = require('./Settings/SettingsController.js'),
     TestController = require('./Tests/TestController.js'),
     FilterController = require('./Filters/FilterController.js'),
+    ResultController = require('./Result/ResultController.js'),
     mediator = require('./Mediator.js');
 
 class App {
@@ -21,11 +22,14 @@ class App {
             settingsController = new SettingsController(this.settings.directions, this.settings.getDirectionNames()),
             testController = new TestController(this.groupList),
             filterController = new FilterController(this.groupList),
-            daysController = new DaysController();
+            daysController = new DaysController(this.groupList),
+            resultController = new ResultController(this.groupList);
         
         groupController.showGroupList();
+        daysController.showDayList();
         testController.showTestList();
         filterController.showFilterList();
+        resultController.showResult();
     }
 
     subscribe () {
