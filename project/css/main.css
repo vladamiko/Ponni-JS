@@ -75,6 +75,7 @@ input[type="text"] {
     border: none;
     padding: 20px;
     cursor: pointer;
+    outline: none;
 }
 .btn-cog {
     color: #3e362f;
@@ -134,9 +135,6 @@ input[type="text"] {
     padding: 10px;
     border: 1px solid #3e362f;
     margin-bottom: 10px;
-}
-.format-test-list .test-name:last-child {
-    border-bottom: none;
 }
 .format-test-list .btn {
     width: 100%;

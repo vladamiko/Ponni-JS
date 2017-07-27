@@ -3,7 +3,7 @@
 function groupPopupTpl (directionList) {
     let options = '';
 
-    directionList.directions.forEach((direction) => {
+    directionList.forEach((direction) => {
         options += `<option>${direction.name}</option>`;
     });
 

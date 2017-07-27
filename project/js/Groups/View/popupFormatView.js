@@ -35,7 +35,6 @@ class PopupFormatView {
       });
 
       closeTestBtn.addEventListener('click', () => {
-         debugger;
          this.group.addTest(this.test);
          mediator.unsub('oneTest:added');
          this.close();
