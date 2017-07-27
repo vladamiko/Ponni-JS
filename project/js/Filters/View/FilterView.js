@@ -6,7 +6,6 @@ let filterViewTpl = require('./tpl/filterViewTpl.js'),
 class FilterView {
     constructor () {
         this.template = '';
-        this.filtersBlock = document.querySelector('.filter-wrapper');
     }
 
     setFilter (filter) {
@@ -19,7 +18,8 @@ class FilterView {
     }
 
     renderFilter () {
-        this.filtersBlock.insertAdjacentHTML('afterbegin', this.template);
+        let filtersBlock = document.querySelector('.filter-wrapper');
+        filtersBlock.insertAdjacentHTML('afterbegin', this.template);
     }
 }
 

@@ -17,8 +17,8 @@ class TestController {
             testPopupView.renderPopup();
         });
 
-        mediator.sub('group:active', () => {
-            let testListView = new TestListView(this.groupList);
+        mediator.sub('group:active', (group) => {
+            let testListView = new TestListView(group.testList);
 
             testListView.appendTest();
         });
