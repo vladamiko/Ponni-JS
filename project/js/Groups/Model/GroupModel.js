@@ -3,19 +3,21 @@
 class GroupModel {
     constructor (name, direction) {
         this.name = name;
-        this.direction = direction;
+        this.direction = direction.name;
+        this.testList = direction.testList;
+        this.filterList = direction.filterList;
         this.selected = false;
 
         this.listeners = [];
     }
 
-    setTestList (testList) {
-        this.testList = testList;
-    }
+    // setTestList (testList) {
+    //
+    // }
 
-    setFilterList (filterList) {
-        this.filterList = filterList;
-    }
+    // setFilterList (filterList) {
+    //     this.filterList = filterList;
+    // }
 
     addTest (test) {
         this.testList.push(test);
