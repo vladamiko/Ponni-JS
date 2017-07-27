@@ -3,6 +3,7 @@
 class Day {
     constructor (date) {
         this.date = date;
+        //this.time = time;
     }
 }
 

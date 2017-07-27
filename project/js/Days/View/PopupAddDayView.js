@@ -13,6 +13,7 @@ class PopupAddDayView {
 
     renderPopup () {
         this.modal.innerHTML = popupAddDayTpl();
+        this.modal.querySelector('.current-date').valueAsDate = new Date();
         this.open();
         this.addListeners();
     }
@@ -23,7 +24,7 @@ class PopupAddDayView {
 
     addListeners () {
         let closeDayBtn = this.modal.querySelector('.close-day-btn'),
-            dateInput = this.modal.querySelector('.dateInput');
+            dateInput = this.modal.querySelector('.date-input');
 
         dateInput.addEventListener('change', (e) => {
             this.selectedDate = e.target.value;
