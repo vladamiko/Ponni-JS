@@ -22,15 +22,22 @@ class PopupAddFilterView {
 
     addListeners () {
         let closeFilterBtn = document.querySelector('.close-filter-btn'),
-            tests = document.querySelector('.left-column-filter'),
-            testName = document.querySelector('.add-test-name'),
-            actionSelect = document.querySelector('.modal-filter-action'),
-            conditionSelect = document.querySelector('.modal-filter-condition'),
-            testGrade = document.querySelector('.add-test-grade');
-
+            filterName = document.querySelector('.add-filter-name').value,
+            action = document.querySelector('.modal-filter-action').value,
+            condition = document.querySelector('.modal-filter-condition').value,
+            grade = document.querySelector('.add-test-grade').value;
+            
         closeFilterBtn.addEventListener('click', () => {
+            let checkedTests = document.querySelectorAll('input:checked'),
+                testNames = [];
+            
+            checkedTests.forEach(function(test) {
+                testNames.push(test.value);
+            });
+
+            this.selectedDirection.addFilter(filterName, testNames, action, condition, grade);
             this.close();
-            mediator.pub('addFilterPopup:close');
+            mediator.pub('addFilterPopup:close', this.selectedDirection);
         });
     }
 

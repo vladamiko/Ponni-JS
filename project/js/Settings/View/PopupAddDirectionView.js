@@ -23,7 +23,6 @@ class PopupAddDirectionView {
         let closeDirectionBtn = document.querySelector('.close-direction-btn'),
             directionNameInput = document.querySelector('.add-direction-name');
 
-
         closeDirectionBtn.addEventListener('click', () => {
             mediator.pub('addDirectionPopup:close', directionNameInput.value);
             this.close();

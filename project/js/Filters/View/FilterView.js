@@ -14,8 +14,8 @@ class FilterView {
 
     renderFilter () {
         let filtersBlock = document.querySelector('.filter-wrapper');
-        
-        filtersBlock.insertAdjacentHTML('afterbegin', this.template);
+
+        filtersBlock.innerHTML = this.template;
     }
 }
 
