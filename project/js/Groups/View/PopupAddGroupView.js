@@ -23,13 +23,10 @@ class PopupAddGroupView {
         closeGroupBtn.addEventListener('click', () => {
             let data = this.generateData(),
                 group = {};
-            
-            group = new GroupModel(data.name, data.direction);
 
             this.directionList.forEach((direction) => {
                if (data.direction === direction.name) {
-                   group.setTestList(direction.testList);
-                   group.setFilterList(direction.filterList);
+                   group = new GroupModel(data.name, direction);
                }
             });
 

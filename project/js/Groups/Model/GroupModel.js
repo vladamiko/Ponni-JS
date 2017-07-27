@@ -11,14 +11,6 @@ class GroupModel {
         this.listeners = [];
     }
 
-    // setTestList (testList) {
-    //
-    // }
-
-    // setFilterList (filterList) {
-    //     this.filterList = filterList;
-    // }
-
     addTest (test) {
         this.testList.push(test);
     }
