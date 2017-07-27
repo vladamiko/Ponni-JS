@@ -27,6 +27,8 @@ class DaysController {
 
     showDayList () {
         let dayListView = new DayListView(this.groupList);
+
+        dayListView.render();
     }
 }
 

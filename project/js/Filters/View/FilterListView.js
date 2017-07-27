@@ -16,6 +16,7 @@ class FilterListView {
         this.template = filterListViewTpl();
         leftBlock.insertAdjacentHTML('beforeend', this.template);
         this.renderFilters();
+        this.addListeners();
     }
 
     renderFilters () {
@@ -29,10 +30,16 @@ class FilterListView {
     }
 
     appendFilter (filter) {
-        let filterView = new filterView();
+        let filterView = new FilterView();
 
         filterView.setFilter(filter);
         filterView.renderFilter();
+    }
+
+    addListeners () {
+        let addFilterBtn = document.querySelector('.add-filter-btn');
+
+        addFilterBtn.addEventListener('click', () => mediator.pub('filterPopup:open'));
     }
 }
 

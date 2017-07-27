@@ -2,15 +2,15 @@
 
 let mediator = require('../../Mediator.js'),
     PopupAddDirectionView = require('../../Settings/View/PopupAddDirectionView.js'),
-    PopupAddTestView = require('../../Tests/View/PopupAddTestView.js'),
-    PopupAddFilterView = require('../../Filters/View/PopupAddFilterView.js'),
+    PopupAddTestView = require('./PopupAddTestView.js'),
+    PopupAddFilterView = require('./PopupAddFilterView.js'),
     settingsPopupTpl = require('../../Settings/View/tpl/settingsPopupTpl.js');
 
 class PopupSettingsView {
-    constructor (directions, directionNames) {
+    constructor (directions, directionNames, selectedDirection = directions[0]) {
         this.directions = directions;
         this.directionNames = directionNames;
-        this.selectedDirection = directions[0];
+        this.selectedDirection = selectedDirection;
         this.mode = 'T';
 
         this.modal = document.querySelector('#modal-settings');
@@ -33,6 +33,7 @@ class PopupSettingsView {
             selectTestBtn = document.querySelector('#test-settings-btn'),
             selectFilterBtn = document.querySelector('#filter-settings-btn'),
             addDirectionPopup = document.querySelector('.add-direction-btn'),
+            // closeAddFilterPopup = 
             addFilterTestPopup = document.querySelector('.add-test-filter-btn');
 
         directionSelect.addEventListener('change', (e) => {
@@ -59,15 +60,26 @@ class PopupSettingsView {
         });
 
         addFilterTestPopup.addEventListener('click', () => {
-            let popup = this.mode === 'T'? new PopupAddTestView(): new PopupAddFilterView(this.directions.testList, this.directions.actionList, this.directions.conditionList);
+            let view;
 
-            popup.renderPopup();
+            if (this.mode === 'T') {
+                view = new PopupAddTestView();
+                view.renderPopup();
+            } else {
+                view = new PopupAddFilterView();
+                view.renderPopup(this.selectedDirection);
+            }
+
             this.close();
         });
 
         closeSettingsBtn.addEventListener('click', () => {
             this.close();
         });
+
+        // closeAddFilterPopup.addEventListener('click', () => {
+        //     mediator
+        // });
     }
 
     generateData () {

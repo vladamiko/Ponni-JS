@@ -31,20 +31,23 @@ let groupList = [
         ],
         filterList: [
             {
+                name: 'Filter1',
                 testList: ['Eng1', 'Eng2', 'Eng3', 'Eng4'],
                 action: 'average',
                 condition: '>',
                 grade: 60
             },
             {
+                name: 'Filter2',
                 testList: ['JS Core'],
                 action: 'average',
                 condition: '>',
                 grade: 80
             },
             {
+                name: 'Filter3',
                 testList: ['Essay'],
-                action: 'average',
+                action: 'min',
                 condition: '>',
                 grade: 75
             },
@@ -134,12 +137,12 @@ let groupList = [
             {
                 testList: ['Go Core'],
                 action: 'average',
-                condition: '>',
+                condition: '<=',
                 grade: 80
             },
             {
                 testList: ['Essay'],
-                action: 'average',
+                action: 'max',
                 condition: '>',
                 grade: 75
             },
@@ -221,8 +224,8 @@ let groupList = [
         filterList: [
             {
                 testList: ['Eng1', 'Eng2', 'Eng3', 'Eng4'],
-                action: 'average',
-                condition: '>',
+                action: 'equal',
+                condition: '=',
                 grade: 60
             },
             {
@@ -234,7 +237,7 @@ let groupList = [
             {
                 testList: ['Essay'],
                 action: 'average',
-                condition: '>',
+                condition: '>=',
                 grade: 75
             },
         ],

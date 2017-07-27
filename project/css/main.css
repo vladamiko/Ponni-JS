@@ -27,7 +27,7 @@ body {
 h1, h2, h3 {
     margin-top: 0;
 }
-h2.group-title {
+h2 {
     font-size: 18px;
 }
 section {
@@ -35,6 +35,8 @@ section {
     padding: 20px;
     border: 1px solid #3e362f;
     background-color: #e7e7e7;
+    display: flex;
+    flex-direction: column;
 }
 input[type="text"] {
     box-sizing: border-box;
@@ -45,32 +47,26 @@ input[type="text"] {
 /*-- group --*/
 .group-block-head,
 .group-block-body,
-.days-block {
-    position: relative;
-}
-.group-block-head .btn {
-    position: absolute;
-    right: 0px;
-    top: 0px;
+.day-block-head,
+.day-block-body {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
 }
 .group-block-wrapper,
 .day-wrapper {
-    margin-right: 125px;
-    min-height: 120px;
-    position: relative;
     display: flex;
-    box-sizing: border-box;
+    justify-content: space-between;
     overflow-x: scroll;
+    width: 460px;
 }
 .group,
 .day {
     margin-right: 10px;
+    margin-bottom: 10px;
     padding: 10px;
-    width: 115px;
     border: 1px solid #3e362f;
     text-align: center;
-    display: inline-block;
-    vertical-align: top;
 }
 .btn {
     color: #fff;
@@ -79,7 +75,6 @@ input[type="text"] {
     border: none;
     padding: 20px;
     cursor: pointer;
-    outline: none;
 }
 .btn-cog {
     color: #3e362f;
@@ -87,13 +82,18 @@ input[type="text"] {
     background-color: transparent;
     padding: 0;
 }
+.btn-test {
+    background-color: #3e362f;
+    padding: 20px 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+}
 .add-group-btn,
 .add-day-btn {
+    display: flex;
+    justify-content: center;
     width: 115px;
-    height: 100%;
-    position: absolute;
-    right: 0px;
-    top: 0px;
 }
 .test-block-wrapper,
 .filter-block-wrapper {
@@ -103,12 +103,11 @@ input[type="text"] {
     padding-left: 0;
     margin: 0;
 }
+.test-block-wrapper {
+    overflow-x: scroll;
+}
 .filter-block-wrapper {
     flex-direction: column;
-}
-.test-wrapper,
-.filter-wrapper {
-    justify-content: flex-start;
 }
 .test-list-wrapper .test-list,
 .filter-list-wrapper .filter-list {
@@ -116,10 +115,10 @@ input[type="text"] {
     padding-bottom: 20px;
 }
 .test-block-wrapper .test,
-.filter-block-wrapper .filter
- {
+.filter-block-wrapper .filter {
+    justify-content: flex-start;
     background-color: #3e362f;
-    padding: 40px 10px;
+    padding: 20px 10px;
     margin-right: 10px;
     color: #fff;
 }
@@ -127,15 +126,14 @@ input[type="text"] {
     flex-grow: 1;
 }
 .format-test-list {
+    display: flex;
+    flex-direction: column;
     width: 300px;
-}
-.format-test-list {
-    width: 200px;
-    border: 1px solid #3e362f;
 }
 .format-test-list .test-name {
     padding: 10px;
-    border-bottom: 1px solid #3e362f;
+    border: 1px solid #3e362f;
+    margin-bottom: 10px;
 }
 .format-test-list .test-name:last-child {
     border-bottom: none;
@@ -165,12 +163,12 @@ input[type="text"] {
     justify-content: center;
 }
 .modal-content {
-    background-color: #e7e7e7;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 60%;
     display: flex;
     justify-content: space-between;
+    width: 60%;
+    background-color: #e7e7e7;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
 }
 .modal-group-name,
 .modal-group-direction,
@@ -178,7 +176,6 @@ input[type="text"] {
     width: 45%;
     height: 40px;
     font-size: 20px;
-    outline: none;
     border: 1px solid #7bbfb0;
 }
 .modal-settings-direction {
@@ -236,26 +233,40 @@ input[type="text"] {
     display: flex;
     align-self: center;
 }
+.add-filter-btn {
+    margin-top: 10px;
+    align-self: stretch;
+    justify-content: center;
+}
 .direction-list-wrapper,
 .filter-list-wrapper,
 .test-list-wrapper {
     display: flex;
     flex-direction: column;
-    height: 100%;
     justify-content: space-between;
+    height: 100%;
 }
 .test,
-.filter {
+.filter,
+.result {
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid;
+    border: 1px solid #3e362f;
 }
-.filter {
+.filter,
+.result {
     display: flex;
     flex-direction: row;
 }
-.filter > div {
+.result-item {
+    flex-grow: 1;
+}
+.filter > div,
+.result > div {
     margin-right: 20px;
+}
+.result > div {
+    width: 25%;
 }
 .filter-item {
     display: flex;
@@ -269,5 +280,22 @@ input[type="text"] {
     height: 50px;
 }
 .filter-btn {
-    margin: 10px;
+    margin: 10px 0 10px 10px;
 }
+
+.filter-test-list {
+    flex-grow: 1;
+}
+.test-textarea {
+    height: 300px;
+    width: 90%;
+}
+.test-popup {
+    display: flex;
+    justify-content: space-between;
+}
+.close-test-btn {
+    display: flex;
+    align-self: flex-start;
+}
+    

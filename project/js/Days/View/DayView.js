@@ -14,7 +14,9 @@ class DayView {
     }
 
     renderDay () {
-        this.daysBlock.insertAdjacentHTML('afterbegin', this.template);
+        let daysBlock = document.querySelector('.day-wrapper');
+
+        daysBlock.insertAdjacentHTML('afterbegin', this.template);
         this.addListeners();
     }
 

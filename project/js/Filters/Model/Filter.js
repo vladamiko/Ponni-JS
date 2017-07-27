@@ -1,12 +1,16 @@
 'use strict';
 
 class Filter {
-    constructor (tests, action, condition, grade) {
+    constructor (name, tests, action, condition, grade) {
+    	this.name = name;
         this.tests = tests;
-        this.actionList = ['average', 'max', 'min', 'equal'];
-        this.conditionList = ['>', '>=', '=', '<=', '<'];
+        this.action = action;
+        this.condition = condition;
         this.grade = grade;
     }
 }
+
+Filter.ACTION_LIST = ['average', 'max', 'min', 'equal'];
+Filter.CONDITION_LIST = ['>', '>=', '=', '<=', '<'];
 
 module.exports = Filter;
