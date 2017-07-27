@@ -1,7 +1,6 @@
 'use strict';
 
 function popupFormatTpl (testList) {
-    console.log(testList);
     let tests = '';
 
     testList.forEach((test) => {
@@ -9,10 +8,9 @@ function popupFormatTpl (testList) {
     });
 
     return `<div id="test-list-popup" class="modal-content format">
-                <div class="format-test-list">${tests}
-                    <button class="btn add-test-btn">add test</button>
-                </div>
-                <button id="close-group-btn" class="btn btn-cog">
+                <div class="format-test-list">${tests}</div>
+                <button class="btn add-test-btn">add test</button>
+                <button class="btn btn-cog close-test-btn">
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </button>
             </div>`;

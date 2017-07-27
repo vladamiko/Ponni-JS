@@ -6,9 +6,8 @@ let mediator = require('../../Mediator.js'),
     groupPopupTpl = require('../../Groups/View/tpl/groupPopupTpl.js');
 
 class PopupAddGroupView {
-    constructor () {
-        // directionList мы должны брать откуда то
-        this.directionList = ['ui', 'php', 'js', 'java'];
+    constructor (directionList) {
+        this.directionList = directionList;
         this.modal = document.querySelector('#modal-add-group');
     }
 
@@ -23,17 +22,21 @@ class PopupAddGroupView {
 
         closeGroupBtn.addEventListener('click', () => {
             let data = this.generateData(),
-                // data.direction - мы получаем из наших сеттингс
-                group = new GroupModel(data.name, data.direction);
+                group = {};
+            
+            group = new GroupModel(data.name, data.direction);
+
+            this.directionList.directions.forEach((direction) => {
+               if (data.direction === direction.name) {
+                   group.setTestList(direction.testList);
+                   group.setFilterList(direction.filterList);
+               }
+            });
 
             mediator.pub('group:created', group);
 
             this.close();
         });
-    }
-
-    setDirectionList (directionList) {
-        this.directionList = directionList;
     }
 
     generateData () {

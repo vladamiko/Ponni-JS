@@ -3,8 +3,8 @@
 function groupPopupTpl (directionList) {
     let options = '';
 
-    directionList.forEach((item) => {
-        options += `<option>${item}</option>`;
+    directionList.directions.forEach((direction) => {
+        options += `<option>${direction.name}</option>`;
     });
 
     return `<div id="group-popup" class="modal-content">

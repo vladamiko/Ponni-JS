@@ -40,6 +40,7 @@ input[type="text"] {
     box-sizing: border-box;
     padding: 10px;
     border: 1px solid #7bbfb0;
+    outline: none;
 }
 /*-- group --*/
 .group-block-head,
@@ -135,6 +136,9 @@ input[type="text"] {
 .format-test-list .test-name {
     padding: 10px;
     border-bottom: 1px solid #3e362f;
+}
+.format-test-list .test-name:last-child {
+    border-bottom: none;
 }
 .format-test-list .btn {
     width: 100%;

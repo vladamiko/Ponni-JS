@@ -5,25 +5,26 @@ let GroupListView = require('../Groups/View/GroupListView.js'),
     PopupFormatView = require('./View/PopupFormatView.js'),
     GroupModel = require('../Groups/Model/GroupModel.js'),
     PopupAddGroupView = require('../Groups/View/PopupAddGroupView.js'),
+    PopupaAddTestView = require('../Groups/View/PopupAddTestView.js'),
     SettingsModel = require('../Settings/Model/SettingsModel.js'),
     mediator = require('../Mediator.js');
 
 class GroupController {
-    constructor (groupList, groupDirection) {
+    constructor (groupList, directionList) {
         this.groupList = groupList;
-        this.groupDirection = groupDirection;
+        this.directionList = directionList;
         this.subscribe();
     }
 
     showGroupList () {
-        let groupListView = new GroupListView(this.groupList, this.groupDirection);
+        let groupListView = new GroupListView(this.groupList);
 
         groupListView.render();
     }
 
     subscribe () {
         mediator.sub('groupPopup:open', () => {
-            let popupAddGroupView = new PopupAddGroupView();
+            let popupAddGroupView = new PopupAddGroupView(this.directionList);
 
             popupAddGroupView.renderPopup();
         });
@@ -34,10 +35,17 @@ class GroupController {
             groupListView.appendGroup(group);
         });
 
-        mediator.sub('group:formatted', (group) => {
+        mediator.sub('formatAdded:open', (group) => {
             let popupFormatView = new PopupFormatView(group);
 
+            popupFormatView.setGroup(group);
             popupFormatView.render();
+        });
+
+        mediator.sub('popupTest:open', () => {
+            let popupAddTestView = new PopupaAddTestView();
+
+            popupAddTestView.render();
         });
     }
 }

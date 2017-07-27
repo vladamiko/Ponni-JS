@@ -6,16 +6,16 @@ class GroupModel {
         this.direction = direction;
     }
 
-    addTestingSession () {
-
+    setTestList (testList) {
+        this.testList = testList;
     }
 
-    addTest () {
-
+    setFilterList (filterList) {
+        this.filterList = filterList;
     }
 
-    addFilter () {
-
+    addTest (test) {
+        this.testList.push(test);
     }
 }
 
