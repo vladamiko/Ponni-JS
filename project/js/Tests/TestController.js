@@ -1,6 +1,7 @@
 'use strict';
 
-let TestListView = require('../Tests/View/TestListView.js'),
+let TestPopupView = require('../Tests/View/TestPopupView.js'),
+    TestListView = require('../Tests/View/TestListView.js'),
     mediator = require('../Mediator.js');
 
 class TestController {
@@ -10,6 +11,12 @@ class TestController {
     }
 
     subscribe () {
+        mediator.sub('testPopup:open', () => {
+            let testPopupView = new TestPopupView();
+
+            testPopupView.renderPopup();
+        });
+
         mediator.sub('group:active', () => {
             let testListView = new TestListView(this.groupList);
 

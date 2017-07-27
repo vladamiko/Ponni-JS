@@ -16,6 +16,7 @@ class TestListView {
         this.template = testListViewTpl();
         leftBlock.insertAdjacentHTML('beforeend', this.template);
         this.renderTest();
+        this.addListeners();
     }
 
     renderTest () {
@@ -33,6 +34,12 @@ class TestListView {
 
         testView.setTest(groupList.testList);
         testView.renderTest();
+    }
+
+    addListeners () {
+        let addTestBtn = document.querySelector('.btn-test');
+
+        addTestBtn.addEventListener('click', () => mediator.pub('testPopup:open'));
     }
 }
 
