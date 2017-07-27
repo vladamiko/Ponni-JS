@@ -9,7 +9,7 @@ class PopupAddTextareaView {
     constructor () {
         this.modal = document.querySelector('.modal-add-day');
         this.selectedDate = '';
-        this.text = '';
+        this.peopleList = '';
     }
 
     renderPopup () {
@@ -27,11 +27,11 @@ class PopupAddTextareaView {
             textInput = this.modal.querySelector('.text-input');
 
         textInput.addEventListener('change', (e) => {
-            this.text = e.target.value;
+            this.peopleList = e.target.value;
         });
 
-        closeTextareaBtn.addEventListener('click', (e) => {
-            mediator.pub('day:assignedUsers');
+        closeTextareaBtn.addEventListener('click', () => {
+            mediator.pub('day:assignedUsers', this.peopleList);
 
             this.close();
         });
