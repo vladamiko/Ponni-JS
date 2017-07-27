@@ -47,6 +47,10 @@ class GroupController {
 
             popupAddTestView.render();
         });
+
+        mediator.sub('group:active', (group) => {
+            console.log(group);
+        });
     }
 }
 

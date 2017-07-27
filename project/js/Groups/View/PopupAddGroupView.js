@@ -7,7 +7,6 @@ let mediator = require('../../Mediator.js'),
 
 class PopupAddGroupView {
     constructor (directionList) {
-        debugger;
         this.directionList = directionList;
         this.modal = document.querySelector('#modal-add-group');
     }
@@ -22,7 +21,6 @@ class PopupAddGroupView {
         let closeGroupBtn = this.modal.querySelector('#close-group-btn');
 
         closeGroupBtn.addEventListener('click', () => {
-            debugger;
             let data = this.generateData(),
                 group = {};
             

@@ -67,6 +67,10 @@ input[type="text"] {
     padding: 10px;
     border: 1px solid #3e362f;
     text-align: center;
+    cursor: pointer;
+}
+.group.active {
+    background-color: aliceblue;
 }
 .btn {
     color: #fff;
