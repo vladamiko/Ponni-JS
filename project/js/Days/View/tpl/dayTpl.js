@@ -1,10 +1,14 @@
 'use strict';
 
-function dayTpl (day) {
+function dayTpl (day, slot) {
     return `<div class="day">
                 <h2 class="day-title">${day}</h2>
+                <h3 class="slot-title">${slot}</h3>
                 <div>
                     <button class="btn slot-add-btn">add slot</button>
+                </div>
+                <div>
+                    <button class="btn assing-users-btn">assing users</button>
                 </div>
             </div>`;
 }
