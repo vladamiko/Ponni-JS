@@ -29,6 +29,7 @@ class GroupView {
             groupElement = this.groupsBlock.querySelector('.group');
 
         formatGroupBtn.addEventListener('click', () => mediator.pub('formatAdded:open', this.group));
+
         groupElement.addEventListener('click', (e) => {
            let buttonElement = e.target.classList.contains('format-added-btn');
 

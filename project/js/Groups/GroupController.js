@@ -5,7 +5,7 @@ let GroupListView = require('../Groups/View/GroupListView.js'),
     PopupFormatView = require('./View/PopupFormatView.js'),
     GroupModel = require('../Groups/Model/GroupModel.js'),
     PopupAddGroupView = require('../Groups/View/PopupAddGroupView.js'),
-    PopupaAddTestView = require('../Groups/View/PopupAddTestView.js'),
+    PopupAddTestView = require('../Groups/View/PopupAddTestView.js'),
     Settings = require('../Settings/Model/Settings.js'),
     mediator = require('../Mediator.js');
 
@@ -42,8 +42,13 @@ class GroupController {
             popupFormatView.render();
         });
 
+        mediator.sub('save:test', (group) => {
+            let groupView = new GroupView();
+
+            groupView.setGroup(group);
+        });
+
         mediator.sub('group:active', (group) => {
-            debugger;
             this.groupList.forEach((groupElement) => {
                 groupElement.deactivate();
             });
@@ -51,7 +56,7 @@ class GroupController {
         });
 
         mediator.sub('popupTest:open', () => {
-            let popupAddTestView = new PopupaAddTestView();
+            let popupAddTestView = new PopupAddTestView();
 
             popupAddTestView.render();
         });

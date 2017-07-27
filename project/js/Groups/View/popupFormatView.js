@@ -37,6 +37,7 @@ class PopupFormatView {
       closeTestBtn.addEventListener('click', () => {
          this.group.addTest(this.test);
          mediator.unsub('oneTest:added');
+         mediator.pub('save:test', this.group);
          this.close();
       });
    }
