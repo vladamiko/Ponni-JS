@@ -12,6 +12,7 @@ class GroupView {
     setGroup (group) {
         this.group = group;
         this.setTemplate(this.group);
+        this.group.on('change', () => this.renderGroup());
     }
 
     setTemplate (group) {
@@ -28,9 +29,13 @@ class GroupView {
             groupElement = this.groupsBlock.querySelector('.group');
 
         formatGroupBtn.addEventListener('click', () => mediator.pub('formatAdded:open', this.group));
-        groupElement.addEventListener('click', () => {
-            groupElement.classList.add('active');
-            mediator.pub('group:active', this.group);
+        groupElement.addEventListener('click', (e) => {
+           let buttonElement = e.target.classList.contains('format-added-btn');
+
+            if (!buttonElement) {
+                groupElement.classList.add('active');
+                mediator.pub('group:active', this.group);
+            }
         });
     }
 }

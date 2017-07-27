@@ -42,14 +42,18 @@ class GroupController {
             popupFormatView.render();
         });
 
+        mediator.sub('group:active', (group) => {
+            this.groupList.forEach((groupElement) => {
+                groupElement.deactivate();
+
+            });
+            group.activate();
+        });
+
         mediator.sub('popupTest:open', () => {
             let popupAddTestView = new PopupaAddTestView();
 
             popupAddTestView.render();
-        });
-
-        mediator.sub('group:active', (group) => {
-            console.log(group);
         });
     }
 }
