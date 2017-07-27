@@ -12,7 +12,7 @@ class GroupView {
     setGroup (group) {
         this.group = group;
         this.setTemplate(this.group);
-        this.group.on('change', () => this.renderGroup());
+        this.group.on('change', () => this.renderGroup);
     }
 
     setTemplate (group) {

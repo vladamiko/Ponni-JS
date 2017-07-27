@@ -7,9 +7,9 @@ function init () {
         groupList = require('./defaultGroups'),
         defaultDirections = require('./defaultDirections');
 
-
     let app = new App(groupList);
 
     app.settings.directions = defaultDirections;
+
     app.start();
 }

@@ -13,7 +13,6 @@ class App {
     constructor (groupList) {
         this.groupList = groupList;
         this.settings = new Settings();
-
         this.subscribe();
     }
 

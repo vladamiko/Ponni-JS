@@ -30,8 +30,8 @@ defaultDirections[3].addTest('Eng 4');
 defaultDirections[3].addTest('GO Core');
 defaultDirections[3].addTest('Essay GO');
 
-let testListUI = ['Eng 1', 'Eng 2', 'Eng 3',],
-    testListJS = ['Eng 1',],
+let testListUI = ['Eng 1', 'Eng 2', 'Eng 3'],
+    testListJS = ['Eng 1','Eng 2'],
     testListPHP = ['PHP Core'],
     testListGO = ['Eng 1', 'Eng 2', 'Eng 3','Eng 4'];
 

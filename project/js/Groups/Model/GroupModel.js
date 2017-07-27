@@ -34,12 +34,10 @@ class GroupModel {
 
     //Observer
     on (event, fn) {
-       if (this.listeners[event]) {
+       if (!this.listeners[event]) {
            this.listeners[event] = [];
        }
-
-       this.listeners[event].push(fn);
-
+        this.listeners[event].push(fn);
     }
 
     trigger (event) {
