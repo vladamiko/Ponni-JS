@@ -15,11 +15,10 @@ class DayView {
 
     renderDay () {
         this.daysBlock.innerHTML = this.template;
-        this.addListeners();
     }
 
     renderDayAdd () {
-        this.daysBlock.insertAdjacentHTML('beforeend', this.template);
+        this.daysBlock.insertAdjacentHTML('afterbegin', this.template);
         this.addListeners();
     }
 
