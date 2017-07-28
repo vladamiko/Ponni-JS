@@ -1,5 +1,7 @@
 'use strict';
 
+let Filter = require('../../Filters/Model/Filter.js');
+
 class GroupModel {
     constructor (name, direction) {
         this.name = name;
@@ -15,6 +17,10 @@ class GroupModel {
         this.testList.push(test);
     }
 
+    addFilter (name, testList, action, condition, grade) {
+        this.filterList.push(new Filter(name, testList, action, condition, grade));
+    }
+   
     activate () {
         this.selected = true;
     }
