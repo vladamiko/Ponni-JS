@@ -5,30 +5,41 @@ let mediator = require('../../Mediator.js'),
     filterPopupViewTpl = require('./tpl/filterPopupViewTpl.js');
 
 class FilterPopupView {
-    constructor () {
-        this.modal = document.querySelector('.modal-filter');
+    constructor (activeGroup) {
+        this.activeGroup = activeGroup;
+        this.modal = document.querySelector('.modal-add-filter');
+        this.modal.innerHTML = filterPopupViewTpl(this.activeGroup.testList);
+        this.render();
     }
 
-    renderPopup () {
-        this.modal.innerHTML = filterPopupViewTpl();
+    render () {
         this.open();
         this.addListeners();
     }
 
-    addListeners () {
-        let closeFilterBtn = this.modal.querySelector('.close-filter-btn');
-
-        closeFilterBtn.addEventListener('click', () => {
-
-            // let filter = new Filter();
-
-            // mediator.pub('filter:created', filter);
-            this.close();
-        });
-    }
-
     open () {
         this.modal.classList.add('visible');
+    }
+
+    addListeners () {
+        let closeFilterBtn = document.querySelector('.close-filter-btn'),
+            filterName = document.querySelector('.add-filter-name'),
+            action = document.querySelector('.modal-filter-action'),
+            condition = document.querySelector('.modal-filter-condition'),
+            grade = document.querySelector('.add-test-grade');
+            
+        closeFilterBtn.addEventListener('click', () => {
+            let checkedTests = document.querySelectorAll('input:checked'),
+                testNames = [];
+            
+            checkedTests.forEach(function(test) {
+                testNames.push(test.value);
+            });
+
+            this.activeGroup.addFilter(filterName.value, testNames, action.value, condition.value, grade.value);
+            this.close();
+            mediator.pub('filter:created', this.activeGroup);
+        });
     }
 
     close () {
