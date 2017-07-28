@@ -1,9 +1,9 @@
 'use strict';
 
 let DayListView = require('../Days/View/DayListView.js'),
-    PopupAddDayView = require('../Days/View/PopupAddDayView.js'),
-    PopupAddSlotView = require('../Days/View/PopupAddSlotView.js'),
-    PopupTextareaView = require('../Days/View/PopupTextareaView.js'),
+    AddDayPopupView = require('../Days/View/AddDayPopupView.js'),
+    AddSlotPopupView = require('../Days/View/AddSlotPopupView.js'),
+    AddPersonPopupView = require('../Days/View/AddPersonPopupView.js'),
     Person = require('../Days/Model/Person.js'),
     ResultView = require('../Result/View/ResultView.js'),
     mediator = require('../Mediator.js');
@@ -16,49 +16,57 @@ class DaysController {
 
     subscribe () {
         mediator.sub('dayPopup:open', () => {
-            let popupAddDayView = new PopupAddDayView();
+            let addDayPopupView = new AddDayPopupView();
 
-            popupAddDayView.renderPopup();
+            addDayPopupView.renderPopup();
         });
 
         mediator.sub('day:created', (day) => {
-            let dayListView = new DayListView(day);
+            let addDayPopupView = new AddDayPopupView();
+
+            addDayPopupView.appendDayAdd();
+        });
+
+        mediator.sub('group:active', (group) => {
+            let dayListView = new DayListView(group.dayList);
 
             dayListView.appendDay();
         });
 
         mediator.sub('slotPopup:open', () => {
-            let popupAddSlotView = new PopupAddSlotView();
+            let addSlotPopupView = new AddSlotPopupView();
 
-            popupAddSlotView.renderPopup();
+            addSlotPopupView.renderPopup();
         });
 
         mediator.sub('day:addedSlot', (day) => {
-            alert('ypa');
+            let addSlotPopupView = new AddSlotPopupView();
+
+            addSlotPopupView.appendSlot();
         });
 
         mediator.sub('textareaPopup:open', () => {
-            let popupAddSlotView = new PopupTextareaView();
+            let addSlotPopupView = new AddPersonPopupView();
 
-            popupAddSlotView.renderPopup();
+            addSlotPopupView.renderPopup();
         });
 
-        mediator.sub('day:assignedUsers', (people) => {
-            let peopleList = people.match(/[^\n]+/g),
-                result = [];
+        // mediator.sub('day:assignedUsers', (people) => {
+        //     let peopleList = people.match(/[^\n]+/g),
+        //         result = [];
 
-            peopleList.forEach((item) => {
-                let personalInfo = item.split(' '),
-                    name = personalInfo[0],
-                    lastName = personalInfo[1],
-                    email = personalInfo[2],
-                    person = new Person(name, lastName, email);
+        //     peopleList.forEach((item) => {
+        //         let personalInfo = item.split(' '),
+        //             name = personalInfo[0],
+        //             lastName = personalInfo[1],
+        //             email = personalInfo[2],
+        //             person = new Person(name, lastName, email);
 
-                result.push(person);
-            });
+        //         result.push(person);
+        //     });
 
-            this.showPeople(result);
-        });
+        //     this.showPeople(result);
+        // });
     }
 
     showDayList () {

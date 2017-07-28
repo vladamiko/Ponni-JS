@@ -5,32 +5,17 @@ let DayView = require('./DayView.js'),
     mediator = require('../../Mediator.js');
 
 class DayListView {
-    constructor (day) {
+    constructor (groupList) {
         this.template = '';
-        this.day = day;
-        // this.addListeners();
+        this.groupList = groupList;
     }
 
     render () {
         let leftBlock = document.querySelector('.left-column');
 
         this.template = dayListViewTpl();
-
         leftBlock.insertAdjacentHTML('beforeend', this.template);
-
-        this.renderDays();
-
         this.addListeners();
-    }
-
-    renderDays () {
-        this.day.forEach((group) => {
-            let dayView = new DayView();
-
-            dayView.setDay(group);
-
-            return dayView.renderDay();
-        });
     }
 
     addListeners () {
@@ -42,9 +27,11 @@ class DayListView {
     appendDay () {
         let dayView = new DayView();
 
-        dayView.setDay(this.day.date);
+        dayView.setDay(this.groupList);
         dayView.renderDay();
     }
+
+    
 }
 
 module.exports = DayListView;

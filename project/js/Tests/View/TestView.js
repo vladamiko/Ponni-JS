@@ -9,6 +9,7 @@ class TestView {
     }
 
     setTest (test) {
+        this.test = test;
         this.template = testViewTpl(test);
     }
 
@@ -20,9 +21,17 @@ class TestView {
     }
 
     addListeners () {
-        let addTestBtn = document.querySelector('.btn-test');
+        let addTestBtn = document.querySelector('.btn-test'),
+            groupElement = document.querySelector('.test-wrapper');
 
-        addTestBtn.addEventListener('click', () => mediator.pub('testPopup:open'));
+        addTestBtn.addEventListener('click', () => mediator.pub('testPopup:open', this.test));
+        groupElement.addEventListener('click', (e) => {
+           let buttonElement = e.target.classList.contains('btn-test');
+
+            if (!buttonElement) {
+                mediator.pub('test:active', this.test);
+            }
+        });
     }
 }
 

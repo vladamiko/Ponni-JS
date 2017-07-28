@@ -15,7 +15,7 @@ class ResultView {
     renderResult () {
         let resultBlock = document.querySelector('.result-wrapper');
 
-        resultBlock.insertAdjacentHTML('beforeend', this.template);
+        resultBlock.innerHTML = this.template;
     }
 }
 

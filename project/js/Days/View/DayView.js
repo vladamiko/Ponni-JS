@@ -1,37 +1,32 @@
 'use strict';
 
-let dayTpl = require('./tpl/dayTpl.js'),
+let dayViewTpl = require('./tpl/dayViewTpl.js'),
     mediator = require('../../Mediator.js');
 
 class DayView {
     constructor () {
         this.template = '';
         this.daysBlock = document.querySelector('.day-wrapper');
-        //this.subscribe();
     }
 
-    /*subscribe () {
-        mediator.sub('day:addedSlot', (day) => {
-            alert('ypa');
-        });
-    }*/
-
     setDay (day) {
-        this.template = dayTpl(day);
+        this.template = dayViewTpl(day);
     }
 
     renderDay () {
-        this.daysBlock.insertAdjacentHTML('afterbegin', this.template);
+        this.daysBlock.innerHTML = this.template;
+        this.addListeners();
+    }
+
+    renderDayAdd () {
+        this.daysBlock.insertAdjacentHTML('beforeend', this.template);
         this.addListeners();
     }
 
     addListeners () {
-        let addSlotBtn = this.daysBlock.querySelector('.slot-add-btn'),
-            assignUsers = this.daysBlock.querySelector('.assing-users-btn')
+        let addSlotBtn = this.daysBlock.querySelector('.slot-add-btn');
 
-        addSlotBtn.addEventListener('click', () => mediator.pub('slotPopup:open')),
-        assignUsers.addEventListener('click', () => mediator.pub('textareaPopup:open'));
-        
+        addSlotBtn.addEventListener('click', () => mediator.pub('slotPopup:open'));
     }
 }
 

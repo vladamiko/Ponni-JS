@@ -3,15 +3,31 @@
 function filterPopupViewTpl () {
     return `<div class="modal-content filter-popup">
                 <div class="left-column-filter">
-                tests
+                    <div class="test"><input type="checkbox" name="tests">English 1</div>
+                    <div class="test"><input type="checkbox" name="tests">English 2</div>
+                    <div class="test"><input type="checkbox" name="tests">English 3</div>
+                    <div class="test"><input type="checkbox" name="tests">English 4</div>
+                    <div class="test"><input type="checkbox" name="tests">Core</div>
+                    <div class="test"><input type="checkbox" name="tests">Essay</div>
                 </div>
                 <div class="right-column-filter">
-                    <div>
+                    <div class="filter-name">
                         <input type="text" class="add-test-name" placeholder="Enter test name">
                     </div>
-                    <div>
-                        <select class="modal-filter-action">actions</select>
-                        <select class="modal-filter-condition">conditions</select>
+                    <div class="filter-field">
+                        <select class="modal-filter-action">
+                            <option>average</option>
+                            <option>min</option>
+                            <option>max</option>
+                            <option>equal</option>
+                        </select>
+                        <select class="modal-filter-condition">
+                            <option>></option>
+                            <option><</option>
+                            <option>>=</option>
+                            <option><=</option>
+                            <option>=</option>
+                        </select>
                         <input type="text" class="add-test-grade" placeholder="Enter grade">
                     </div>
                 </div>
