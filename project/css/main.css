@@ -54,9 +54,9 @@ input[type="text"] {
     flex-grow: 1;
 }
 .group-block-wrapper,
-.day-wrapper {
+.day-block-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     overflow-x: scroll;
     width: 460px;
 }
@@ -70,7 +70,7 @@ input[type="text"] {
     cursor: pointer;
 }
 .group.active {
-    background-color: aliceblue;
+    background-color: #fff;
 }
 .btn {
     color: #fff;
@@ -110,6 +110,7 @@ input[type="text"] {
 }
 .test-block-wrapper {
     overflow-x: scroll;
+    justify-content: flex-start;
 }
 .filter-block-wrapper {
     flex-direction: column;
@@ -174,7 +175,8 @@ input[type="text"] {
 }
 .modal-group-name,
 .modal-group-direction,
-.modal-settings-direction {
+.modal-settings-direction,
+.modal-slot {
     width: 45%;
     height: 40px;
     font-size: 20px;
@@ -288,9 +290,11 @@ input[type="text"] {
 .filter-test-list {
     flex-grow: 1;
 }
-.test-textarea {
+.test-textarea,
+.slots-textarea {
     height: 300px;
     width: 90%;
+    border: 1px solid #7bbfb0;
 }
 .test-popup {
     display: flex;
@@ -300,4 +304,49 @@ input[type="text"] {
     display: flex;
     align-self: flex-start;
 }
-    
+.slot-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.slot-block {
+    display: flex;
+    justify-content: space-between;
+}
+.slot {
+    justify-content: center;
+    background-color: #3e362f;
+    color: #fff;
+    border: 1px solid #3e362f;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.assing-users-btn {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.filter-name {
+    display: flex;
+    margin: 20px 50px;
+    flex-flow: inherit;
+}
+.filter-field {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 50px;
+}
+.right-column-filter {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+.left-column-filter {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+input[type=date] {
+    padding: 20px;
+    font-size: 20px;
+    border: 1px solid #7bbfb0;
+}

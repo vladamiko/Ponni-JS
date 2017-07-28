@@ -1,6 +1,6 @@
 'use strict';
 
-function popupAddSlotTpl (timeList) {
+function addSlotPopupTpl (timeList) {
     let options = '';
 
     timeList.forEach((item) => {
@@ -15,4 +15,4 @@ function popupAddSlotTpl (timeList) {
             </div>`;
 }
 
-module.exports = popupAddSlotTpl;
+module.exports = addSlotPopupTpl;

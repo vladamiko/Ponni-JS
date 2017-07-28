@@ -1,7 +1,7 @@
 'use strict';
 
 function dayListViewTpl () {
-    return `<section id="day-block">
+    return `<section class="day-block">
                 <div class="day-block-head">
                     <h1>Test Days</h1>
                 </div>

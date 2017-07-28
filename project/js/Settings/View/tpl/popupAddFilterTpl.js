@@ -8,7 +8,7 @@ function popupAddFilterTpl (testList) {
         conditions = generateList(Filter.CONDITION_LIST);
 
     function generateTestList (list) {
-        return list.map((item) => `<div><input type="checkbox" value="${item.name}" name="tests" />${item.name}</div>`).join('');
+        return list.map((item) => `<div class="test"><input type="checkbox" value="${item.name}" name="tests" />${item.name}</div>`).join('');
     }
 
     function generateList (list) {
@@ -17,13 +17,13 @@ function popupAddFilterTpl (testList) {
 
     return `<div class="modal-content add-filter-popup">
                 <div class="left-column-filter">
-                ${tests}
+                    ${tests}
                 </div>
                 <div class="right-column-filter">
-                    <div>
+                    <div class="filter-name">
                         <input type="text" class="add-filter-name" placeholder="Enter filter name">
                     </div>
-                    <div>
+                    <div class="filter-field">
                         <select class="modal-filter-action">${actions}</select>
                         <select class="modal-filter-condition">${conditions}</select>
                         <input type="text" class="add-test-grade" placeholder="Enter grade">

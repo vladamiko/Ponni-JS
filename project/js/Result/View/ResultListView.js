@@ -15,7 +15,6 @@ class ResultListView {
 
         this.template = resultListViewTpl();
         rightBlock.insertAdjacentHTML('afterbegin', this.template);
-        this.renderResult();
     }
 
     renderResult () {
