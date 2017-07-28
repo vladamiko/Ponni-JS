@@ -9,7 +9,7 @@ class AddSlotPopupView {
     constructor () {
         this.modal = document.querySelector('.modal-add-day');
         this.selectedTime = '';
-        this.timeList = ['08:00', '08:30', '09:00', '09:30'];
+        this.timeList = ['08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30'];
     }
 
     renderPopup () {

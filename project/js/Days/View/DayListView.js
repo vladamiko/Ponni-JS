@@ -25,10 +25,12 @@ class DayListView {
     }
 
     appendDay () {
-        let dayView = new DayView();
+        if (this.groupList.testDays) {
+            let dayView = new DayView();
 
-        dayView.setDay(this.groupList);
-        dayView.renderDay();
+            dayView.setDay(this.groupList.testDays);
+            dayView.renderDay();
+        }
     }
 
     

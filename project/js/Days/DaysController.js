@@ -28,7 +28,7 @@ class DaysController {
         });
 
         mediator.sub('group:active', (group) => {
-            let dayListView = new DayListView(group.dayList);
+            let dayListView = new DayListView(group);
 
             dayListView.appendDay();
         });
@@ -51,35 +51,28 @@ class DaysController {
             addSlotPopupView.renderPopup();
         });
 
-        // mediator.sub('day:assignedUsers', (people) => {
-        //     let peopleList = people.match(/[^\n]+/g),
-        //         result = [];
+        mediator.sub('day:assignedUsers', (people) => {
+            let peopleList = people.match(/[^\n]+/g),
+                result = [];
 
-        //     peopleList.forEach((item) => {
-        //         let personalInfo = item.split(' '),
-        //             name = personalInfo[0],
-        //             lastName = personalInfo[1],
-        //             email = personalInfo[2],
-        //             person = new Person(name, lastName, email);
+            peopleList.forEach((item) => {
+                let personalInfo = item.split(' '),
+                    name = personalInfo[0],
+                    lastName = personalInfo[1],
+                    email = personalInfo[2],
+                    person = new Person(name, lastName, email);
 
-        //         result.push(person);
-        //     });
+                result.push(person);
+            });
 
-        //     this.showPeople(result);
-        // });
+            console.log(result);
+        });
     }
 
     showDayList () {
         let dayListView = new DayListView(this.groupList);
 
         dayListView.render();
-    }
-
-    showPeople (people) {
-        let resultView = new ResultView();
-
-        resultView.setResult(people);
-        resultView.renderResult();
     }
 }
 
