@@ -38,7 +38,9 @@ class FilterListView {
     addListeners () {
         let addFilterBtn = document.querySelector('.add-filter-btn');
 
-        addFilterBtn.addEventListener('click', () => mediator.pub('filterPopup:open'));
+        addFilterBtn.addEventListener('click', () => {
+            mediator.pub('filterPopup:open');
+        });
     }
 }
 

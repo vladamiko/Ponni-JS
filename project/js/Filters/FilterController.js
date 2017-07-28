@@ -12,22 +12,21 @@ class FilterController {
 
     subscribe () {
         mediator.sub('filterPopup:open', () => {
-            let filterPopupView = new FilterPopupView();
-
-            filterPopupView.renderPopup();
+            let filterPopupView = new FilterPopupView(this.group);
         });
 
-        mediator.sub('filter:created', (filter) => {
-            let filterListView = new FilterListView();
-
-            filterListView.appendFilter(filter);
-        });
-
-        mediator.sub('group:active', (group) => {
+        mediator.sub('filter:created', (group) => {
             let filterListView = new FilterListView(group.filterList);
 
             filterListView.appendFilter();
         });
+
+        mediator.sub('group:active', (group) => {
+            let filterListView = new FilterListView(group.filterList);
+            this.group = group;
+
+            filterListView.appendFilter();
+        });   
     }
 
     showFilterList () {
