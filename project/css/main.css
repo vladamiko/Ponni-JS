@@ -70,7 +70,8 @@ input[type="text"] {
     cursor: pointer;
 }
 .group.active {
-    background-color: #fff;
+    background-color: #3e362f;
+    color: #fff;
 }
 .btn {
     color: #fff;

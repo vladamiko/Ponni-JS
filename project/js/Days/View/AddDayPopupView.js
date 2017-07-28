@@ -6,13 +6,14 @@ let mediator = require('../../Mediator.js'),
     addDayPopupTpl = require('../../Days/View/tpl/addDayPopupTpl.js');
 
 class AddDayPopupView {
-    constructor () {
+    constructor (activeGroup) {
+        this.activeGroup = activeGroup;
         this.modal = document.querySelector('.modal-add-day');
         this.selectedDate = '';
     }
 
     renderPopup () {
-        this.modal.innerHTML = addDayPopupTpl();
+        this.modal.innerHTML = addDayPopupTpl(this.activeGroup.testDayList);
         this.modal.querySelector('.current-date').valueAsDate = new Date();
         this.open();
         this.addListeners();
@@ -21,11 +22,14 @@ class AddDayPopupView {
     addListeners () {
         let closeDayBtn = this.modal.querySelector('.close-day-btn');
 
-        closeDayBtn.addEventListener('click', (e) => {
+        closeDayBtn.addEventListener('click', () => {
+            console.log(this.activeGroup);
             let day = new Day(this.generateData());
 
-            mediator.pub('day:created', day.date);
+            this.activeGroup.addDay(day);
             this.close();
+            mediator.pub('day:created', this.activeGroup);
+            
         });
     }
 

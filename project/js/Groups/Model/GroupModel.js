@@ -8,6 +8,7 @@ class GroupModel {
         this.direction = direction.name;
         this.testList = direction.testList;
         this.filterList = direction.filterList;
+        this.testDayList = [];
         this.selected = false;
 
         this.listeners = [];
@@ -19,6 +20,10 @@ class GroupModel {
 
     addFilter (name, testList, action, condition, grade) {
         this.filterList.push(new Filter(name, testList, action, condition, grade));
+    }
+
+    addDay (date) {
+        this.testDayList.push(date);
     }
    
     activate () {
