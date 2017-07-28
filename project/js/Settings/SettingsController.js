@@ -31,7 +31,6 @@ class SettingsController {
         });
 
         mediator.sub('addFilterPopup:close', (selectedDirection) => {
-            console.log(selectedDirection);
             this.view.render(selectedDirection);
         });        
     }

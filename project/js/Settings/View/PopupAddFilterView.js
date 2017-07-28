@@ -22,10 +22,10 @@ class PopupAddFilterView {
 
     addListeners () {
         let closeFilterBtn = document.querySelector('.close-filter-btn'),
-            filterName = document.querySelector('.add-filter-name').value,
-            action = document.querySelector('.modal-filter-action').value,
-            condition = document.querySelector('.modal-filter-condition').value,
-            grade = document.querySelector('.add-test-grade').value;
+            filterName = document.querySelector('.add-filter-name'),
+            action = document.querySelector('.modal-filter-action'),
+            condition = document.querySelector('.modal-filter-condition'),
+            grade = document.querySelector('.add-test-grade');
             
         closeFilterBtn.addEventListener('click', () => {
             let checkedTests = document.querySelectorAll('input:checked'),
@@ -35,7 +35,7 @@ class PopupAddFilterView {
                 testNames.push(test.value);
             });
 
-            this.selectedDirection.addFilter(filterName, testNames, action, condition, grade);
+            this.selectedDirection.addFilter(filterName.value, testNames, action.value, condition.value, grade.value);
             this.close();
             mediator.pub('addFilterPopup:close', this.selectedDirection);
         });
