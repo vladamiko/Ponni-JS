@@ -15,7 +15,7 @@ class FilterListView {
 
         this.template = filterListViewTpl();
         leftBlock.insertAdjacentHTML('beforeend', this.template);
-        this.addListeners();
+        
     }
 
     renderFilters () {
@@ -33,6 +33,7 @@ class FilterListView {
 
         filterView.setFilter(this.groupList);
         filterView.renderFilter();
+        this.addListeners();
     }
 
     addListeners () {

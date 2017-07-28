@@ -15,7 +15,7 @@ class DayListView {
 
         this.template = dayListViewTpl();
         leftBlock.insertAdjacentHTML('beforeend', this.template);
-        this.addListeners();
+        //
     }
 
     addListeners () {
@@ -31,9 +31,8 @@ class DayListView {
             dayView.setDay(this.groupList.testDays);
             dayView.renderDay();
         }
-    }
-
-    
+        this.addListeners();
+    }    
 }
 
 module.exports = DayListView;
