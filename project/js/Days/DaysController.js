@@ -16,7 +16,7 @@ class DaysController {
 
     subscribe () {
         mediator.sub('dayPopup:open', () => {
-            let addDayPopupView = new AddDayPopupView();
+            let addDayPopupView = new AddDayPopupView(this.group);
 
             addDayPopupView.renderPopup();
         });
@@ -29,6 +29,8 @@ class DaysController {
 
         mediator.sub('group:active', (group) => {
             let dayListView = new DayListView(group);
+
+            this.group = group;
 
             dayListView.appendDay();
         });

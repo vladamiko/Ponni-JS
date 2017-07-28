@@ -15,7 +15,6 @@ class DayListView {
 
         this.template = dayListViewTpl();
         leftBlock.insertAdjacentHTML('beforeend', this.template);
-        //
     }
 
     addListeners () {
